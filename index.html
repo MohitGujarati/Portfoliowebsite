@@ -2,257 +2,244 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohit Gujarati Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
+    <meta name="description" content="Portfolio of Mohit Gujarati, showcasing Android development projects and skills.">
+    <title>Mohit Gujarati | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .section-hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body>
-
-    <nav class="nav">
-        <ul class="nav_items">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#About_me">About</a></li>
-          <li><a href="#my_projects">Project Details</a></li>
-          <li><a href="#Contact">Contact</a></li>
-        </ul>
-      </nav>
-
-    <header id="home" class="container">
-
-        <div  class="about">
-
-            <div class="circular_img ">
-                <img class="avtar box" src="https://cdn-icons-png.flaticon.com/128/1157/1157109.png" alt="code logo" >
+<body class="bg-gray-100">
+    <!-- Full-Width Hero Section -->
+    <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20 text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-5xl font-bold mb-4">Mohit Gujarati</h1>
+            <p class="text-xl mb-6">Master's Student | Android Developer | Front-End Designer</p>
+            <div class="space-x-4">
+                <a href="mailto:mohitgujarati11@gmail.com" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition duration-300">Contact Me</a>
+                <a href="#projects" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-blue-600 transition duration-300">View Projects</a>
             </div>
-            <h1 class="name">
-                Mohit Gujarati
-            </h1>
-            <br>
-            <br>
-            <div class="items">
-                <div class="socialitems ">
-                    <a href="https://github.com/MohitGujarati" target="_blank">
-                        <img class="iconsize" src=https://cdn-icons-png.flaticon.com/512/733/733553.png  alt="Github logo">
-                      </a>
-                      <a href="https://www.linkedin.com/in/mohitgujarati" target="_blank">
-                        <img class="iconsize" src=https://cdn-icons-png.flaticon.com/512/145/145807.png alt="Github logo">
-                      </a>
-                      <a href="mailto:mohitgujarati11@gmail.com?subject=Lets get in touch!!&body=hey Mohit!!I Just saw your website" target="_blank">
-                        <img class="iconsize" src=https://cdn-icons-png.flaticon.com/512/552/552486.png  alt="Mail logo">
-                      </a>
-                      
-                      
-                
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-gray-800 text-white py-4 sticky top-0 z-10">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <h1 class="text-xl font-bold">Mohit Gujarati</h1>
+            <ul class="flex space-x-6">
+                <li><a href="#about" class="hover:text-gray-300">About</a></li>
+                <li><a href="#skills" class="hover:text-gray-300">Skills</a></li>
+                <li><a href="#experience" class="hover:text-gray-300">Experience</a></li>
+                <li><a href="#projects" class="hover:text-gray-300">Projects</a></li>
+                <li><a href="#contact" class="hover:text-gray-300">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white section-hidden">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">About Me</h2>
+            <div class="bg-gray-100 p-8 rounded-lg shadow-md">
+                <p class="text-gray-700 mb-4">
+                    I am a master's student in computer science with a passion for Android development and front-end design. Currently pursuing my Master of Science in Computer Engineering at Long Island University, I bring a strong foundation in software development and a keen eye for creating innovative, user-focused solutions.
+                </p>
+                <p class="text-gray-700">
+                    With professional experience as a Software Developer at TNM Software Solutions and as an Android Developer Trainee at Tops Technology, I have developed expertise in Kotlin, Android SDK, and cross-platform development. My goal is to create cutting-edge mobile applications that provide seamless and intuitive user experiences.
+                </p>
+                <div class="mt-6 flex justify-center space-x-4">
+                    <a href="https://linkedin.com/in/mohitgujarati" target="_blank" class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition duration-300">LinkedIn Profile</a>
+                    <a href="/resume.pdf" download class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-gray-800 transition duration-300">Download Resume</a>
                 </div>
             </div>
-
-            <a href="utldoc/Mohit_Resume.pdf" download>
-                <button>Download Resume</button>
-              </a>
-           
         </div>
-        <div id="About_me" class="hero flex items-center justify-between">
-            <h1 >
-                Android Developer
-            </h1>
-            <h3>
-            </h3>
-            <p class="text_center">
-                I'm a passionate developer with a strong command of various tech stacks. However, my core strength lies in Android app development , which I have honed through years of experience.
-                Recently, I completed an intensive 10-month training program and worked on numerous personal industry-level projects , showcasing my expertise and skills. Here are some of the projects I have worked on, with corresponding GitHub links
-            </p>
-        </div>
+    </section>
 
-
-     
-        <div class=" items flex items-center justify-between">
-            <div class="right techimg">
-                <h4 class="tecstack_text">
-                    Tech Stack:-
-                </h4>
+    <!-- Rest of the sections remain the same as previous version -->
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 bg-white section-hidden">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8">Professional Experience</h2>
+            
+            <div class="bg-gray-100 shadow-lg rounded-lg p-6 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Software Developer</h3>
+                <p class="text-gray-600 mb-2">TNM Software Solutions Pvt Ltd | May 2023 - June 2024</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>Developed Android apps using Kotlin and Android SDK, integrating motion sensors, geocoder, and geofence for location-based functionality across devices.</li>
+                    <li>Enhanced legacy code, resulting in 50% performance improvement by implementing complex features like location-based notifications and real-time updates using coroutines.</li>
+                    <li>Developed cross-platform UIs for travel website and time-blocking apps using React and React Native.</li>
+                    <li>Collaborated with cross-functional teams to deliver high-quality, production-ready applications.</li>
+                </ul>
             </div>
-            <div class="left techimg ">
-                <img class="iconsize"src="https://cdn-icons-png.flaticon.com/128/2504/2504881.png" alt="Android logo">
+
+            <div class="bg-gray-100 shadow-lg rounded-lg p-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Android Developer Trainee</h3>
+                <p class="text-gray-600 mb-2">Tops Technology Inc. | May 2022 - May 2023</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>Developed full-stack native mobile applications using Kotlin.</li>
+                    <li>Worked with diverse databases to meet project requirements and implemented various application programming interfaces.</li>
+                    <li>Applied advanced user interface concepts to create consistent and improved user experiences.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="bg-gray-200 py-16 section-hidden">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8">Projects</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6 px-4">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2">Flare Clone</h3>
+                    <p class="text-gray-600 mb-4">Android App with Advanced Location Tracking</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Developed with Kotlin, Android SDK, Realm Database</li>
+                        <li>Integrated Google Maps for real-time location tracking</li>
+                        <li>Implemented geocoder and geofencing features</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2">InEvents</h3>
+                    <p class="text-gray-600 mb-4">Student Event Management System</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Built with Kotlin, Firebase, SQLite</li>
+                        <li>Implemented Google Maps integration</li>
+                        <li>Used Firebase for backend and notifications</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2">Speces</h3>
+                    <p class="text-gray-600 mb-4">Expense Tracking Application</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Developed with Kotlin and Room Database</li>
+                        <li>Created expense categorization features</li>
+                        <li>Implemented detailed reporting and budget tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
     
-                <img class="iconsize box"src="https://www.vectorlogo.zone/logos/kotlinlang/kotlinlang-icon.svg" alt="Koltin logo">
-                <img class="iconsize box"src="https://cdn-icons-png.flaticon.com/128/226/226777.png" alt="java logo">
-                <img class="iconsize box"src="https://cdn-icons-png.flaticon.com/128/1199/1199124.png" alt="javascript logo">
-                <img class="iconsize box"src="https://cdn-icons-png.flaticon.com/512/1051/1051277.png" alt="html logo">
-                <img class="iconsize box"src="https://cdn-icons-png.flaticon.com/128/732/732190.png" alt="Css logo">
-                <img class="iconsize box"src=" https://cdn-icons-png.flaticon.com/128/3098/3098090.png" alt="python logo">
-                <img class="iconsize box"src="data:image/png;base64,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" alt="firebase-database logo">
-                <img class="iconsize box"src="https://cdn-icons-png.flaticon.com/512/5815/5815478.png" alt="firebase-database logo">
+    <!-- Skills Section -->
+    <section id="skills" class="bg-gray-200 py-16 text-center section-hidden">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-6">Skills</h2>
+            <div class="grid grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <h3 class="font-semibold text-xl">Programming Languages</h3>
+                    <p>Kotlin, Java, Python, JavaScript, TypeScript</p>
+                </div>
+                <div class="text-left">
+                    <h3 class="font-semibold text-xl">Android Development</h3>
+                    <p>REST APIs, Jetpack Compose, Material Design, Coroutines, Motion Sensors, Geocoder, Geofence</p>
+                </div>
+                <div class="text-left">
+                    <h3 class="font-semibold text-xl">Web Development</h3>
+                    <p>HTML, CSS, React, React Native, Bootstrap</p>
+                </div>
+                <div class="text-left">
+                    <h3 class="font-semibold text-xl">Libraries & Tools</h3>
+                    <p>Retrofit, GitHub, Glide, Firebase, Lottie, Paging 3</p>
+                </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <section id="my_projects" class="services">
-        <div class="container">
-
-            <div class="section_heading">
-                <h1>
-                 <span>Android </span>Projects
-                </h1>
+    <!-- Education Section -->
+    <section id="education" class="bg-white py-16 section-hidden">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8">Education</h2>
+            
+            <div class="bg-gray-100 p-6 rounded-lg shadow-md mb-6">
+                <h3 class="text-2xl font-bold">Long Island University</h3>
+                <p class="text-gray-600">Master of Science in Computer Engineering</p>
+                <p class="text-gray-700">2024 - 2026 | Brooklyn, New York</p>
+                <p class="mt-2">Relevant Coursework: Python, System Design, DBMS, Computer Networks, Operating Systems</p>
             </div>
-
-        <div class="card_wrapper items-center">
-
-        <div class="slide_content 1">
-            <div class="card delay">
-                <img class="imgview" src="images/Shape.png" alt="image" >
-                <h2 class="items-center">SnapEvents</h2>
-                <p> Kotlin, Firebase database, SQLite, Php, MySQL, Retrofit, Material design</p>
-                <ul class="orderlist">
-
-                    <li>
-                        Event Management System where students can log in to book slots for upcoming events and these events for students are added by 
-                        the admin of different universities.
-                    </li>
-                    <li>
-                        Implemented functionalities to get accurate location of all events taking place using Google maps with custom markers and used 
-                        android  navigation components to execute fragment-based development and increased the performance, Firebase Firestore performs as an primary backend database
-                    </li>
-
-                    <li>
-                        Also whenever a user registers for an event, or on any purchase data is saved in MySQL database (000webhost), developed some 
-                        micro animation, and used a frontend library to improve the user interface.
-                    </li>
-                    <li>
-                        Users get contest updates on time by getting reminders by firebase notification and 
-                        scheduling events remotely. Integrated Authentication with Google for login and Sign-up
-                    </li>
-                    
-                </ul>
-
-              
-
-                <a href="https://github.com/MohitGujarati/SnapEvents" target="_blank">
-                    <button id="bottone1" >
-                        <strong>GitHub</strong>
-                    </button>
-              </a>
+            
+            <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl font-bold">Shankersinh Vaghela Institute of Technology</h3>
+                <p class="text-gray-600">Bachelor of Engineering in Computer Engineering</p>
+                <p class="text-gray-700">2016 - 2020 | Gujarat, India</p>
+                <p class="text-gray-600">CGPA: 7.32/10.0</p>
+                <p class="mt-2">Relevant Coursework: Java, Object-Oriented Programming, Operating Systems, Data Structures and Algorithms</p>
             </div>
         </div>
+    </section>
 
-        
-
-        <div class="slide_content 2">
-            <div class="card delay">
-                <img class="imgview" src="images/undraw_Coming_home_re_ausc.png" alt="image" >
-                <h2 class="items-center">Digital Society</h2>
-                <p>Kotlin,Retrofit,Php,pHPMyAdmin,MySql, Material design</p>
-                <ul class="orderlist">
-
-                    <li>
-                        Designed and develop an app using android SDK for people living in a Society facilitating individuals with, Member and Admin roles. 
-                        Deployed Application on Google play store and stored society data on an online database(hosted on 000webhost)
-
-                    </li>
-                    <li>
-                        Implemented functionalities for viewing notices, writing complaints, adding new members (admin only), added text-to-speech 
-                        functionality, and many more
-                    </li>
-                    <li>
-                        Integrated Retrofit dependency which simplifies the development process, improves performance and reduces latency. Implemented 
-                        material design to achieve good design and a reliable user interface.
-                    </li>
-                    
-                    
-                </ul>
-
-      
-
-                <a href="https://github.com/MohitGujarati/DigitalSociety" target="_blank">
-                    <button id="bottone1" >
-                        <strong>GitHub</strong>
-                    </button>
-
-                    <div class="button-container">
-                        <button class="dot-btn"></button>
-                      </div>
-
-                </a>
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-800 text-white py-16 section-hidden">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
+            <p class="mb-8 text-gray-300">Feel free to reach out for collaboration, job opportunities, or just to say hello!</p>
+            <div class="space-x-4">
+                <a href="mailto:mohitgujarati11@gmail.com" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition duration-300">Email Me</a>
+                <a href="https://linkedin.com/in/mohitgujarati" target="_blank" class="bg-blue-500 text-white px-8 py-3 rounded-full hover:bg-blue-600 transition duration-300">LinkedIn</a>
             </div>
         </div>
+    </section>
 
-        <div class="slide_content 3">
-            <div class="card delay">
-                <img class="imgview" src="images/undraw_Ether_re_y7ft.png" alt="image" >
-                <h2 class="items-center">Crypto-Tracker</h2>
-                <p>Java, kotlin, Volley lib. , Retrofit lib., Room database, Material design</p>
-                <ul class="orderlist">
-
-                    <li>
-                        Retrieved data from API to get real-time data of cryptocurrency present in the market which updates automatically after some time. 
-                        Added different tags to identify coins on their types.
-                    </li>
-                    <li>
-                        Provided users with a watch-list feature where users can save data related to coins and make future decisions by analyzing their 
-                        stored data
-                    </li>
-
-                    <li>
-                        Users can get the latest news about the crypto market and world news by using the information feature provided in the app
-                    </li>
-                    
-                </ul>
-
-                <button id="bottone1" onclick="location.href='https://github.com/MohitGujarati/crypto-Tracker'" >
-                    <strong>GitHub</strong>
-                </button>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Mohit Gujarati</p>
+            <div class="mt-4">
+                <a href="https://linkedin.com/in/mohitgujarati" target="_blank" class="hover:underline mx-2">LinkedIn</a>
+                <a href="https://github.com/MohitGujarati" target="_blank" class="hover:underline mx-2">GitHub</a>
+                <a href="mailto:mohitgujarati11@gmail.com" class="hover:underline mx-2">Email</a>
             </div>
         </div>
+    </footer>
 
-        <div class="slide_content 3">
-            <div class="card delay">
-                <img class="imgview" src="https://cdn-icons-png.flaticon.com/512/2228/2228779.png" alt="image" >
-                <h2 class="items-center">Spese</h2>
-                <p>kotlin,SQL,SQlite,Material design</p>
-                <ul class="orderlist">
-                  <li>
-                    The app allows users to easily add their expenses as and when they occur. This can be done by providing various categories of expenses, such as food, travel, shopping, etc., and allowing users to add expenses under custom categories generated by user.
-                  </li>
-                <li>
-                The app has a reporting and analysis feature that provides users with insights into their spending patterns. This isdone by generating circular progress bar that show the user's spending on a specific item over a period of time and by providing a breakdown of expenses by category.
-                </li>
-                <li>
-                    The app can also help users set budgets for different categories of expenses and track their spending against these budgets. This will help users stay within their spending limits and avoid overspending.
-                </li>
-            </ul>
-                <a href="https://github.com/MohitGujarati/Expense_Manager_App" target="_blank">
-                    <button id="bottone1" >
-                        <strong>GitHub</strong>
-                    </button>
-                </a>
-            </div>
+    <script>
+        // Scroll Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
 
-          
-        </div>
-      </div>
-    </div>
-</section> 
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-visible');
+                } else {
+                    entry.target.classList.remove('section-visible');
+                }
+            });
+        }, observerOptions);
 
-<footer>
-    
-    <div id="Contact" class="footer_container">
-      <div class="row">
-        <div class="col-md-6 flex items-center text_center">
-          <h3>Contact Me</h3>
-          <ul>
-            <li><i class="fa fa-envelope"></i>mohitgujarati11@gmail.com📮</li>
-            <li><i class="fa fa-map-marker"></i>Jersey City, New Jersey, USA📍</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
-  
+        // Observe all sections with section-hidden class
+        document.querySelectorAll('.section-hidden').forEach(section => {
+            observer.observe(section);
+        });
 
-  
-
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
