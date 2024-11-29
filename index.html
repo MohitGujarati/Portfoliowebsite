@@ -1,172 +1,103 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mohit Gujarati - Android Developer and Computer Engineering Master's Student | Innovative Mobile Solutions and Web Development">
-    <title>Mohit Gujarati | Android Developer | Software Engineer</title>
+    <meta name="description" content="Mohit Gujarati - Android Developer and Computer Engineering Master's Student">
+    <title>Mohit Gujarati | Software Engineer | Android Developer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #3B82F6;
-            --secondary-color: #6366F1;
-            --accent-color: #10B981;
-            --text-color: #1F2937;
-            --bg-color: #F3F4F6;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            scroll-behavior: smooth;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .professional-card {
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        
-        .professional-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .section-divider {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            height: 4px;
-            width: 100px;
-            margin: 0 auto;
-        }
-        
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* From Uiverse.io by vinodjangid07 */ 
-.Btn {
-  width: 130px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(15, 15, 15);
-  border: none;
-  color: white;
-  font-weight: 600;
-  gap: 8px;
-  margin-top: 20%;
-  cursor: pointer;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
-  position: relative;
-  overflow: hidden;
-  transition-duration: .3s;
-}
-
-.svgIcon {
-  width: 16px;
-}
-
-.svgIcon path {
-  fill: white;
-}
-
-.Btn::before {
-  width: 130px;
-  height: 130px;
-  position: absolute;
-  content: "";
-  background-color: white;
-  border-radius: 50%;
-  left: -100%;
-  top: 0;
-  transition-duration: .3s;
-  mix-blend-mode: difference;
-}
-
-.Btn:hover::before {
-  transition-duration: .3s;
-  transform: translate(100%,-50%);
-  border-radius: 0;
-}
-
-.Btn:active {
-  transform: translate(5px,5px);
-  transition-duration: .3s;
-}
-    </style>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="font-inter text-gray-800 bg-gray-100">
+    <!-- Accessibility: Skip to main content link -->
+    <a href="#main-content" class="sr-only focus:not-sr-only">
+        Skip to main content
+    </a>
+
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white shadow-md z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="text-xl font-bold gradient-text">
+    <header class="fixed top-0 w-full bg-white shadow-md z-50">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold gradient-text">
                 Mohit Gujarati
-            </div>
-            <div class="hidden md:flex space-x-6">
+            </a>
+            
+            <!-- Hamburger Menu for Mobile -->
+            <button id="mobile-menu-toggle" class="md:hidden" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Navigation Links -->
+            <div id="nav-menu" class="hidden md:flex space-x-6 items-center">
                 <a href="#home" class="nav-link text-gray-700 hover:text-blue-600">Home</a>
                 <a href="#about" class="nav-link text-gray-700 hover:text-blue-600">About</a>
                 <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600">Skills</a>
                 <a href="#projects" class="nav-link text-gray-700 hover:text-blue-600">Projects</a>
                 <a href="#contact" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition">Contact</a>
             </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header id="home" class="pt-20 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center">
-        <div class="container mx-auto px-4 py-16">
-            <h1 class="text-5xl font-bold mb-4">Mohit Gujarati</h1>
-            <p class="text-xl mb-6">Master's Student | Android Developer | Software Engineer</p>
-            <div class="space-x-4">
-                <a href="#contact" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition">Hire Me</a>
-                <a href="#projects" class="border-2 border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-blue-600 transition">View Projects</a>
-            </div>
-        </div>
+        </nav>
     </header>
 
-    <!-- About Section -->
-    <section id="about" class="container mx-auto px-4 py-16">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-4">About Me</h2>
-            <div class="section-divider"></div>
-        </div>
-        <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-            <div class="text-center">
-                <p class="text-gray-700 mb-4">
-                    As a passionate Android developer and computer science master's student, I specialize in creating innovative mobile solutions that blend cutting-edge technology with intuitive user experiences.
-                </p>
-                <div class="flex justify-center space-x-4 mt-6">
-                    <a href="https://linkedin.com/in/mohitgujarati" target="_blank" class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition">LinkedIn</a>
-                    <a href="utldoc/Mohit_Resume.pdf" download class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-gray-800 transition">Download CV</a>
+    <!-- Main Content Container -->
+    <main id="main-content" class="pt-16">
+        <!-- Hero Section -->
+        <section id="home" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center py-20">
+            <div class="container mx-auto px-4">
+                <h1 class="text-5xl font-bold mb-4">Mohit Gujarati</h1>
+                <p class="text-xl mb-6">Master's Student | Android Developer | Software Engineer</p>
+                
+                <div class="space-x-4">
+                    <a href="#contact" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition">
+                        Hire Me
+                    </a>
+                    <a href="#projects" class="inline-block border-2 border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-blue-600 transition">
+                        View Projects
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Sections: About, Experience, Skills, Projects, Contact -->
+        <!-- Each section follows a similar structured pattern -->
+        
+        <!-- About Section -->
+        <section id="about" class="container mx-auto px-4 py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">About Me</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                <p class="text-gray-700 text-center mb-6">
+                    As a passionate Android developer and computer science master's student, I specialize in creating innovative mobile solutions that blend cutting-edge technology with intuitive user experiences.
+                </p>
+                
+                <div class="flex justify-center space-x-4 ">
+                    
+                    <div class="flex justify-center space-x-4">
+                        <a href="https://linkedin.com/in/mohitgujarati" target="_blank" class="bg-blue-600 text-white inline-block px-8 py-3 rounded-full font-semibold transition">
+                          LinkedIn
+                        </a>
+                        <a href="utldoc/Mohit_Resume.pdf" download class="bg-gray-800 text-white inline-block px-8 py-3 rounded-full font-semibold transition">
+                          Download CV
+                        </a>
+                      </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- More sections would follow similar patterns -->
 
     <!-- experience Section -->
     <section id="experience" class="bg-white py-16">
@@ -467,39 +398,30 @@
             </div>
         </div>
     </section>
+    </main>
+
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-8">
         <div class="container mx-auto text-center">
             <p>&copy; 2024 Mohit Gujarati. All Rights Reserved.</p>
-            <div class="mt-4 space-x-4">
-                <a href="https://linkedin.com/in/mohitgujarati" target="_blank" class="hover:text-blue-400 transition"><i class="fab fa-linkedin text-2xl"></i></a>
-                <a href="https://github.com/MohitGujarati" target="_blank" class="hover:text-blue-400 transition"><i class="fab fa-github text-2xl"></i></a>
-                <a href="mailto:mohitgujarati11@gmail.com" class="hover:text-blue-400 transition"><i class="fas fa-envelope text-2xl"></i></a>
+            
+            <div class="social-links mt-4 space-x-4">
+                <a href="https://linkedin.com/in/mohitgujarati" target="_blank" aria-label="LinkedIn Profile">
+                    <i class="fab fa-linkedin text-2xl hover:text-blue-400 transition"></i>
+                </a>
+                <a href="https://github.com/MohitGujarati" target="_blank" aria-label="GitHub Profile">
+                    <i class="fab fa-github text-2xl hover:text-blue-400 transition"></i>
+                </a>
+                <a href="mailto:mohitgujarati11@gmail.com" aria-label="Send Email">
+                    <i class="fas fa-envelope text-2xl hover:text-blue-400 transition"></i>
+                </a>
             </div>
         </div>
     </footer>
 
-
-    <script>
-        function toggleExperience(hideId, showId) {
-            document.getElementById(hideId).classList.add('hidden');
-            document.getElementById(showId).classList.remove('hidden');
-        }
-    
-        function toggleProject(hideId, showId) {
-            document.getElementById(hideId).classList.add('hidden');
-            document.getElementById(showId).classList.remove('hidden');
-        }
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
 </body>
 </html>
+
+

@@ -1,391 +1,109 @@
-@import 'uitilities.css';
-
-body{
- 
-    display: grid;
-    align-content: center;
-    font-family: 'Poppins', sans-serif;
+:root {
+    --primary-color: #3B82F6;
+    --secondary-color: #6366F1;
+    --accent-color: #10B981;
+    --text-color: #1F2937;
+    --bg-color: #F3F4F6;
 }
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: content-box;
-   
- }
- html {
-  scroll-behavior: smooth;
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    scroll-behavior: smooth;
 }
 
- 
-:root{
-    --primary:#00943b;
-    --pure-dark:white;
-    --pure:#FFFFFF;
-    --ternary:#898989;
-    --light:#F2F2F2;
-    --secondary:#070606;
+.gradient-text {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-nav ul {
-  background-color: whitesmoke;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: var(--pure);
-  z-index: 1;
+.professional-card {
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-nav a{
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px;
-  transition: all 0.2s ease-in-out;
-  size: 16px;
-  
-  color: var(--secondary);
-  font-family: 'Poppins', sans-serif;
-}
-nav li {
-  padding: 1rem;
-  margin: 0 20px;
+.professional-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-.about{
-    font-family: 'Poppins', sans-serif;
-    display: grid;
-    align-items: center;
-    margin-top: 10rem;
-    margin-bottom: 15rem;
-    padding: 20px;
-    display: grid;
-    border-radius: 20px;
-    text-align: center;
-    place-items: center;
+.section-divider {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    height: 4px;
+    width: 100px;
+    margin: 0 auto;
 }
 
-.avtar{
-    border-radius: 50%;
-    padding: 20px;
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
 }
 
-
-
-.about .name{
-    font-family: monospace;
-    margin:-4rem;
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
 }
 
-.socialitems{
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* GitHub-style Button from Uiverse.io by vinodjangid07 */
+.Btn {
+    width: 130px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-}
-
-.about button {
-    margin-top: 20px;
-    padding: 17px 40px;
-    border-radius: 50px;
-    border: 0;
-    background-color: white;
-    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-size: 15px;
-    transition: all .5s ease;
-   }
-   
-   .about button:hover {
-    letter-spacing: 3px;
-    background-color: hsl(212, 80%, 48%);
-    color: hsl(0, 0%, 100%);
-    box-shadow: rgb(24, 132, 220) 0px 7px 29px 0px;
-   }
-   
-   .about button:active {
-    letter-spacing: 3px;
-    background-color: hsl(215, 80%, 48%);
-    color: hsl(0, 0%, 100%);
-    box-shadow: rgb(24, 155, 220) 0px 0px 0px 0px;
-    transform: translateY(10px);
-    transition: 100ms;
-   }
-
-   .about:hover .box {
-    width: 120px;
-    height: 120px;
-
-    animation: bounce 1s ease-in-out infinite;
-  }
-
-  .iconsize:hover {
-    animation: bounce 1s ease-in-out infinite;
-  }
-
-.imgview{
-    margin-top: -3rem;
-    border-radius: 12px;
-}
-
- .container{
-    line-height: 1.5rem;
-    padding: 0 15px;
-    margin: 0 auto;
-
-}
-h3{
-    color: var(--secondary);
-    margin: 1rem;
-}
-p{
-    color: var(--ternary);
-}
-
-
-header.container .hero{
-    max-width: 1000px;
-    background-color: var(--pure);
-    padding: 20px;
-    display: grid;
-    border-radius: 20px;
-    text-align: center;
-    
-}
-
-.items{
-display: flex;
-align-items: center;
-justify-content: center;
-
-}
-
-/* project section*/
-section.services{
-    margin-top: 10rem;
-}
-
-section.services{
-    padding: 20px;
-   
-}
-
-/*Heading (Android Projects span) style*/
-section.services span{
-    color: #00943b;
-}
-
-section.services h1{
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-/*Card style*/
-section.services .card_wrapper{
-    display: grid;
-    max-width: 1200;
-    margin: 0;
-    padding: 0;
-    transition: 1s;
-    align-items: center;
-    grid-column-gap: 1rem;
-    grid-row-gap: 1rem;
-    
-}
-
-
-section.services h1{
-    padding: 15px;
-    border-radius: 3px;
-    border-radius:12px ;
-    
-}
-
-/*Card project title h2 and p style*/
-
-section.services .card_wrapper{
-    display: grid;
-    padding: 6rem;
-    align-items: center;
-    grid-column-gap: 2rem;
-    grid-row-gap: 2rem;
-    grid-template-columns:repeat(2,2fr);
-}
-
-
-.card_wrapper p{
-    font-size: 12px;
-    color: var(--ternary);
-    font-style: normal;
-}
-
-.card h2{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-
-.orderlist{
-    transition: 3s;
-    display: none;
-    margin-bottom: 10px;
-  }
-  
-  .slide_content:hover .orderlist{
-    transition: 2s;
-    display: block;
-    margin-bottom: 5rem;
-    width: 500px;
-    height: 200px;
-  }
-
-.card:hover {
-    border: 2px solid rgb(0, 0, 0);
-    transform: scale(1.05);
-    box-shadow: 12px 17px 51px rgba(43, 153, 226, 0.41);
-  }
-
-  
-.card:active {
-    display: block;
-    transform: scale(0.95) rotateZ(1.7deg);
-  }
-
-
-
-
-
-/*Button style-> Project*/
-#bottone1 {
-            align-items: center;
-            margin-top: 10px;
-            padding-left: 33px;
-            padding-right: 33px;
-            padding-bottom: 16px;
-            padding-top: 16px;
-            border-radius: 9px;
-            background: rgba(81, 187, 244, 0.473);
-            border: none;
-            color: var(--secondary);
-            font-family: inherit;
-            text-align: center;
-            cursor: pointer;
-            transition: 1.5s;}
-
-#bottone1:hover {
+    background-color: rgb(15, 15, 15);
+    border: none;
     color: white;
-    box-shadow: inset 0 -100px 0 0 #725AC1;
-   }
-   
-#bottone1:active {
-    transform: scale(1.9);
-   }
-
-
-   /*
-   Footer
-   */
-
-   footer {
-    background:whitesmoke;
-    color: #fff;
-    padding: 60px 0;
-  }
-  
-  
-  footer ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  footer li {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 15px;
-  }
-
-  .tecstack_text h4{
-   color: var(--ternary);
-  }
-
-  .col-md-6 h3{
-    color: black;
-  }
-
-  .col-md-6{
-    padding: 3rem;
-    font-family: 'Poppins', sans-serif;
-    color: black;
-    line-height: 2rem;
-    display: grid;
-    align-items: center;
-  }
-
-  /* Bounce Animation */
-  @keyframes bounce {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-
-
-
-  /* Customize Mobile sreen */
-
-   @media screen and (max-width: 768px) {
-	section.services .card_wrapper{
-        display: grid;
-        padding: 6rem;
-        text-align: center;
-        align-items: center;
-        grid-column-gap: 1rem;
-        grid-row-gap: 1rem;
-        grid-template-columns:repeat(1,2fr);
-    }
+    font-weight: 600;
+    gap: 8px;
+    margin-top: 20%;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
 }
 
-/* Customize the scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+.svgIcon {
+    width: 16px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background-color: #ffffff;
+.svgIcon path {
+    fill: white;
 }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background-color: #12003067;
-  border-radius: 5px;
+.Btn::before {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    content: "";
+    background-color: white;
+    border-radius: 50%;
+    left: -100%;
+    top: 0;
+    transition-duration: .3s;
+    mix-blend-mode: difference;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background-color: #12003088;
+.Btn:hover::before {
+    transition-duration: .3s;
+    transform: translate(100%,-50%);
+    border-radius: 0;
 }
 
-/* Animate the scrollbar on hover */
-::-webkit-scrollbar-thumb {
-  transition: all 0.3s ease-in-out;
+.Btn:active {
+    transform: translate(5px,5px);
+    transition-duration: .3s;
 }
-
-::-webkit-scrollbar-thumb:hover {
-  transform: scale(1.2);
-}
-
- 
-
