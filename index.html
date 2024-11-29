@@ -3,236 +3,495 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Mohit Gujarati, showcasing Android development projects and skills.">
-    <title>Mohit Gujarati | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="description" content="Mohit Gujarati - Android Developer and Computer Engineering Master's Student | Innovative Mobile Solutions and Web Development">
+    <title>Mohit Gujarati | Android Developer | Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #3B82F6;
+            --secondary-color: #6366F1;
+            --accent-color: #10B981;
+            --text-color: #1F2937;
+            --bg-color: #F3F4F6;
+        }
+        
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
             scroll-behavior: smooth;
         }
-        .section-hidden {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        
+        .gradient-text {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .section-visible {
-            opacity: 1;
-            transform: translateY(0);
+        
+        .professional-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+        
+        .professional-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .section-divider {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            height: 4px;
+            width: 100px;
+            margin: 0 auto;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* From Uiverse.io by vinodjangid07 */ 
+.Btn {
+  width: 130px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(15, 15, 15);
+  border: none;
+  color: white;
+  font-weight: 600;
+  gap: 8px;
+  margin-top: 20%;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+}
+
+.svgIcon {
+  width: 16px;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.Btn::before {
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  content: "";
+  background-color: white;
+  border-radius: 50%;
+  left: -100%;
+  top: 0;
+  transition-duration: .3s;
+  mix-blend-mode: difference;
+}
+
+.Btn:hover::before {
+  transition-duration: .3s;
+  transform: translate(100%,-50%);
+  border-radius: 0;
+}
+
+.Btn:active {
+  transform: translate(5px,5px);
+  transition-duration: .3s;
+}
     </style>
 </head>
-<body class="bg-gray-100">
-    <!-- Full-Width Hero Section -->
-    <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20 text-center">
-        <div class="container mx-auto px-4">
-            <h1 class="text-5xl font-bold mb-4">Mohit Gujarati</h1>
-            <p class="text-xl mb-6">Master's Student | Android Developer | Front-End Designer</p>
-            <div class="space-x-4">
-                <a href="mailto:mohitgujarati11@gmail.com" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition duration-300">Contact Me</a>
-                <a href="#projects" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-blue-600 transition duration-300">View Projects</a>
-            </div>
-        </div>
-    </div>
-
+<body>
     <!-- Navigation -->
-    <nav class="bg-gray-800 text-white py-4 sticky top-0 z-10">
-        <div class="container mx-auto flex justify-between items-center px-6">
-            <h1 class="text-xl font-bold">Mohit Gujarati</h1>
-            <ul class="flex space-x-6">
-                <li><a href="#about" class="hover:text-gray-300">About</a></li>
-                <li><a href="#skills" class="hover:text-gray-300">Skills</a></li>
-                <li><a href="#experience" class="hover:text-gray-300">Experience</a></li>
-                <li><a href="#projects" class="hover:text-gray-300">Projects</a></li>
-                <li><a href="#contact" class="hover:text-gray-300">Contact</a></li>
-            </ul>
-            
+    <nav class="fixed top-0 w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-xl font-bold gradient-text">
+                Mohit Gujarati
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="nav-link text-gray-700 hover:text-blue-600">Home</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-blue-600">About</a>
+                <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600">Skills</a>
+                <a href="#projects" class="nav-link text-gray-700 hover:text-blue-600">Projects</a>
+                <a href="#contact" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition">Contact</a>
+            </div>
         </div>
     </nav>
 
+    <!-- Hero Section -->
+    <header id="home" class="pt-20 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center">
+        <div class="container mx-auto px-4 py-16">
+            <h1 class="text-5xl font-bold mb-4">Mohit Gujarati</h1>
+            <p class="text-xl mb-6">Master's Student | Android Developer | Software Engineer</p>
+            <div class="space-x-4">
+                <a href="#contact" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition">Hire Me</a>
+                <a href="#projects" class="border-2 border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-blue-600 transition">View Projects</a>
+            </div>
+        </div>
+    </header>
+
     <!-- About Section -->
-    <section id="about" class="py-16 bg-white section-hidden">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">About Me</h2>
-            <div class="bg-gray-100 p-8 rounded-lg shadow-md">
+    <section id="about" class="container mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4">About Me</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+            <div class="text-center">
                 <p class="text-gray-700 mb-4">
-                    I am a master's student in computer science with a passion for Android development and front-end design. Currently pursuing my Master of Science in Computer Engineering at Long Island University, I bring a strong foundation in software development and a keen eye for creating innovative, user-focused solutions.
+                    As a passionate Android developer and computer science master's student, I specialize in creating innovative mobile solutions that blend cutting-edge technology with intuitive user experiences.
                 </p>
-                <p class="text-gray-700">
-                    With professional experience as a Software Developer at TNM Software Solutions and as an Android Developer Trainee at Tops Technology, I have developed expertise in Kotlin, Android SDK, and cross-platform development. My goal is to create cutting-edge mobile applications that provide seamless and intuitive user experiences.
-                </p>
-                <div class="mt-6 flex justify-center space-x-4">
-                    <a href="https://linkedin.com/in/mohitgujarati" target="_blank" class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition duration-300">LinkedIn Profile</a>
-                    <a href="utldoc/Mohit_Resume.pdf" download class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-gray-800 transition duration-300">Download Resume</a>
+                <div class="flex justify-center space-x-4 mt-6">
+                    <a href="https://linkedin.com/in/mohitgujarati" target="_blank" class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition">LinkedIn</a>
+                    <a href="utldoc/Mohit_Resume.pdf" download class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-gray-800 transition">Download CV</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Rest of the sections remain the same as previous version -->
-    <!-- Experience Section -->
-    <section id="experience" class="py-16 bg-white section-hidden">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-8">Professional Experience</h2>
-            
-            <div class="bg-gray-100 shadow-lg rounded-lg p-6 mb-6">
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">Software Developer</h3>
-                <p class="text-gray-600 mb-2">TNM Software Solutions Pvt Ltd | May 2023 - June 2024</p>
-                <ul class="list-disc list-inside text-gray-700 space-y-2">
-                    <li>Developed Android apps using Kotlin and Android SDK, integrating motion sensors, geocoder, and geofence for location-based functionality across devices.</li>
-                    <li>Enhanced legacy code, resulting in 50% performance improvement by implementing complex features like location-based notifications and real-time updates using coroutines.</li>
-                    <li>Developed cross-platform UIs for travel website and time-blocking apps using React and React Native.</li>
-                    <li>Collaborated with cross-functional teams to deliver high-quality, production-ready applications.</li>
-                </ul>
+    <!-- experience Section -->
+    <section id="experience" class="bg-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Professional Experience</h2>
+                <div class="section-divider"></div>
             </div>
-
-            <div class="bg-gray-100 shadow-lg rounded-lg p-6">
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">Android Developer Trainee</h3>
-                <p class="text-gray-600 mb-2">Tops Technology Inc. | May 2022 - May 2023</p>
-                <ul class="list-disc list-inside text-gray-700 space-y-2">
-                    <li>Developed full-stack native mobile applications using Kotlin.</li>
-                    <li>Worked with diverse databases to meet project requirements and implemented various application programming interfaces.</li>
-                    <li>Applied advanced user interface concepts to create consistent and improved user experiences.</li>
-                </ul>
+    
+            <div class="max-w-4xl mx-auto space-y-6">
+                <!-- TNM Software Solutions Experience -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md professional-card">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800">Software Developer</h3>
+                        <span class="text-gray-600">May 2023 - June 2024</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">TNM Software Solutions Pvt Ltd | Gujarat, India</p>
+                    
+                    <div id="tnm-experience-short">
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Developed Android apps using Kotlin, integrating motion sensors and location-based features</li>
+                            <li>Improved app performance by 50% through efficient code enhancement</li>
+                            <li>Developed cross-platform UIs for travel and time-blocking apps</li>
+                        </ul>
+                        <button onclick="toggleExperience('tnm-experience-short', 'tnm-experience-full')" class="mt-4 text-blue-600 hover:underline">
+                            View More Details
+                        </button>
+                    </div>
+    
+                    <div id="tnm-experience-full" class="hidden">
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Developed and maintained Android apps using Kotlin and Android SDK, integrating motion sensors, geocoder, and geofence for location-based functionality across devices</li>
+                            <li>Enhanced legacy code to improve performance and added complex features such as:
+                                <ul class="list-disc list-inside ml-6">
+                                    <li>Location-based notifications</li>
+                                    <li>Distance-wise customized updates</li>
+                                    <li>Fleet tracking</li>
+                                </ul>
+                            </li>
+                            <li>Efficiently implemented real-time updates using coroutines for seamless simultaneous updates, resulting in a 50% improvement in app performance</li>
+                            <li>Collaborated with cross-functional teams to deliver high-quality, production-ready applications</li>
+                            <li>Developed travel website UI using React and time-blocking and billing app UIs in React Native</li>
+                        </ul>
+                        <button onclick="toggleExperience('tnm-experience-full', 'tnm-experience-short')" class="mt-4 text-blue-600 hover:underline">
+                            Show Less
+                        </button>
+                    </div>
+                </div>
+    
+                <!-- Tops Technology Experience -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md professional-card">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800">Android Developer Trainee</h3>
+                        <span class="text-gray-600">May 2022 - May 2023</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Tops Technology Inc. | Gujarat, India</p>
+                    
+                    <div id="tops-experience-short">
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Developed full-stack native mobile applications using Kotlin</li>
+                            <li>Worked with diverse databases to meet project requirements</li>
+                            <li>Applied advanced user interface concepts</li>
+                        </ul>
+                        <button onclick="toggleExperience('tops-experience-short', 'tops-experience-full')" class="mt-4 text-blue-600 hover:underline">
+                            View More Details
+                        </button>
+                    </div>
+    
+                    <div id="tops-experience-full" class="hidden">
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Acquired proficiency in developing full-stack native mobile applications using Kotlin</li>
+                            <li>Learned to work with different databases according to project needs
+                                <ul class="list-disc list-inside ml-6">
+                                    <li>Implemented various types of application programming interfaces</li>
+                                    <li>Ensured database compatibility with project requirements</li>
+                                </ul>
+                            </li>
+                            <li>Applied user interface concepts to achieve a better and more consistent user experience across applications</li>
+                        </ul>
+                        <button onclick="toggleExperience('tops-experience-full', 'tops-experience-short')" class="mt-4 text-blue-600 hover:underline">
+                            Show Less
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="bg-gray-200 py-16 section-hidden">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-8">Projects</h2>
-            
-            <div class="grid md:grid-cols-3 gap-6 px-4">
-                <div class="bg-white p-6 rounded-lg shadow-md">
+    <!-- Skills Section -->
+    <section id="skills" class="bg-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Technical Skills</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="professional-card bg-gray-50 p-6 rounded-lg text-center">
+                    <i class="fas fa-laptop-code text-4xl text-blue-500 mb-4"></i>
+                    <h3 class="font-semibold text-xl mb-2">Languages</h3>
+                    <p class="text-gray-600">Kotlin, Java, Python, JavaScript, TypeScript</p>
+                </div>
+                <div class="professional-card bg-gray-50 p-6 rounded-lg text-center">
+                    <i class="fab fa-android text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-semibold text-xl mb-2">Mobile Development</h3>
+                    <p class="text-gray-600">Android SDK, Jetpack Compose, REST APIs</p>
+                </div>
+                <div class="professional-card bg-gray-50 p-6 rounded-lg text-center">
+                    <i class="fab fa-react text-4xl text-blue-400 mb-4"></i>
+                    <h3 class="font-semibold text-xl mb-2">Web Technologies</h3>
+                    <p class="text-gray-600">React, React Native, HTML5, CSS3</p>
+                </div>
+                <div class="professional-card bg-gray-50 p-6 rounded-lg text-center">
+                    <i class="fas fa-database text-4xl text-indigo-500 mb-4"></i>
+                    <h3 class="font-semibold text-xl mb-2">Databases</h3>
+                    <p class="text-gray-600">Firebase, Room, SQLite, Realm</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- projects Section -->
+    <section id="projects" class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Personal Projects</h2>
+                <div class="section-divider"></div>
+            </div>
+    
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Flare Clone Project -->
+                <div class="bg-white p-6 rounded-lg shadow-md professional-card">
                     <h3 class="text-xl font-bold mb-2">Flare Clone</h3>
-                    <p class="text-gray-600 mb-4">Android App with Advanced Location Tracking</p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li>Developed with Kotlin, Android SDK, Realm Database</li>
-                        <li>Integrated Google Maps for real-time location tracking</li>
-                        <li>Implemented geocoder and geofencing features</li>
-                    </ul>
+                    <p class="text-gray-600 mb-4">Advanced Location Tracking Android App</p>
+                    
+                    <div id="flare-project-short">
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Dynamic UI with MVC and MVP architecture</li>
+                            <li>Google Maps integration</li>
+                            <li>Location tracking and geofencing</li>
+                        </ul>
+                        <button onclick="toggleProject('flare-project-short', 'flare-project-full')" class="mt-4 text-blue-600 hover:underline">
+                            View More Details
+                        </button>
+                       
+                        <button class="Btn">
+                            GitHub
+                            <svg class="svgIcon" viewBox="0 0 576 512"><path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path></svg>
+                          </button>
+                    </div>
+    
+                    <div id="flare-project-full" class="hidden">
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Technologies: Kotlin, Android Architecture Components, Realm Database, Google Maps</li>
+                            <li>Developed an Android app with a dynamic, responsive UI using the latest SDK tools
+                                <ul class="list-disc list-inside ml-6">
+                                    <li>Combined MVC and MVP for a modular and adaptable codebase</li>
+                                </ul>
+                            </li>
+                            <li>Advanced Location Features:
+                                <ul class="list-disc list-inside ml-6">
+                                    <li>Integrated Google Maps for real-time location tracking</li>
+                                    <li>Implemented geocoder and geofencing</li>
+                                    <li>Used motion sensors for incident detection</li>
+                                </ul>
+                            </li>
+                            <li>Utilized Realm Database for:
+                                <ul class="list-disc list-inside ml-6">
+                                    <li>Storing safe-zone points</li>
+                                    <li>Tracking travel locations and history</li>
+                                    <li>Leveraging geofences for location-based features</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <button onclick="toggleProject('flare-project-full', 'flare-project-short')" class="mt-4 text-blue-600 hover:underline">
+                            Show Less
+                        </button>
+                    </div>
                 </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md">
+    
+                <!-- InEvents Project -->
+                <div class="bg-white p-6 rounded-lg shadow-md professional-card">
                     <h3 class="text-xl font-bold mb-2">InEvents</h3>
                     <p class="text-gray-600 mb-4">Student Event Management System</p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li>Built with Kotlin, Firebase, SQLite</li>
-                        <li>Implemented Google Maps integration</li>
-                        <li>Used Firebase for backend and notifications</li>
-                    </ul>
+                    
+                    <div id="inevents-project-short">
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Event management for universities</li>
+                            <li>Firebase backend integration</li>
+                            <li>Google Maps and authentication</li>
+                        </ul>
+                        <button onclick="toggleProject('inevents-project-short', 'inevents-project-full')" class="mt-4 text-blue-600 hover:underline">
+                            View More Details
+                        </button>
+
+
+                        <button class="Btn" onclick="window.open('https://github.com/MohitGujarati/SnapEvents', '_blank')">
+                            GitHub
+                            <svg class="svgIcon" viewBox="0 0 576 512"><path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path></svg>
+                        </button>
+
+                    </div>
+    
+                    <div id="inevents-project-full" class="hidden">
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Technologies: Kotlin, Firebase, SQLite, MySQL, Retrofit, Material Design, MVVM</li>
+                            <li>Designed student event management system with comprehensive features:
+                                <ul class="list-disc list-inside ml-6">
+                                    <li>Google Maps integration for event location tracking</li>
+                                    <li>University admin event booking oversight</li>
+                                </ul>
+                            </li>
+                            <li>Backend and Data Management:
+                                <ul class="list-disc list-inside ml-6">
+                                    <li>Firebase Firestore for backend processes</li>
+                                    <li>MySQL for managing events and purchase data</li>
+                                    <li>Achieved 100% paperless registration</li>
+                                </ul>
+                            </li>
+                            <li>User Authentication and Notifications:
+                                <ul class="list-disc list-inside ml-6">
+                                    <li>Secure Google Authentication for login</li>
+                                    <li>Firebase notifications for real-time updates</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <button onclick="toggleProject('inevents-project-full', 'inevents-project-short')" class="mt-4 text-blue-600 hover:underline">
+                            Show Less
+                        </button>
+
+                       
+                    </div>
+                    
                 </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md">
+    
+                <!-- Speces Project -->
+                <div class="bg-white p-6 rounded-lg shadow-md professional-card">
                     <h3 class="text-xl font-bold mb-2">Speces</h3>
                     <p class="text-gray-600 mb-4">Expense Tracking Application</p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li>Developed with Kotlin and Room Database</li>
-                        <li>Created expense categorization features</li>
-                        <li>Implemented detailed reporting and budget tracking</li>
-                    </ul>
+                    
+                    <div id="speces-project-short">
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Expense categorization</li>
+                            <li>Detailed reporting features</li>
+                            <li>Budget tracking functionality</li>
+                        </ul>
+                        <button onclick="toggleProject('speces-project-short', 'speces-project-full')" class="mt-4 text-blue-600 hover:underline">
+                            View More Details
+                        </button>
+                    </div>
+    
+                    <div id="speces-project-full" class="hidden">
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Technologies: Kotlin, Java, Room Database, SQLite, Material Design</li>
+                            <li>Comprehensive Expense Management:
+                                <ul class="list-disc list-inside ml-6">
+                                    <li>Track and categorize expenses</li>
+                                    <li>Custom and predefined expense categories</li>
+                                </ul>
+                            </li>
+                            <li>Advanced Reporting Features:
+                                <ul class="list-disc list-inside ml-6">
+                                    <li>Spending pattern insights</li>
+                                    <li>Analysis using charts and progress bars</li>
+                                </ul>
+                            </li>
+                            <li>Budget Tracking:
+                                <ul class="list-disc list-inside ml-6">
+                                    <li>Set spending limits</li>
+                                    <li>Monitor expenses against budgets</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <button onclick="toggleProject('speces-project-full', 'speces-project-short')" class="mt-4 text-blue-600 hover:underline">
+                            Show Less
+                        </button>
+                    </div>
+                    <button class="Btn" onclick="window.open('https://github.com/MohitGujarati/Expense_Manager_App', '_blank')">
+                        GitHub
+                        <svg class="svgIcon" viewBox="0 0 576 512"><path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path></svg>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Skills Section -->
-    <section id="skills" class="bg-gray-200 py-16 text-center section-hidden">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-bold mb-6">Skills</h2>
-            <div class="grid grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="text-left">
-                    <h3 class="font-semibold text-xl">Programming Languages</h3>
-                    <p>Kotlin, Java, Python, JavaScript, TypeScript</p>
-                </div>
-                <div class="text-left">
-                    <h3 class="font-semibold text-xl">Android Development</h3>
-                    <p>REST APIs, Jetpack Compose, Material Design, Coroutines, Motion Sensors, Geocoder, Geofence</p>
-                </div>
-                <div class="text-left">
-                    <h3 class="font-semibold text-xl">Web Development</h3>
-                    <p>HTML, CSS, React, React Native, Bootstrap</p>
-                </div>
-                <div class="text-left">
-                    <h3 class="font-semibold text-xl">Libraries & Tools</h3>
-                    <p>Retrofit, GitHub, Glide, Firebase, Lottie, Paging 3</p>
-                </div>
+    
+<!-- Contact Section -->
+    <section id="contact" class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
+            <div class="section-divider mb-8"></div>
+            <p class="max-w-xl mx-auto text-gray-600 mb-8">
+                I'm always open to discussing new projects, opportunities, or collaborations. Feel free to reach out, and I'll get back to you as soon as possible.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="mailto:mohitgujarati11@gmail.com" class="bg-blue-500 text-white px-8 py-3 rounded-full hover:bg-blue-600 transition">Email Me</a>
+                <a href="https://linkedin.com/in/mohitgujarati" target="_blank" class="border-2 border-blue-500 text-blue-500 px-8 py-3 rounded-full hover:bg-blue-500 hover:text-white transition">LinkedIn</a>
             </div>
         </div>
     </section>
-
-    <!-- Education Section -->
-    <section id="education" class="bg-white py-16 section-hidden">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-8">Education</h2>
-            
-            <div class="bg-gray-100 p-6 rounded-lg shadow-md mb-6">
-                <h3 class="text-2xl font-bold">Long Island University</h3>
-                <p class="text-gray-600">Master of Science in Computer Engineering</p>
-                <p class="text-gray-700">2024 - 2026 | Brooklyn, New York</p>
-                <p class="mt-2">Relevant Coursework: Python, System Design, DBMS, Computer Networks, Operating Systems</p>
-            </div>
-            
-            <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-                <h3 class="text-2xl font-bold">Shankersinh Vaghela Institute of Technology</h3>
-                <p class="text-gray-600">Bachelor of Engineering in Computer Engineering</p>
-                <p class="text-gray-700">2016 - 2020 | Gujarat, India</p>
-                <p class="text-gray-600">CGPA: 7.32/10.0</p>
-                <p class="mt-2">Relevant Coursework: Java, Object-Oriented Programming, Operating Systems, Data Structures and Algorithms</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="bg-gray-800 text-white py-16 section-hidden">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
-            <p class="mb-8 text-gray-300">Feel free to reach out for collaboration, job opportunities, or just to say hello!</p>
-            <div class="space-x-4">
-                <a href="mailto:mohitgujarati11@gmail.com" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition duration-300">Email Me</a>
-                <a href="https://linkedin.com/in/mohitgujarati" target="_blank" class="bg-blue-500 text-white px-8 py-3 rounded-full hover:bg-blue-600 transition duration-300">LinkedIn</a>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-6">
+    <footer class="bg-gray-900 text-white py-8">
         <div class="container mx-auto text-center">
-            <p>&copy; 2024 Mohit Gujarati</p>
-            <div class="mt-4">
-                <a href="https://linkedin.com/in/mohitgujarati" target="_blank" class="hover:underline mx-2">LinkedIn</a>
-                <a href="https://github.com/MohitGujarati" target="_blank" class="hover:underline mx-2">GitHub</a>
-                <a href="mailto:mohitgujarati11@gmail.com" class="hover:underline mx-2">Email</a>
+            <p>&copy; 2024 Mohit Gujarati. All Rights Reserved.</p>
+            <div class="mt-4 space-x-4">
+                <a href="https://linkedin.com/in/mohitgujarati" target="_blank" class="hover:text-blue-400 transition"><i class="fab fa-linkedin text-2xl"></i></a>
+                <a href="https://github.com/MohitGujarati" target="_blank" class="hover:text-blue-400 transition"><i class="fab fa-github text-2xl"></i></a>
+                <a href="mailto:mohitgujarati11@gmail.com" class="hover:text-blue-400 transition"><i class="fas fa-envelope text-2xl"></i></a>
             </div>
         </div>
     </footer>
 
+
     <script>
-        // Scroll Animation
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
+        function toggleExperience(hideId, showId) {
+            document.getElementById(hideId).classList.add('hidden');
+            document.getElementById(showId).classList.remove('hidden');
+        }
+    
+        function toggleProject(hideId, showId) {
+            document.getElementById(hideId).classList.add('hidden');
+            document.getElementById(showId).classList.remove('hidden');
+        }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('section-visible');
-                } else {
-                    entry.target.classList.remove('section-visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections with section-hidden class
-        document.querySelectorAll('.section-hidden').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Smooth Scrolling
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
