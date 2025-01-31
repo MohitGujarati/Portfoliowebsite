@@ -61,7 +61,7 @@
     <!-- Main Content Container -->
     <main id="main-content" class="pt-16">
         <!-- Hero Section -->
-        <section id="home" class="bg-gradient-to-r from-black to-indigo-600 text-white text-center py-20">
+        <section id="home" class="bg-gradient-to-r from-blue-800 to-blue-400 text-white text-center py-20">
             <div class="container mx-auto px-4">
                 <h1 class="text-5xl font-bold mb-4">Mohit Gujarati</h1>
                 <p class="text-xl mb-6">Master's Student | Android Developer | Software Engineer</p>
@@ -98,7 +98,7 @@
                        class="bg-blue-600 text-white inline-flex items-center justify-center px-8 py-3 rounded-full font-semibold transition mb-4 md:mb-0">
                       LinkedIn
                     </a>
-                    <a href="utldoc/Mohit_Resume_Android.pdf" 
+                    <a href="utldoc/Mohit_Resume_intern.docx" 
                        download 
                        class="bg-gray-800 text-white inline-flex items-center justify-center px-8 py-3 rounded-full font-semibold transition mb-4 md:mb-0">
                       Download CV
@@ -196,37 +196,152 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="bg-white py-16">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Technical Skills</h2>
-                <div class="section-divider"></div>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="professional-card bg-gray-50 p-6 rounded-lg text-center">
-                    <i class="fas fa-laptop-code text-4xl text-blue-500 mb-4"></i>
-                    <h3 class="font-semibold text-xl mb-2">Languages</h3>
-                    <p class="text-gray-600">Kotlin, Java, Python, JavaScript, TypeScript</p>
-                </div>
-                <div class="professional-card bg-gray-50 p-6 rounded-lg text-center">
-                    <i class="fab fa-android text-4xl text-green-500 mb-4"></i>
-                    <h3 class="font-semibold text-xl mb-2">Mobile Development</h3>
-                    <p class="text-gray-600">Android SDK, Jetpack Compose, REST APIs</p>
-                </div>
-                <div class="professional-card bg-gray-50 p-6 rounded-lg text-center">
-                    <i class="fab fa-react text-4xl text-blue-400 mb-4"></i>
-                    <h3 class="font-semibold text-xl mb-2">Web Technologies</h3>
-                    <p class="text-gray-600">React, React Native, HTML5, CSS3</p>
-                </div>
-                <div class="professional-card bg-gray-50 p-6 rounded-lg text-center">
-                    <i class="fas fa-database text-4xl text-indigo-500 mb-4"></i>
-                    <h3 class="font-semibold text-xl mb-2">Databases</h3>
-                    <p class="text-gray-600">Firebase, Room, SQLite, Realm</p>
-                </div>
-            </div>
+<!-- Skills Section -->
+<section id="skills" class="bg-white py-16">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4">Technical Skills</h2>
+            <div class="section-divider"></div>
         </div>
-    </section>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+            <!-- Languages -->
+            <div class="professional-card bg-gray-50 p-6 rounded-lg text-center hover:transform hover:-translate-y-2 transition-all duration-300">
+                <div class="skill-icon mb-4">
+                    <i class="fas fa-laptop-code text-4xl text-blue-500"></i>
+                </div>
+                <h3 class="font-semibold text-xl mb-4">Languages</h3>
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <span class="skill-tag bg-blue-100 text-blue-600 rounded-full px-4 py-1 text-sm">Kotlin</span>
+                    <span class="skill-tag bg-blue-100 text-blue-600 rounded-full px-4 py-1 text-sm">Java</span>
+                    <span class="skill-tag bg-blue-100 text-blue-600 rounded-full px-4 py-1 text-sm">Python</span>
+                    <span class="skill-tag bg-blue-100 text-blue-600 rounded-full px-4 py-1 text-sm">JavaScript</span>
+                    <span class="skill-tag bg-blue-100 text-blue-600 rounded-full px-4 py-1 text-sm">TypeScript</span>
+                </div>
+            </div>
+
+            <!-- Mobile Development -->
+            <div class="professional-card bg-gray-50 p-6 rounded-lg text-center hover:transform hover:-translate-y-2 transition-all duration-300">
+                <div class="skill-icon mb-4">
+                    <i class="fab fa-android text-4xl text-green-500"></i>
+                </div>
+                <h3 class="font-semibold text-xl mb-4">Mobile Development</h3>
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <span class="skill-tag bg-green-100 text-green-600 rounded-full px-4 py-1 text-sm">Android SDK</span>
+                    <span class="skill-tag bg-green-100 text-green-600 rounded-full px-4 py-1 text-sm">Jetpack Compose</span>
+                    <span class="skill-tag bg-green-100 text-green-600 rounded-full px-4 py-1 text-sm">Coroutines</span>
+                    <span class="skill-tag bg-green-100 text-green-600 rounded-full px-4 py-1 text-sm">Material Design</span>
+                    <span class="skill-tag bg-green-100 text-green-600 rounded-full px-4 py-1 text-sm">React Native</span>
+                    <span class="skill-tag bg-green-100 text-green-600 rounded-full px-4 py-1 text-sm">MVVM</span>
+                </div>
+            </div>
+
+            <!-- Web Technologies -->
+            <div class="professional-card bg-gray-50 p-6 rounded-lg text-center hover:transform hover:-translate-y-2 transition-all duration-300">
+                <div class="skill-icon mb-4">
+                    <i class="fab fa-react text-4xl text-purple-500"></i>
+                </div>
+                <h3 class="font-semibold text-xl mb-4">Web Technologies</h3>
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <span class="skill-tag bg-purple-100 text-purple-600 rounded-full px-4 py-1 text-sm">React</span>
+                    
+                    <span class="skill-tag bg-purple-100 text-purple-600 rounded-full px-4 py-1 text-sm">Tailwind</span>
+                    <span class="skill-tag bg-purple-100 text-purple-600 rounded-full px-4 py-1 text-sm">Bootstrap</span>
+                    <span class="skill-tag bg-purple-100 text-purple-600 rounded-full px-4 py-1 text-sm">Flask</span>
+                </div>
+            </div>
+
+            <!-- Databases -->
+            <div class="professional-card bg-gray-50 p-6 rounded-lg text-center hover:transform hover:-translate-y-2 transition-all duration-300">
+                <div class="skill-icon mb-4">
+                    <i class="fas fa-database text-4xl text-indigo-500"></i>
+                </div>
+                <h3 class="font-semibold text-xl mb-4">Databases</h3>
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <span class="skill-tag bg-indigo-100 text-indigo-600 rounded-full px-4 py-1 text-sm">Firebase</span>
+                    <span class="skill-tag bg-indigo-100 text-indigo-600 rounded-full px-4 py-1 text-sm">Room</span>
+                    <span class="skill-tag bg-indigo-100 text-indigo-600 rounded-full px-4 py-1 text-sm">SQLite</span>
+                    <span class="skill-tag bg-indigo-100 text-indigo-600 rounded-full px-4 py-1 text-sm">MySQL</span>
+                    <span class="skill-tag bg-indigo-100 text-indigo-600 rounded-full px-4 py-1 text-sm">Realm</span>
+                </div>
+            </div>
+
+            <!-- Tools & Practices -->
+            <div class="professional-card bg-gray-50 p-6 rounded-lg text-center hover:transform hover:-translate-y-2 transition-all duration-300">
+                <div class="skill-icon mb-4">
+                    <i class="fas fa-tools text-4xl text-orange-500"></i>
+                </div>
+                <h3 class="font-semibold text-xl mb-4">Tools & Practices</h3>
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <span class="skill-tag bg-orange-100 text-orange-600 rounded-full px-4 py-1 text-sm">Retrofit</span>
+                    <span class="skill-tag bg-orange-100 text-orange-600 rounded-full px-4 py-1 text-sm">OpenCV</span>
+                    <span class="skill-tag bg-orange-100 text-orange-600 rounded-full px-4 py-1 text-sm">GitHub</span>
+                    <span class="skill-tag bg-orange-100 text-orange-600 rounded-full px-4 py-1 text-sm">SOLID</span>
+                    <span class="skill-tag bg-orange-100 text-orange-600 rounded-full px-4 py-1 text-sm">MVVM</span>
+                    <span class="skill-tag bg-orange-100 text-orange-600 rounded-full px-4 py-1 text-sm">MVC</span>
+                    <span class="skill-tag bg-orange-100 text-orange-600 rounded-full px-4 py-1 text-sm">Haar Cascade</span>
+                </div>
+            </div>
+
+            <!-- certificate -->
+            <div id="certifications" class="professional-card bg-gradient-to-br from-white-50 to-white-50 p-6 rounded-lg text-center hover:transform hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-lg">
+                <div class="skill-icon mb-4">
+                    <i class="fas fa-certificate text-4xl bg-gradient-to-r from-indigo-600 to-blue-500 bg-clip-text text-transparent"></i>
+                </div>
+                <h3 class="font-semibold text-xl mb-4 text-gray-800">Certifications & Achievements</h3>
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <!-- GDG -->
+                    <span class="skill-tag bg-red-100 text-red-600 hover:bg-red-200 rounded-full px-4 py-1 text-sm border border-blue-200">
+                       On-campus Google Developer Groups member
+                    </span>
+                    
+                    <!-- Article -->
+                    <span class="skill-tag bg-red-100 text-red-600 hover:bg-red-200 rounded-full px-4 py-1 text-sm border border-purple-200">
+                        Microservices Architecture & Distributed Systems
+                    </span>
+            
+                    <!-- Certificates -->
+                    <span class="skill-tag bg-red-100 text-red-600 hover:bg-red-200 rounded-full px-4 py-1 text-sm border border-orange-200">
+                        Python - IBM Data Science
+                    </span>
+            
+                    <span class="skill-tag bg-red-100 text-red-600 hover:bg-red-200 rounded-full px-4 py-1 text-sm border border-teal-200">
+                        Java - LinkedIn Learning
+                    </span>
+            
+                    <span class="skill-tag bg-red-100 text-red-600 hover:bg-red-200 rounded-full px-4 py-1 text-sm border border-red-200">
+                        Kotlin - Udemy
+                    </span>
+            
+                    <span class="skill-tag bg-red-100 text-red-600 hover:bg-red-200 rounded-full px-4 py-1 text-sm border border-emerald-200">
+                        SQL - LinkedIn Learning
+                    </span>
+                </div>
+            </div>
+    
+</section>
+
+<style>
+.skill-tag {
+    transition: all 0.5s ease;
+    border: 1px solid transparent;
+}
+
+.skill-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.professional-card:hover .skill-tag {
+    border-color: currentColor;
+}
+
+.section-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
+    margin: 0 auto;
+}
+</style>
 
     <!-- projects Section -->
     <section id="projects" class="bg-gray-100 py-16">
@@ -240,7 +355,6 @@
                 <!-- Flare Clone Project -->
                 <div class="bg-white p-6 rounded-lg shadow-md professional-card">
                     <h3 class="text-xl font-bold mb-2">Fleet tracking Clone </h3>
-                    <p class=" font-bold mb-4">Inspired by "Flare" mobile app </p>
                     <p class="text-gray-600 mb-4">Advanced Location Tracking Android App</p>
                     
                     <div id="flare-project-short">
