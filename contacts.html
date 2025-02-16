@@ -13,16 +13,19 @@
       background-color: #f4f7fa;
       color: #333;
     }
+
     .container {
       max-width: 900px;
       margin: 0 auto;
       padding: 40px;
     }
+
     h1 {
       text-align: center;
       font-size: 2.5rem;
       margin-bottom: 30px;
     }
+
     form {
       background-color: #fff;
       padding: 40px;
@@ -30,16 +33,21 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       animation: fadeIn 1s ease-out;
     }
+
     .field {
       margin-bottom: 20px;
     }
+
     label {
       font-size: 1rem;
       font-weight: 500;
       display: block;
       margin-bottom: 8px;
     }
-    input[type="text"], input[type="email"], textarea {
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
       width: 100%;
       padding: 12px;
       font-size: 1rem;
@@ -48,15 +56,20 @@
       background-color: #f9f9f9;
       transition: all 0.3s ease;
     }
-    input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
       outline: none;
       border-color: #3b8d99;
       box-shadow: 0 0 8px rgba(59, 141, 153, 0.5);
     }
+
     textarea {
       resize: vertical;
       height: 120px;
     }
+
     input[type="submit"] {
       background-color: #3b8d99;
       color: white;
@@ -68,50 +81,76 @@
       width: 100%;
       transition: all 0.3s ease;
     }
+
     input[type="submit"]:hover {
       background-color: #33878a;
       transform: translateY(-2px);
     }
+
     input[type="submit"]:active {
       transform: translateY(0);
     }
-    .field input,
-    .field textarea {
-      animation: fieldFocus 0.5s ease-out;
+
+    .feedback {
+      margin-top: 20px;
+      font-size: 1rem;
+      text-align: center;
     }
+
+    .success {
+      color: #28a745;
+    }
+
+    .error {
+      color: #dc3545;
+    }
+
     /* Animation for fading in */
     @keyframes fadeIn {
       0% { opacity: 0; }
       100% { opacity: 1; }
     }
-    /* Animation for field focus */
-    @keyframes fieldFocus {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
+
+    /* Mobile optimization */
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      input[type="submit"] {
+        font-size: 1rem;
+        padding: 12px 20px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <h1>Contact Me</h1>
     <form id="form">
       <div class="field">
         <label for="from_name">Your Name</label>
-        <input type="text" name="from_name" id="from_name" required>
+        <input type="text" name="from_name" id="from_name" required aria-required="true" placeholder="Enter your name">
       </div>
       <div class="field">
         <label for="to_name">Company Name</label>
-        <input type="text" name="to_name" id="to_name" required>
+        <input type="text" name="to_name" id="to_name" required aria-required="true" placeholder="Enter company name">
       </div>
       <div class="field">
         <label for="message">Your Message</label>
-        <textarea name="message" id="message" required></textarea>
+        <textarea name="message" id="message" required aria-required="true" placeholder="Write your message"></textarea>
       </div>
       <div class="field">
         <label for="reply_to">Your Email</label>
-        <input type="email" name="reply_to" id="reply_to" required>
+        <input type="email" name="reply_to" id="reply_to" required aria-required="true" placeholder="Enter your email">
       </div>
       <input type="submit" id="button" value="Send Email">
     </form>
+    <div class="feedback" id="feedback"></div>
   </div>
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -120,12 +159,14 @@
 
     const form = document.getElementById('form');
     const btn = document.getElementById('button');
+    const feedback = document.getElementById('feedback');
 
     form.addEventListener('submit', function(event) {
       event.preventDefault();
 
       btn.value = 'Sending...';
       btn.disabled = true;
+      feedback.textContent = ''; // Clear previous feedback
 
       const serviceID = 'default_service';
       const templateID = 'template_zjes0k9';
@@ -135,12 +176,14 @@
           btn.value = 'Send Email';
           btn.disabled = false;
           form.reset();
-          alert('Message sent successfully!');
+          feedback.textContent = 'Message sent successfully!';
+          feedback.className = 'feedback success';
         })
         .catch((err) => {
           btn.value = 'Send Email';
           btn.disabled = false;
-          alert('Failed to send message. Please try again later.');
+          feedback.textContent = 'Failed to send message. Please try again later.';
+          feedback.className = 'feedback error';
           console.error('EmailJS error:', err);
         });
     });
