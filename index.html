@@ -664,17 +664,25 @@
         </div>
     </section>
     </main>
-
     <!-- Footer -->
     <footer class="bg-gradient-to-b from-gray-50 to-white text-gray-900 py-12 relative overflow-hidden">
         <div class="container mx-auto text-center relative z-10">
-            <!-- Elegant Game Section -->
+            <!-- Advanced Game Section -->
             <div class="mb-12">
-                <h3 class="text-2xl font-light mb-6">Interactive Challenge</h3>
-                <div id="game-container" class="w-96 h-32 mx-auto bg-gray-100 rounded-lg relative cursor-pointer border border-gray-200">
-                    <div id="player" class="absolute bottom-3 left-3 text-2xl transition-all duration-300 opacity-80">◆</div>
-                    <div id="star" class="absolute text-2xl transition-all duration-300">○</div>
-                    <div class="text-sm mt-4 font-light tracking-wider">Points: <span id="score">0</span></div>
+                <h3 class="text-2xl font-light mb-6">Space Explorer Challenge</h3>
+                <div id="game-container" class="w-96 h-64 mx-auto bg-gray-900 rounded-lg relative cursor-pointer border border-blue-500 overflow-hidden">
+                    <div id="player" class="absolute bottom-3 left-3 text-2xl transition-all duration-300 text-blue-500">🚀</div>
+                    <div id="star" class="absolute text-2xl transition-all duration-300 text-yellow-400">⭐</div>
+                    <div id="obstacle" class="absolute text-xl text-red-500">☄️</div>
+                    <div id="powerup" class="absolute text-xl text-green-400 hidden">🔮</div>
+                    <div class="absolute top-2 left-2 text-white space-y-1">
+                        <div class="text-sm font-light">Score: <span id="score">0</span></div>
+                        <div class="text-sm font-light">Level: <span id="level">1</span></div>
+                        <div class="text-sm font-light">Lives: <span id="lives">3</span></div>
+                        <div class="w-24 h-2 bg-gray-700 rounded">
+                            <div id="power-bar" class="h-full bg-blue-500 rounded transition-all duration-300" style="width: 100%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -718,39 +726,185 @@
             .animation-delay-4000 {
                 animation-delay: 4s;
             }
+            #game-container {
+                background: linear-gradient(to bottom, #0f172a, #1e293b);
+            }
+            .star-trail {
+                position: absolute;
+                background: rgba(255, 255, 255, 0.5);
+                width: 2px;
+                height: 2px;
+                pointer-events: none;
+            }
         </style>
 
         <script>
             const gameContainer = document.getElementById('game-container');
             const player = document.getElementById('player');
             const star = document.getElementById('star');
+            const obstacle = document.getElementById('obstacle');
+            const powerup = document.getElementById('powerup');
             const scoreElement = document.getElementById('score');
+            const levelElement = document.getElementById('level');
+            const livesElement = document.getElementById('lives');
+            const powerBar = document.getElementById('power-bar');
+
             let score = 0;
+            let level = 1;
+            let lives = 3;
+            let isGameActive = true;
+            let isPoweredUp = false;
+            let powerLevel = 100;
+            let gameSpeed = 1;
+            let obstacleInterval;
+            let powerupTimeout;
 
             function updateStarPosition() {
+                if (!isGameActive) return;
                 const x = Math.random() * (gameContainer.offsetWidth - 40);
                 const y = Math.random() * (gameContainer.offsetHeight - 40);
                 star.style.left = x + 'px';
                 star.style.top = y + 'px';
-                star.style.opacity = '0.8';
+                createStarTrail(x, y);
+            }
+
+            function createStarTrail(x, y) {
+                const trail = document.createElement('div');
+                trail.className = 'star-trail';
+                trail.style.left = (x + 15) + 'px';
+                trail.style.top = (y + 15) + 'px';
+                gameContainer.appendChild(trail);
+                setTimeout(() => trail.remove(), 1000);
+            }
+
+            function moveObstacle() {
+                const x = Math.random() * (gameContainer.offsetWidth - 40);
+                const y = -30;
+                obstacle.style.left = x + 'px';
+                obstacle.style.top = y + 'px';
+                
+                let pos = y;
+                const moveDown = setInterval(() => {
+                    if (!isGameActive) {
+                        clearInterval(moveDown);
+                        return;
+                    }
+                    pos += 2 * gameSpeed;
+                    obstacle.style.top = pos + 'px';
+                    
+                    checkCollision();
+                    
+                    if (pos > gameContainer.offsetHeight) {
+                        clearInterval(moveDown);
+                        moveObstacle();
+                    }
+                }, 20);
+            }
+
+            function spawnPowerup() {
+                if (!isGameActive) return;
+                powerup.style.display = 'block';
+                const x = Math.random() * (gameContainer.offsetWidth - 40);
+                const y = Math.random() * (gameContainer.offsetHeight - 40);
+                powerup.style.left = x + 'px';
+                powerup.style.top = y + 'px';
+            }
+
+            function checkCollision() {
+                const playerRect = player.getBoundingClientRect();
+                const obstacleRect = obstacle.getBoundingClientRect();
+                
+                if (playerRect.right > obstacleRect.left && 
+                    playerRect.left < obstacleRect.right &&
+                    playerRect.bottom > obstacleRect.top && 
+                    playerRect.top < obstacleRect.bottom) {
+                    if (!isPoweredUp) {
+                        lives--;
+                        livesElement.textContent = lives;
+                        if (lives <= 0) endGame();
+                    }
+                }
+            }
+
+            function startGame() {
+                isGameActive = true;
+                score = 0;
+                level = 1;
+                lives = 3;
+                gameSpeed = 1;
+                powerLevel = 100;
+                scoreElement.textContent = score;
+                levelElement.textContent = level;
+                livesElement.textContent = lives;
+                powerBar.style.width = '100%';
+                
+                updateStarPosition();
+                moveObstacle();
+                
+                obstacleInterval = setInterval(() => {
+                    if (isGameActive && !isPoweredUp) {
+                        powerLevel = Math.max(0, powerLevel - 1);
+                        powerBar.style.width = powerLevel + '%';
+                    }
+                }, 100);
+
+                powerupTimeout = setTimeout(spawnPowerup, 10000);
+            }
+
+            function endGame() {
+                isGameActive = false;
+                clearInterval(obstacleInterval);
+                clearTimeout(powerupTimeout);
+                alert(`Game Over!\nFinal Score: ${score}\nLevel Reached: ${level}`);
+                
+                const replayButton = document.createElement('button');
+                replayButton.className = 'mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600';
+                replayButton.textContent = 'Play Again';
+                replayButton.onclick = () => {
+                    replayButton.remove();
+                    startGame();
+                };
+                gameContainer.parentElement.appendChild(replayButton);
             }
 
             gameContainer.addEventListener('mousemove', (e) => {
+                if (!isGameActive) return;
                 const rect = gameContainer.getBoundingClientRect();
                 const x = Math.min(Math.max(e.clientX - rect.left - 15, 0), rect.width - 30);
+                const y = Math.min(Math.max(e.clientY - rect.top - 15, 0), rect.height - 30);
                 player.style.left = x + 'px';
+                player.style.top = y + 'px';
             });
 
             star.addEventListener('click', () => {
-                score++;
+                if (!isGameActive) return;
+                score += level;
                 scoreElement.textContent = score;
-                star.style.opacity = '1';
-                setTimeout(() => {
-                    updateStarPosition();
-                }, 100);
+                if (score >= level * 10) {
+                    level++;
+                    levelElement.textContent = level;
+                    gameSpeed += 0.2;
+                }
+                updateStarPosition();
             });
 
-            updateStarPosition();
+            powerup.addEventListener('click', () => {
+                if (!isGameActive) return;
+                isPoweredUp = true;
+                powerLevel = 100;
+                powerBar.style.width = '100%';
+                player.style.color = '#22c55e';
+                powerup.style.display = 'none';
+                
+                setTimeout(() => {
+                    isPoweredUp = false;
+                    player.style.color = '#3b82f6';
+                    setTimeout(spawnPowerup, 10000);
+                }, 5000);
+            });
+
+            // Start the game initially
+            startGame();
         </script>
     </footer>
 
