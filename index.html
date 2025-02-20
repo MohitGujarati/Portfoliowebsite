@@ -5,190 +5,267 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Mohit Gujarati - Android Developer and Computer Engineering Master's Student">
     <title>Mohit Gujarati | Software Engineer | Android Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="font-inter text-gray-800 bg-gray-100">
+<body class="font-['Inter'] text-gray-800 bg-gray-50">
     <!-- Accessibility: Skip to main content link -->
     <a href="#main-content" class="sr-only focus:not-sr-only">
         Skip to main content
     </a>
 
-<!-- Navigation -->
-<header class="fixed top-0 w-full bg-white shadow-md z-50">
-    <nav class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center">
-        <div class="flex justify-between w-full md:w-auto">
-            <a href="#home" class="text-xl font-bold gradient-text">
-                Mohit Gujarati
-            </a>
-            
-            <!-- Hamburger Menu for Mobile -->
-            <button id="mobile-menu-toggle" class="md:hidden" aria-label="Toggle mobile menu">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-        
-        <!-- Navigation Links -->
-        <div id="nav-menu" class="hidden md:flex flex-col md:flex-row items-center md:space-x-6 mt-4 md:mt-0">
-            <a href="#home" class="nav-link text-gray-700 hover:text-blue-600">Home</a>
-            <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 mt-4 md:mt-0">About</a>
-            <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600 mt-4 md:mt-0">Skills</a>
-            <a href="#projects" class="nav-link text-gray-700 hover:text-blue-600 mt-4 md:mt-0">Projects</a>
-            <a href="#contact" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition mt-4 md:mt-0">Contact</a>
-        </div>
+    <!-- Navigation -->
+    <header class="fixed top-0 w-full bg-white/90 backdrop-blur-sm border-b border-gray-100 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="text-xl font-['Playfair_Display'] text-gray-900">
+                    Mohit Gujarati
+                </a>
+                
+                <!-- Hamburger Menu -->
+                <button id="mobile-menu-toggle" class="md:hidden" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars text-gray-600"></i>
+                </button>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Home</a>
+                    <a href="#about" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">About</a>
+                    <a href="#skills" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Skills</a>
+                    <a href="#projects" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Projects</a>
+                    <a href="#contact" class="text-sm px-6 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors">Contact</a>
+                </div>
+            </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu-content" class="hidden flex  flex-col items-center space-y-4 mt-4">
-            <a href="#home" class="nav-link text-gray-700 hover:text-blue-600">Home</a>
-            <a href="#about" class="nav-link text-gray-700 hover:text-blue-600">About</a>
-            <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600">Skills</a>
-            <a href="#projects" class="nav-link text-gray-700 hover:text-blue-600">Projects</a>
-            <a href="#contact" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition">Contact</a>
-        </div>
-    </nav>
-</header>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu-content" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Home</a>
+                    <a href="#about" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">About</a>
+                    <a href="#skills" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Skills</a>
+                    <a href="#projects" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Projects</a>
+                    <a href="#contact" class="text-sm px-6 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors inline-block text-center">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <!-- Main Content Container -->
-    <main id="main-content" class="pt-16">
+    <main id="main-content" class="pt-20">
         <!-- Hero Section -->
-        <section id="home" class="bg-gradient-to-r from-blue-800 to-blue-400 text-white text-center py-20">
-            <div class="container mx-auto px-4">
-                <h1 class="text-5xl font-bold mb-4">Mohit Gujarati</h1>
-                <p class="text-xl mb-6">Master's Student | Android Developer | Software Engineer</p>
-                
-                <div class="space-x-4">
-                    <a href="#contact" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition">
-                        Hire Me
-                    </a>
-                    <a href="#projects" class=" inline-block border-2 border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-blue-600 transition">
-                        View Projects
-                    </a>
+        <section id="home" class="bg-gradient-to-b from-gray-50 to-white py-32">
+            <div class="container mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h1 class="font-['Playfair_Display'] text-5xl text-gray-900 mb-6">
+                        <span class="block text-sm text-gray-500 mb-2">Welcome, I'm</span>
+                        Mohit Gujarati
+                    </h1>
+                    <p class="text-xl text-gray-600 font-light mb-12">Software Engineer | Android Development Specialist | Masters Student</p>
+                    
+                    <div class="flex justify-center space-x-6">
+                        <a href="#contact" class="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
+                            <i class="fas fa-envelope mr-2"></i>Connect
+                        </a>
+                        <a href="#projects" class="px-8 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                            <i class="fas fa-code mr-2"></i>Projects
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sections: About, Experience, Skills, Projects, Contact -->
-        <!-- Each section follows a similar structured pattern -->
-        
         <!-- About Section -->
-        <section id="about" class="container mx-auto px-4 py-16">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">About Me</h2>
-                <div class="section-divider"></div>
-            </div>
-            
-            <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-                <p class="text-gray-700 text-center mb-6">
-                    As a passionate Android developer and computer science master's student, I specialize in creating innovative mobile solutions that blend cutting-edge technology with intuitive user experiences.
-                </p>
-                
-                <div class="flex justify-center space-x-2 flex-col md:flex-row">
-                    <a href="https://linkedin.com/in/mohitgujarati" 
-                       target="_blank" 
-                       class="bg-blue-600 text-white inline-flex items-center justify-center px-8 py-3 rounded-full font-semibold transition mb-4 md:mb-0">
-                      LinkedIn
-                    </a>
-                    <a href="utldoc/MohitResume_2025.pdf" 
-                       download 
-                       class="bg-gray-800 text-white inline-flex items-center justify-center px-8 py-3 rounded-full font-semibold transition mb-4 md:mb-0">
-                      Download CV
-                    </a>
+        <section id="about" class="bg-gradient-to-br from-white to-blue-50 py-32">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-light mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900">Professional Overview</h2>
+                    <div class="section-divider bg-gradient-to-r from-slate-800 to-blue-900 mb-8"></div>
+                    <p class="text-slate-600 max-w-2xl mx-auto font-light">
+                        Crafting innovative mobile solutions with technical excellence
+                    </p>
                 </div>
-                  
+
+                <div class="max-w-4xl mx-auto bg-white/95 backdrop-blur p-12 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+                    <p class="text-slate-600 text-lg text-center mb-12 leading-relaxed font-light">
+                        With expertise in <span class="font-medium text-slate-900">Android development</span> and advanced computer science research, I craft sophisticated mobile solutions that harmonize technical excellence with refined user experiences. My commitment lies in developing meaningful applications that elevate digital interactions and drive technological advancement.
+                    </p>
+
+                    <div class="flex justify-center space-x-6 flex-col md:flex-row">
+                        <a href="https://linkedin.com/in/mohitgujarati" 
+                           target="_blank"
+                           rel="noopener"
+                           class="group bg-slate-900 text-white inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all hover:bg-slate-800 mb-4 md:mb-0">
+                            <i class="fab fa-linkedin mr-2"></i>LinkedIn Profile
+                        </a>
+                        <a href="utldoc/MohitResume_2025.pdf" 
+                           download
+                           class="group bg-blue-900 text-white inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all hover:bg-blue-800">
+                            <i class="fas fa-file-download mr-2"></i>Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- More sections would follow similar patterns -->
-
-    <!-- experience Section -->
-    <section id="experience" class="bg-white py-16">
+    
+    <!-- Experience Section -->
+    <section id="experience" class="py-32">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Professional Experience</h2>
-                <div class="section-divider"></div>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-light mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900">Professional Journey</h2>
+                <div class="section-divider bg-gradient-to-r from-slate-800 to-blue-900 mb-8"></div>
+                <p class="text-slate-600 max-w-2xl mx-auto font-light">A timeline of impactful contributions and growth</p>
             </div>
     
-            <div class="max-w-4xl mx-auto space-y-6">
+            <div class="max-w-4xl mx-auto space-y-12">
                 <!-- TNM Software Solutions Experience -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md professional-card">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold text-gray-800">Software Developer</h3>
-                        <span class="text-gray-600">May 2023 - June 2024</span>
+                <div class="bg-white/95 backdrop-blur p-12 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-8">
+                        <div>
+                            <h3 class="text-2xl font-light text-slate-900 mb-2">Software Developer</h3>
+                            <p class="text-slate-500 font-light">TNM Software Solutions Pvt Ltd</p>
+                        </div>
+                        <span class="text-slate-400 font-light mt-2 md:mt-0">May 2023 - June 2024</span>
                     </div>
-                    <p class="text-gray-600 mb-4">TNM Software Solutions Pvt Ltd | Gujarat, India</p>
                     
                     <div id="tnm-experience-short">
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Developed Android apps using Kotlin, integrating motion sensors and location-based features</li>
-                            <li>Improved app performance by 50% through efficient code enhancement</li>
-                            <li>Developed cross-platform UIs for travel and time-blocking apps</li>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">→</span>
+                                <span class="font-light">Led Android development initiatives using Kotlin, implementing sophisticated motion sensing and location-based features</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">→</span>
+                                <span class="font-light">Achieved 50% performance optimization through strategic code refactoring and coroutines implementation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">→</span>
+                                <span class="font-light">Developed cross-platform solutions for travel and productivity applications</span>
+                            </li>
                         </ul>
-                        <button onclick="toggleExperience('tnm-experience-short', 'tnm-experience-full')" class="mt-4 text-blue-600 hover:underline">
-                            View More Details
+                        <button onclick="toggleExperience('tnm-experience-short', 'tnm-experience-full')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
+                            View Details
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
                         </button>
                     </div>
     
                     <div id="tnm-experience-full" class="hidden">
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Developed and maintained Android apps using Kotlin and Android SDK, integrating motion sensors, geocoder, and geofence for location-based functionality across devices</li>
-                            <li>Enhanced legacy code to improve performance and added complex features such as:
-                                <ul class="list-disc list-inside ml-6">
-                                    <li>Location-based notifications</li>
-                                    <li>Distance-wise customized updates</li>
-                                    <li>Fleet tracking</li>
-                                </ul>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">→</span>
+                                <span class="font-light">Engineered sophisticated Android applications leveraging Kotlin and Android SDK, integrating motion sensors and geofencing capabilities</span>
                             </li>
-                            <li>Efficiently implemented real-time updates using coroutines for seamless simultaneous updates, resulting in a 50% improvement in app performance</li>
-                            <li>Collaborated with cross-functional teams to deliver high-quality, production-ready applications</li>
-                            <li>Developed travel website UI using React and time-blocking and billing app UIs in React Native</li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">→</span>
+                                <span class="font-light">
+                                    Implemented advanced features including:
+                                    <ul class="mt-3 ml-6 space-y-2">
+                                        <li class="flex items-center">
+                                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></span>
+                                            <span>Location-aware notification system</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></span>
+                                            <span>Distance-optimized updates</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></span>
+                                            <span>Real-time fleet tracking</span>
+                                        </li>
+                                    </ul>
+                                </span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">→</span>
+                                <span class="font-light">Achieved 50% performance enhancement through coroutines implementation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">→</span>
+                                <span class="font-light">Collaborated with cross-functional teams to deliver production-ready applications</span>
+                            </li>
                         </ul>
-                        <button onclick="toggleExperience('tnm-experience-full', 'tnm-experience-short')" class="mt-4 text-blue-600 hover:underline">
+                        <button onclick="toggleExperience('tnm-experience-full', 'tnm-experience-short')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
                             Show Less
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                            </svg>
                         </button>
                     </div>
                 </div>
     
                 <!-- Tops Technology Experience -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md professional-card">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold text-gray-800">Android Developer Trainee</h3>
-                        <span class="text-gray-600">May 2022 - May 2023</span>
+                <div class="bg-white/95 backdrop-blur p-12 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-8">
+                        <div>
+                            <h3 class="text-2xl font-light text-slate-900 mb-2">Android Developer Trainee</h3>
+                            <p class="text-slate-500 font-light">Tops Technology Inc.</p>
+                        </div>
+                        <span class="text-slate-400 font-light mt-2 md:mt-0">May 2022 - May 2023</span>
                     </div>
-                    <p class="text-gray-600 mb-4">Tops Technology Inc. | Gujarat, India</p>
                     
                     <div id="tops-experience-short">
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Developed full-stack native mobile applications using Kotlin</li>
-                            <li>Worked with diverse databases to meet project requirements</li>
-                            <li>Applied advanced user interface concepts</li>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">→</span>
+                                <span class="font-light">Developed expertise in full-stack mobile development with Kotlin</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">→</span>
+                                <span class="font-light">Mastered multiple database technologies and integration patterns</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">→</span>
+                                <span class="font-light">Applied modern UI/UX design principles in mobile applications</span>
+                            </li>
                         </ul>
-                        <button onclick="toggleExperience('tops-experience-short', 'tops-experience-full')" class="mt-4 text-blue-600 hover:underline">
-                            View More Details
+                        <button onclick="toggleExperience('tops-experience-short', 'tops-experience-full')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
+                            View Details
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
                         </button>
                     </div>
     
                     <div id="tops-experience-full" class="hidden">
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Acquired proficiency in developing full-stack native mobile applications using Kotlin</li>
-                            <li>Learned to work with different databases according to project needs
-                                <ul class="list-disc list-inside ml-6">
-                                    <li>Implemented various types of application programming interfaces</li>
-                                    <li>Ensured database compatibility with project requirements</li>
-                                </ul>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">→</span>
+                                <span class="font-light">Built comprehensive expertise in native mobile application development using Kotlin</span>
                             </li>
-                            <li>Applied user interface concepts to achieve a better and more consistent user experience across applications</li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">→</span>
+                                <span class="font-light">
+                                    Advanced database implementation:
+                                    <ul class="mt-3 ml-6 space-y-2">
+                                        <li class="flex items-center">
+                                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></span>
+                                            <span>Robust API architectures</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></span>
+                                            <span>Optimized database solutions</span>
+                                        </li>
+                                    </ul>
+                                </span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">→</span>
+                                <span class="font-light">Enhanced user experiences through modern interface design patterns</span>
+                            </li>
                         </ul>
-                        <button onclick="toggleExperience('tops-experience-full', 'tops-experience-short')" class="mt-4 text-blue-600 hover:underline">
+                        <button onclick="toggleExperience('tops-experience-full', 'tops-experience-short')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
                             Show Less
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -197,364 +274,484 @@
     </section>
 
 <!-- Skills Section -->
-<section id="skills" class="bg-white py-16">
+<section id="skills" class="py-32">
     <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-4">Technical Skills</h2>
-            <div class="section-divider"></div>
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-light mb-4">Technical Skills</h2>
+            <p class="text-gray-600 font-light">
+                Core technologies and tools I work with
+            </p>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Languages -->
-            <div class="professional-card bg-gray-50 p-6 rounded-lg text-center hover:transform hover:-translate-y-2 transition-all duration-300">
-                <div class="skill-icon mb-4">
-                    <i class="fas fa-laptop-code text-4xl text-blue-500"></i>
+            <div class="bg-white p-8 rounded-lg shadow-sm">
+                <div class="flex items-center mb-6">
+                    <i class="fas fa-code text-2xl text-gray-900 mr-4"></i>
+                    <h3 class="text-xl font-light text-gray-900">Programming Languages</h3>
                 </div>
-                <h3 class="font-semibold text-xl mb-4">Languages</h3>
-                <div class="flex flex-wrap gap-2 justify-center">
-                    <span class="skill-tag bg-blue-100 text-blue-600 rounded-full px-4 py-1 text-sm">Kotlin</span>
-                    <span class="skill-tag bg-blue-100 text-blue-600 rounded-full px-4 py-1 text-sm">Java</span>
-                    <span class="skill-tag bg-blue-100 text-blue-600 rounded-full px-4 py-1 text-sm">Python</span>
-                    <span class="skill-tag bg-blue-100 text-blue-600 rounded-full px-4 py-1 text-sm">JavaScript</span>
-                    <span class="skill-tag bg-blue-100 text-blue-600 rounded-full px-4 py-1 text-sm">TypeScript</span>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Kotlin</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Java</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Python</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">JavaScript</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">TypeScript</span>
                 </div>
             </div>
 
             <!-- Mobile Development -->
-            <div class="professional-card bg-gray-50 p-6 rounded-lg text-center hover:transform hover:-translate-y-2 transition-all duration-300">
-                <div class="skill-icon mb-4">
-                    <i class="fab fa-android text-4xl text-green-500"></i>
+            <div class="bg-white p-8 rounded-lg shadow-sm">
+                <div class="flex items-center mb-6">
+                    <i class="fas fa-mobile-alt text-2xl text-gray-900 mr-4"></i>
+                    <h3 class="text-xl font-light text-gray-900">Mobile Development</h3>
                 </div>
-                <h3 class="font-semibold text-xl mb-4">Mobile Development</h3>
-                <div class="flex flex-wrap gap-2 justify-center">
-                    <span class="skill-tag bg-green-100 text-green-600 rounded-full px-4 py-1 text-sm">Android SDK</span>
-                    <span class="skill-tag bg-green-100 text-green-600 rounded-full px-4 py-1 text-sm">Jetpack Compose</span>
-                    <span class="skill-tag bg-green-100 text-green-600 rounded-full px-4 py-1 text-sm">Coroutines</span>
-                    <span class="skill-tag bg-green-100 text-green-600 rounded-full px-4 py-1 text-sm">Material Design</span>
-                    <span class="skill-tag bg-green-100 text-green-600 rounded-full px-4 py-1 text-sm">React Native</span>
-                    <span class="skill-tag bg-green-100 text-green-600 rounded-full px-4 py-1 text-sm">MVVM</span>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Android SDK</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Jetpack Compose</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Coroutines</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Material Design</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">MVVM Architecture</span>
                 </div>
             </div>
 
             <!-- Web Technologies -->
-            <div class="professional-card bg-gray-50 p-6 rounded-lg text-center hover:transform hover:-translate-y-2 transition-all duration-300">
-                <div class="skill-icon mb-4">
-                    <i class="fab fa-react text-4xl text-purple-500"></i>
+            <div class="bg-white p-8 rounded-lg shadow-sm">
+                <div class="flex items-center mb-6">
+                    <i class="fas fa-globe text-2xl text-gray-900 mr-4"></i>
+                    <h3 class="text-xl font-light text-gray-900">Web Technologies</h3>
                 </div>
-                <h3 class="font-semibold text-xl mb-4">Web Technologies</h3>
-                <div class="flex flex-wrap gap-2 justify-center">
-                    <span class="skill-tag bg-purple-100 text-purple-600 rounded-full px-4 py-1 text-sm">React</span>
-                    
-                    <span class="skill-tag bg-purple-100 text-purple-600 rounded-full px-4 py-1 text-sm">Tailwind</span>
-                    <span class="skill-tag bg-purple-100 text-purple-600 rounded-full px-4 py-1 text-sm">Bootstrap</span>
-                    <span class="skill-tag bg-purple-100 text-purple-600 rounded-full px-4 py-1 text-sm">Flask</span>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">React</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Tailwind CSS</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Bootstrap</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Flask</span>
                 </div>
             </div>
 
             <!-- Databases -->
-            <div class="professional-card bg-gray-50 p-6 rounded-lg text-center hover:transform hover:-translate-y-2 transition-all duration-300">
-                <div class="skill-icon mb-4">
-                    <i class="fas fa-database text-4xl text-indigo-500"></i>
+            <div class="bg-white p-8 rounded-lg shadow-sm">
+                <div class="flex items-center mb-6">
+                    <i class="fas fa-database text-2xl text-gray-900 mr-4"></i>
+                    <h3 class="text-xl font-light text-gray-900">Database Systems</h3>
                 </div>
-                <h3 class="font-semibold text-xl mb-4">Databases</h3>
-                <div class="flex flex-wrap gap-2 justify-center">
-                    <span class="skill-tag bg-indigo-100 text-indigo-600 rounded-full px-4 py-1 text-sm">Firebase</span>
-                    <span class="skill-tag bg-indigo-100 text-indigo-600 rounded-full px-4 py-1 text-sm">Room</span>
-                    <span class="skill-tag bg-indigo-100 text-indigo-600 rounded-full px-4 py-1 text-sm">SQLite</span>
-                    <span class="skill-tag bg-indigo-100 text-indigo-600 rounded-full px-4 py-1 text-sm">MySQL</span>
-                    <span class="skill-tag bg-indigo-100 text-indigo-600 rounded-full px-4 py-1 text-sm">Realm</span>
-                </div>
-            </div>
-
-            <!-- Tools & Practices -->
-            <div class="professional-card bg-gray-50 p-6 rounded-lg text-center hover:transform hover:-translate-y-2 transition-all duration-300">
-                <div class="skill-icon mb-4">
-                    <i class="fas fa-tools text-4xl text-orange-500"></i>
-                </div>
-                <h3 class="font-semibold text-xl mb-4">Tools & Practices</h3>
-                <div class="flex flex-wrap gap-2 justify-center">
-                    <span class="skill-tag bg-orange-100 text-orange-600 rounded-full px-4 py-1 text-sm">Retrofit</span>
-                    <span class="skill-tag bg-orange-100 text-orange-600 rounded-full px-4 py-1 text-sm">OpenCV</span>
-                    <span class="skill-tag bg-orange-100 text-orange-600 rounded-full px-4 py-1 text-sm">GitHub</span>
-                    <span class="skill-tag bg-orange-100 text-orange-600 rounded-full px-4 py-1 text-sm">SOLID</span>
-                    <span class="skill-tag bg-orange-100 text-orange-600 rounded-full px-4 py-1 text-sm">MVVM</span>
-                    <span class="skill-tag bg-orange-100 text-orange-600 rounded-full px-4 py-1 text-sm">MVC</span>
-                    <span class="skill-tag bg-orange-100 text-orange-600 rounded-full px-4 py-1 text-sm">Haar Cascade</span>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Firebase</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Room</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">SQLite</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">MySQL</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Realm</span>
                 </div>
             </div>
 
-            <!-- certificate -->
-            <div id="certifications" class="professional-card bg-gradient-to-br from-gray-50 to-gray-50 p-6 rounded-lg text-center hover:transform hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-lg">
-                <div class="skill-icon mb-4">
-                    <i class="fas fa-certificate text-4xl bg-gradient-to-r from-indigo-600 to-blue-500 bg-clip-text text-transparent"></i>
+            <!-- Development Tools -->
+            <div class="bg-white p-8 rounded-lg shadow-sm">
+                <div class="flex items-center mb-6">
+                    <i class="fas fa-tools text-2xl text-gray-900 mr-4"></i>
+                    <h3 class="text-xl font-light text-gray-900">Development Tools</h3>
                 </div>
-                <h3 class="font-semibold text-xl mb-4 text-gray-800">Certifications & Achievements</h3>
-                <div class="flex flex-wrap gap-2 justify-center">
-                   
-                    <!-- Certificates -->
-                    <span class="skill-tag bg-red-100 text-red-600 hover:bg-red-200 rounded-full px-4 py-1 text-sm border border-orange-200">
-                        Python - IBM Data Science
-                    </span>
-            
-                    <span class="skill-tag bg-red-100 text-red-600 hover:bg-red-200 rounded-full px-4 py-1 text-sm border border-teal-200">
-                        Java - LinkedIn Learning
-                    </span>
-            
-                    <span class="skill-tag bg-red-100 text-red-600 hover:bg-red-200 rounded-full px-4 py-1 text-sm border border-red-200">
-                        Kotlin - Udemy
-                    </span>
-            
-                    <span class="skill-tag bg-red-100 text-red-600 hover:bg-red-200 rounded-full px-4 py-1 text-sm border border-emerald-200">
-                        SQL - LinkedIn Learning
-                    </span>
-
-                     <!-- GDG -->
-                     <span class="skill-tag bg-red-100 text-red-600 hover:bg-red-200 rounded-full px-4 py-1 text-sm border border-blue-200">
-                        On-campus Google Developer Groups member
-                     </span>
-                     
-                     <!-- Article -->
-                     <span class="skill-tag bg-red-100 text-red-600 hover:bg-red-200 rounded-full px-4 py-1 text-sm border border-purple-200">
-                         Microservices Architecture & Distributed Systems
-                     </span>
-
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Retrofit</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">OpenCV</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Git</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">SOLID Principles</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Design Patterns</span>
                 </div>
             </div>
-    
+
+            <!-- Certifications -->
+            <div class="bg-white p-8 rounded-lg shadow-sm">
+                <div class="flex items-center mb-6">
+                    <i class="fas fa-certificate text-2xl text-gray-900 mr-4"></i>
+                    <h3 class="text-xl font-light text-gray-900">Professional Certifications</h3>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">IBM Data Science</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">LinkedIn Java</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Udemy Kotlin</span>
+                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Google Developer Groups</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <style>
 .skill-tag {
-    transition: all 0.5s ease;
-    border: 1px solid transparent;
+    transition: all 0.3s ease;
 }
 
 .skill-tag:hover {
     transform: translateY(-2px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.professional-card:hover .skill-tag {
-    border-color: currentColor;
-}
-
-.section-divider {
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(to right, #3b82f6, #8b5cf6);
-    margin: 0 auto;
 }
 </style>
 
 
 
-    <!-- projects Section -->
-    <section id="projects" class="bg-gray-100 py-16">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Personal Projects</h2>
-                <div class="section-divider"></div>
+<!-- Projects Section -->
+<section id="projects" class="py-32">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-light mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900">Featured Projects</h2>
+            <div class="section-divider bg-gradient-to-r from-slate-800 to-blue-900 mb-8"></div>
+            <p class="text-slate-600 max-w-2xl mx-auto font-light">Selected works showcasing my development journey</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <!-- Fleet Tracking Project -->
+            <div class="project-card group">
+                <div class="bg-white/95 backdrop-blur rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                    <div class="bg-slate-900 p-6 text-white">
+                        <h3 class="text-xl font-semibold mb-2">Fleet Tracking System</h3>
+                        <p class="text-blue-50 text-sm font-light">Location-based Android Application</p>
+                    </div>
+                    
+                    <div class="p-8">
+                        <div class="mb-6 flex flex-wrap gap-3">
+                            <span class="tech-tag px-4">Kotlin</span>
+                            <span class="tech-tag px-4">Google Maps</span>
+                            <span class="tech-tag px-4">Realm</span>
+                            <span class="tech-tag px-4">Geofencing</span>
+                            <span class="tech-tag px-4">SOLID</span>
+                        </div>
+
+                        <ul class="space-y-3 mb-6 text-slate-600">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">→</span>
+                                <span class="font-light">Real-time fleet tracking with Google Maps & geofencing</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">→</span>
+                                <span class="font-light">40% performance optimization using Kotlin Coroutines & SOLID</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">→</span>
+                                <span class="font-light">Motion sensor integration for incident detection</span>
+                            </li>
+                        </ul>
+
+                        <div class="flex justify-end">
+                            <button class="project-btn">
+                                <span>Confidential Project</span>
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-    
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Flare Clone Project -->
-                <div class="bg-white p-6 rounded-lg shadow-md professional-card">
-                    <h3 class="text-xl font-bold mb-2">Fleet tracking Clone </h3>
-                    <p class="text-gray-600 mb-4">Advanced Location Tracking Android App</p>
-                    
-                    <div id="flare-project-short">
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Dynamic UI with MVC and MVP architecture</li>
-                            <li>Google Maps integration</li>
-                            <li>Location tracking and geofencing</li>
-                        </ul>
-                        <button onclick="toggleProject('flare-project-short', 'flare-project-full')" class="mt-4 text-blue-600 hover:underline">
-                            View More Details
-                        </button>
-                       
-                        <button class="Btn">
-                            Confidential
-                            <svg class="svgIcon" viewBox="0 0 576 512"><path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path></svg>
-                          </button>
+
+            <!-- InEvents Project -->
+            <div class="project-card group">
+                <div class="bg-white/95 backdrop-blur rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                    <div class="bg-slate-900 p-6 text-white">
+                        <h3 class="text-xl font-semibold mb-2">InEvents</h3>
+                        <p class="text-blue-50 text-sm font-light">Student Event Management Platform</p>
                     </div>
-    
-                    <div id="flare-project-full" class="hidden">
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Technologies: Kotlin, Android Architecture Components, Realm Database, Google Maps</li>
-                            <li>Developed an Android app with a dynamic, responsive UI using the latest SDK tools
-                                <ul class="list-disc list-inside ml-6">
-                                    <li>Combined MVC and MVP for a modular and adaptable codebase</li>
-                                </ul>
+                    
+                    <div class="p-8">
+                        <div class="mb-6 flex flex-wrap gap-3">
+                            <span class="tech-tag px-4">Kotlin</span>
+                            <span class="tech-tag px-4">Firebase</span>
+                            <span class="tech-tag px-4">MySQL</span>
+                            <span class="tech-tag px-4">MVVM</span>
+                            <span class="tech-tag px-4">Material Design</span>
+                        </div>
+
+                        <ul class="space-y-3 mb-6 text-slate-600">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">→</span>
+                                <span class="font-light">200+ daily active users, 500+ total downloads</span>
                             </li>
-                            <li>Advanced Location Features:
-                                <ul class="list-disc list-inside ml-6">
-                                    <li>Integrated Google Maps for real-time location tracking</li>
-                                    <li>Implemented geocoder and geofencing</li>
-                                    <li>Used motion sensors for incident detection</li>
-                                </ul>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">→</span>
+                                <span class="font-light">100% paperless event registration system</span>
                             </li>
-                            <li>Utilized Realm Database for:
-                                <ul class="list-disc list-inside ml-6">
-                                    <li>Storing safe-zone points</li>
-                                    <li>Tracking travel locations and history</li>
-                                    <li>Leveraging geofences for location-based features</li>
-                                </ul>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">→</span>
+                                <span class="font-light">Real-time updates with Firebase Notifications</span>
                             </li>
                         </ul>
-                        <button onclick="toggleProject('flare-project-full', 'flare-project-short')" class="mt-4 text-blue-600 hover:underline">
-                            Show Less
-                        </button>
+
+                        <div class="flex justify-end">
+                            <a href="https://github.com/MohitGujarati/SnapEvents"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="project-btn">
+                                <span>View Details on GitHub</span>
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
-    
-                <!-- InEvents Project -->
-                <div class="bg-white p-6 rounded-lg shadow-md professional-card">
-                    <h3 class="text-xl font-bold mb-2">InEvents</h3>
-                    <p class="text-gray-600 mb-4">Student Event Management System</p>
-                    
-                    <div id="inevents-project-short">
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Event management for universities</li>
-                            <li>Firebase backend integration</li>
-                            <li>Google Maps and authentication</li>
-                        </ul>
-                        <button onclick="toggleProject('inevents-project-short', 'inevents-project-full')" class="mt-4 text-blue-600 hover:underline">
-                            View More Details
-                        </button>
+            </div>
 
-
-                        <button class="Btn" onclick="window.open('https://github.com/MohitGujarati/SnapEvents', '_blank')">
-                            GitHub
-                            <svg class="svgIcon" viewBox="0 0 576 512"><path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path></svg>
-                        </button>
-
-                    </div>
-    
-                    <div id="inevents-project-full" class="hidden">
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Technologies: Kotlin, Firebase, SQLite, MySQL, Retrofit, Material Design, MVVM</li>
-                            <li>Designed student event management system with comprehensive features:
-                                <ul class="list-disc list-inside ml-6">
-                                    <li>Google Maps integration for event location tracking</li>
-                                    <li>University admin event booking oversight</li>
-                                </ul>
-                            </li>
-                            <li>Backend and Data Management:
-                                <ul class="list-disc list-inside ml-6">
-                                    <li>Firebase Firestore for backend processes</li>
-                                    <li>MySQL for managing events and purchase data</li>
-                                    <li>Achieved 100% paperless registration</li>
-                                </ul>
-                            </li>
-                            <li>User Authentication and Notifications:
-                                <ul class="list-disc list-inside ml-6">
-                                    <li>Secure Google Authentication for login</li>
-                                    <li>Firebase notifications for real-time updates</li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <button onclick="toggleProject('inevents-project-full', 'inevents-project-short')" class="mt-4 text-blue-600 hover:underline">
-                            Show Less
-                        </button>
-
-                       
+            <!-- Face Detection Project -->
+            <div class="project-card group">
+                <div class="bg-white/95 backdrop-blur rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                    <div class="bg-slate-900 p-6 text-white">
+                        <h3 class="text-xl font-semibold mb-2">Face Detection System</h3>
+                        <p class="text-blue-50 text-sm font-light">OpenCV-based Web Application</p>
                     </div>
                     
+                    <div class="p-6">
+                        <div class="mb-4 flex flex-wrap gap-2">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">NumPy</span>
+                            <span class="tech-tag">SOLID</span>
+                        </div>
+
+                        <ul class="space-y-3 mb-6 text-slate-600">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">→</span>
+                                <span class="font-light">95% accuracy in face detection using Haar Cascade</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">→</span>
+                                <span class="font-light">Automated dataset processing & annotation management</span>
+                            </li>
+                        </ul>
+
+                        <div class="flex justify-end">
+                            <a href="https://github.com/MohitGujarati/Face_detection_py"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="project-btn">
+                                <span>View Details on GitHub</span>
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-    
-                <!-- Speces Project -->
-                <div class="bg-white p-6 rounded-lg shadow-md professional-card">
-                    <h3 class="text-xl font-bold mb-2">Speces</h3>
-                    <p class="text-gray-600 mb-4">Expense Tracking Application</p>
+            </div>
+
+            <!-- Travel Website Project -->
+            <div class="project-card group">
+                <div class="bg-white/95 backdrop-blur rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                    <div class="bg-slate-900 p-6 text-white">
+                        <h3 class="text-xl font-semibold mb-2">Travel Website</h3>
+                        <p class="text-blue-50 text-sm font-light">Modern React Web Application</p>
+                    </div>
                     
-                    <div id="speces-project-short">
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Expense categorization</li>
-                            <li>Detailed reporting features</li>
-                            <li>Budget tracking functionality</li>
-                        </ul>
-                        <button onclick="toggleProject('speces-project-short', 'speces-project-full')" class="mt-4 text-blue-600 hover:underline">
-                            View More Details
-                        </button>
-                    </div>
-    
-                    <div id="speces-project-full" class="hidden">
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Technologies: Kotlin, Java, Room Database, SQLite, Material Design</li>
-                            <li>Comprehensive Expense Management:
-                                <ul class="list-disc list-inside ml-6">
-                                    <li>Track and categorize expenses</li>
-                                    <li>Custom and predefined expense categories</li>
-                                </ul>
+                    <div class="p-6">
+                        <div class="mb-4 flex flex-wrap gap-2">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Tailwind</span>
+                            <span class="tech-tag">SOLID</span>
+                        </div>
+
+                        <ul class="space-y-3 mb-6 text-slate-600">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">→</span>
+                                <span class="font-light">50% productivity increase through reusable UI components</span>
                             </li>
-                            <li>Advanced Reporting Features:
-                                <ul class="list-disc list-inside ml-6">
-                                    <li>Spending pattern insights</li>
-                                    <li>Analysis using charts and progress bars</li>
-                                </ul>
-                            </li>
-                            <li>Budget Tracking:
-                                <ul class="list-disc list-inside ml-6">
-                                    <li>Set spending limits</li>
-                                    <li>Monitor expenses against budgets</li>
-                                </ul>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">→</span>
+                                <span class="font-light">Reduced codebase by 800 lines with automated design process</span>
                             </li>
                         </ul>
-                        <button onclick="toggleProject('speces-project-full', 'speces-project-short')" class="mt-4 text-blue-600 hover:underline">
-                            Show Less
-                        </button>
+
+                        <div class="flex justify-end">
+                            <button class="project-btn">
+                                <span>View Details</span>
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                    <button class="Btn" onclick="window.open('https://github.com/MohitGujarati/Expense_Manager_App', '_blank')">
-                        GitHub
-                        <svg class="svgIcon" viewBox="0 0 576 512"><path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path></svg>
-                    </button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<style>
+.tech-tag {
+    padding: 0.75rem 0.25rem;
+    font-size: 0.875rem;
+    background-color: #f8fafc;
+    color: #64748b;
+    border-radius: 9999px;
+    transition: all 0.3s;
+}
+
+.project-card:hover .tech-tag {
+    background-color: #f1f5f9;
+}
+
+.project-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: #64748b;
+    background-color: #f8fafc;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+}
+
+.project-btn:hover {
+    background-color: #f1f5f9;
+    color: #3b82f6;
+}
+
+.project-card {
+    transform: translateY(0);
+    transition: all 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-0.25rem);
+}
+
+.social-links a {
+    display: inline-block;
+}
+
+.social-links a:hover i {
+    color: #60a5fa;
+}
+
+.section-divider {
+    width: 6rem;
+    height: 0.25rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+
+
     
     
 <!-- Contact Section -->
-    <section id="contact" class="bg-gray-100 py-16">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
-            <div class="section-divider mb-8"></div>
-            <p class="max-w-xl mx-auto text-gray-600 mb-8">
-                I'm always open to discussing new projects, opportunities, or collaborations. Feel free to reach out, and I'll get back to you as soon as possible.
-            </p>
-            <div class="flex justify-center space-x-4">
-                <a href="mailto:mohitgujarati11@gmail.com" class="bg-blue-500 text-white px-8 py-3 rounded-full hover:bg-blue-600 transition">Email Me</a>
-                <a href="https://linkedin.com/in/mohitgujarati" target="_blank" class="border-2 border-blue-500 text-blue-500 px-8 py-3 rounded-full hover:bg-blue-500 hover:text-white transition">LinkedIn</a>
+    <section id="contact" class="bg-gradient-to-br from-white to-blue-50 py-32">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-light mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900">Let's Connect</h2>
+                <div class="section-divider bg-gradient-to-r from-slate-800 to-blue-900 mb-8"></div>
+                <p class="text-slate-600 max-w-2xl mx-auto font-light">
+                    I'm always open to discussing new projects, opportunities, or collaborations. Feel free to reach out, and I'll get back to you as soon as possible.
+                </p>
             </div>
+
+            <div class="max-w-4xl mx-auto bg-white/95 backdrop-blur p-12 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+                <div class="flex justify-center space-x-6 flex-col md:flex-row">
+                    <a href="mailto:mohitgujarati11@gmail.com" 
+                       class="group bg-slate-900 text-white inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all hover:bg-slate-800 mb-4 md:mb-0">
+                        <i class="fas fa-envelope mr-2"></i>Email Me
+                    </a>
+                    <a href="https://linkedin.com/in/mohitgujarati" 
+                       target="_blank"
+                       rel="noopener"
+                       class="group bg-blue-900 text-white inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all hover:bg-blue-800">
+                        <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-16">
+                <iframe src="contacts.html" width="100%" height="800px" frameborder="0" class="rounded-lg shadow-sm"></iframe>
+            </div>
+
         </div>
-
-        <br>
-        <br>
-
-        <iframe src="contacts.html" width="100%" height="800px" frameborder="0" style="border-radius: 0px;"></iframe>
-
-        <br>
-        <br>
-
     </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2024 Mohit Gujarati. All Rights Reserved.</p>
+    <footer class="bg-gradient-to-b from-gray-50 to-white text-gray-900 py-12 relative overflow-hidden">
+        <div class="container mx-auto text-center relative z-10">
+            <!-- Elegant Game Section -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-light mb-6">Interactive Challenge</h3>
+                <div id="game-container" class="w-96 h-32 mx-auto bg-gray-100 rounded-lg relative cursor-pointer border border-gray-200">
+                    <div id="player" class="absolute bottom-3 left-3 text-2xl transition-all duration-300 opacity-80">◆</div>
+                    <div id="star" class="absolute text-2xl transition-all duration-300">○</div>
+                    <div class="text-sm mt-4 font-light tracking-wider">Points: <span id="score">0</span></div>
+                </div>
+            </div>
+
+            <p class="text-sm font-light tracking-wider mb-8">&copy; 2025 Mohit Gujarati. All rights reserved.</p>
             
-            <div class="social-links mt-4 space-x-4">
-                <a href="https://linkedin.com/in/mohitgujarati" target="_blank" aria-label="LinkedIn Profile">
-                    <i class="fab fa-linkedin text-2xl hover:text-blue-400 transition"></i>
+            <div class="social-links mt-8 space-x-8">
+                <a href="https://linkedin.com/in/mohitgujarati" target="_blank" rel="noopener" aria-label="LinkedIn Profile" 
+                   class="inline-block transition-all duration-300 hover:text-gray-600">
+                    <i class="fab fa-linkedin text-2xl"></i>
                 </a>
-                <a href="https://github.com/MohitGujarati" target="_blank" aria-label="GitHub Profile">
-                    <i class="fab fa-github text-2xl hover:text-blue-400 transition"></i>
+                <a href="https://github.com/MohitGujarati" target="_blank" rel="noopener" aria-label="GitHub Profile"
+                   class="inline-block transition-all duration-300 hover:text-gray-600">
+                    <i class="fab fa-github text-2xl"></i>
                 </a>
-                <a href="mailto:mohitgujarati11@gmail.com" aria-label="Send Email">
-                    <i class="fas fa-envelope text-2xl hover:text-blue-400 transition"></i>
+                <a href="mailto:mohitgujarati11@gmail.com" aria-label="Send Email"
+                   class="inline-block transition-all duration-300 hover:text-gray-600">
+                    <i class="fas fa-envelope text-2xl"></i>
                 </a>
             </div>
         </div>
+
+        <!-- Subtle Background Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute w-32 h-32 bg-gray-100 rounded-full -left-16 animate-subtle-float"></div>
+            <div class="absolute w-32 h-32 bg-gray-100 rounded-full -right-16 animate-subtle-float animation-delay-2000"></div>
+            <div class="absolute w-32 h-32 bg-gray-100 rounded-full bottom-0 left-1/2 animate-subtle-float animation-delay-4000"></div>
+        </div>
+
+        <style>
+            @keyframes subtle-float {
+                0% { transform: translate(0px, 0px) scale(1); }
+                50% { transform: translate(15px, -15px) scale(1.05); }
+                100% { transform: translate(0px, 0px) scale(1); }
+            }
+            .animate-subtle-float {
+                animation: subtle-float 10s infinite ease-in-out;
+            }
+            .animation-delay-2000 {
+                animation-delay: 2s;
+            }
+            .animation-delay-4000 {
+                animation-delay: 4s;
+            }
+        </style>
+
+        <script>
+            const gameContainer = document.getElementById('game-container');
+            const player = document.getElementById('player');
+            const star = document.getElementById('star');
+            const scoreElement = document.getElementById('score');
+            let score = 0;
+
+            function updateStarPosition() {
+                const x = Math.random() * (gameContainer.offsetWidth - 40);
+                const y = Math.random() * (gameContainer.offsetHeight - 40);
+                star.style.left = x + 'px';
+                star.style.top = y + 'px';
+                star.style.opacity = '0.8';
+            }
+
+            gameContainer.addEventListener('mousemove', (e) => {
+                const rect = gameContainer.getBoundingClientRect();
+                const x = Math.min(Math.max(e.clientX - rect.left - 15, 0), rect.width - 30);
+                player.style.left = x + 'px';
+            });
+
+            star.addEventListener('click', () => {
+                score++;
+                scoreElement.textContent = score;
+                star.style.opacity = '1';
+                setTimeout(() => {
+                    updateStarPosition();
+                }, 100);
+            });
+
+            updateStarPosition();
+        </script>
     </footer>
 
     <!-- JavaScript -->
