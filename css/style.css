@@ -15,8 +15,10 @@ body {
 
 .gradient-text {
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback */
 }
 
 .professional-card {

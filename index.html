@@ -21,6 +21,125 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Custom CSS for mouse and scroll effects-->
+    <style>
+        /* Canvas for mouse and scroll effects */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999; /* Ensure it's above everything */
+        }
+
+        /* Multi-color particle effect */
+        .particle-colors {
+            --color1: #FF6B6B;  /* Red */
+            --color2: #4ECDC4;  /* Teal */
+            --color3: #45B7D1;  /* Blue */
+            --color4: #96CEB4;  /* Green */
+            --color5: #FFEEAD;  /* Yellow */
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.createElement('canvas');
+            canvas.id = 'mouseEffectCanvas';
+            document.body.appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+
+            let particles = [];
+            let mouse = { x: 0, y: 0 };
+            let lastScrollY = window.scrollY;
+            
+            const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEEAD'];
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            class Particle {
+                constructor(x, y, size, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = size;
+                    this.color = color;
+                    this.life = 1;
+                    this.speedX = (Math.random() - 0.5) * 2;
+                    this.speedY = (Math.random() - 0.5) * 2;
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    this.size *= 0.97;
+                    this.life -= 0.02;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `${this.color}${Math.floor(this.life * 255).toString(16).padStart(2, '0')}`;
+                    ctx.fill();
+                }
+            }
+
+            function createParticle(x, y) {
+                const size = Math.random() * 5 + 2;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particles.push(new Particle(x, y, size, color));
+            }
+
+            function createScrollParticles() {
+                const currentScroll = window.scrollY;
+                const scrollDiff = currentScroll - lastScrollY;
+                const particleCount = Math.abs(Math.floor(scrollDiff / 2));
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const x = Math.random() * window.innerWidth;
+                    const y = scrollDiff > 0 ? window.innerHeight : 0;
+                    createParticle(x, y);
+                }
+                
+                lastScrollY = currentScroll;
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach((particle, index) => {
+                    particle.update();
+                    particle.draw();
+                    if (particle.life <= 0.1) particles.splice(index, 1);
+                });
+                requestAnimationFrame(animateParticles);
+            }
+
+            window.addEventListener('mousemove', (event) => {
+                mouse.x = event.x;
+                mouse.y = event.y;
+                for (let i = 0; i < 3; i++) createParticle(mouse.x, mouse.y);
+            });
+
+            window.addEventListener('scroll', () => {
+                createScrollParticles();
+            });
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+
+            animateParticles();
+        });
+    </script>
+
+
 </head>
 <body class="font-['Inter'] text-gray-800 bg-gray-50">
 
@@ -620,6 +739,7 @@
         </div>
     </section>
     </main>
+    
     <!-- Footer -->
     <footer class="bg-gradient-to-b from-gray-50 to-white text-gray-900 py-12 relative overflow-hidden" itemscope itemtype="http://schema.org/WPFooter">
         <div class="container mx-auto text-center relative z-10">
