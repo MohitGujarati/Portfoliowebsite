@@ -75,17 +75,21 @@
         <section id="home" class="bg-gradient-to-b from-gray-50 to-white py-32">
             <div class="container mx-auto px-6">
                 <div class="max-w-3xl mx-auto text-center">
-                    <h1 class="font-['Playfair_Display'] text-5xl text-gray-900 mb-6">
+                    <h1 class="font-['Playfair_Display'] text-5xl text-gray-900 mb-6" onclick="gtag('event', 'view_hero_section', {'event_category': 'engagement'});">
                         <span class="block text-sm text-gray-500 mb-2">Welcome, I'm</span>
                         Mohit Gujarati
                     </h1>
                     <p class="text-xl text-gray-600 font-light mb-12">Software Engineer | Android Development Specialist | Masters Student</p>
                     
                     <div class="flex justify-center space-x-6">
-                        <a href="#contact" class="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
+                        <a href="#contact" 
+                           class="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+                           onclick="gtag('event', 'click_connect', {'event_category': 'engagement', 'event_label': 'hero_section'});">
                             <i class="fas fa-envelope mr-2"></i>Connect
                         </a>
-                        <a href="#projects" class="px-8 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                        <a href="#projects" 
+                           class="px-8 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                           onclick="gtag('event', 'click_projects', {'event_category': 'engagement', 'event_label': 'hero_section'});">
                             <i class="fas fa-code mr-2"></i>Projects
                         </a>
                     </div>
@@ -113,11 +117,13 @@
                         <a href="https://linkedin.com/in/mohitgujarati" 
                            target="_blank"
                            rel="noopener"
+                           onclick="gtag('event', 'click_linkedin', {'event_category': 'engagement', 'event_label': 'about_section'});"
                            class="group bg-slate-900 text-white inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all hover:bg-slate-800 mb-4 md:mb-0">
                             <i class="fab fa-linkedin mr-2"></i>LinkedIn Profile
                         </a>
                         <a href="utldoc/MohitResume_2025.pdf" 
                            download
+                           onclick="gtag('event', 'download_resume', {'event_category': 'engagement', 'event_label': 'about_section'});"
                            class="group bg-blue-900 text-white inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all hover:bg-blue-800">
                             <i class="fas fa-file-download mr-2"></i>Resume
                         </a>
@@ -162,7 +168,7 @@
                                 <span class="font-light">Developed cross-platform solutions for travel and productivity applications</span>
                             </li>
                         </ul>
-                        <button onclick="toggleExperience('tnm-experience-short', 'tnm-experience-full')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
+                        <button onclick="gtag('event', 'view_tnm_details', {'event_category': 'engagement', 'event_label': 'experience_section'}); toggleExperience('tnm-experience-short', 'tnm-experience-full')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
                             View Details
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -205,7 +211,7 @@
                                 <span class="font-light">Collaborated with cross-functional teams to deliver production-ready applications</span>
                             </li>
                         </ul>
-                        <button onclick="toggleExperience('tnm-experience-full', 'tnm-experience-short')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
+                        <button onclick="gtag('event', 'hide_tnm_details', {'event_category': 'engagement', 'event_label': 'experience_section'}); toggleExperience('tnm-experience-full', 'tnm-experience-short')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
                             Show Less
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
@@ -239,7 +245,7 @@
                                 <span class="font-light">Applied modern UI/UX design principles in mobile applications</span>
                             </li>
                         </ul>
-                        <button onclick="toggleExperience('tops-experience-short', 'tops-experience-full')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
+                        <button onclick="gtag('event', 'view_tops_details', {'event_category': 'engagement', 'event_label': 'experience_section'}); toggleExperience('tops-experience-short', 'tops-experience-full')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
                             View Details
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -274,7 +280,7 @@
                                 <span class="font-light">Enhanced user experiences through modern interface design patterns</span>
                             </li>
                         </ul>
-                        <button onclick="toggleExperience('tops-experience-full', 'tops-experience-short')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
+                        <button onclick="gtag('event', 'hide_tops_details', {'event_category': 'engagement', 'event_label': 'experience_section'}); toggleExperience('tops-experience-full', 'tops-experience-short')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
                             Show Less
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
@@ -298,7 +304,7 @@
 
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Languages -->
-            <div class="bg-white p-8 rounded-lg shadow-sm">
+            <div class="bg-white p-8 rounded-lg shadow-sm" onclick="gtag('event', 'view_languages', {'event_category': 'skills', 'event_label': 'skills_section'});">
                 <div class="flex items-center mb-6">
                     <i class="fas fa-code text-2xl text-gray-900 mr-4"></i>
                     <h3 class="text-xl font-light text-gray-900">Programming Languages</h3>
@@ -313,7 +319,7 @@
             </div>
 
             <!-- Mobile Development -->
-            <div class="bg-white p-8 rounded-lg shadow-sm">
+            <div class="bg-white p-8 rounded-lg shadow-sm" onclick="gtag('event', 'view_mobile_dev', {'event_category': 'skills', 'event_label': 'skills_section'});">
                 <div class="flex items-center mb-6">
                     <i class="fas fa-mobile-alt text-2xl text-gray-900 mr-4"></i>
                     <h3 class="text-xl font-light text-gray-900">Mobile Development</h3>
@@ -328,7 +334,7 @@
             </div>
 
             <!-- Web Technologies -->
-            <div class="bg-white p-8 rounded-lg shadow-sm">
+            <div class="bg-white p-8 rounded-lg shadow-sm" onclick="gtag('event', 'view_web_tech', {'event_category': 'skills', 'event_label': 'skills_section'});">
                 <div class="flex items-center mb-6">
                     <i class="fas fa-globe text-2xl text-gray-900 mr-4"></i>
                     <h3 class="text-xl font-light text-gray-900">Web Technologies</h3>
@@ -342,7 +348,7 @@
             </div>
 
             <!-- Databases -->
-            <div class="bg-white p-8 rounded-lg shadow-sm">
+            <div class="bg-white p-8 rounded-lg shadow-sm" onclick="gtag('event', 'view_databases', {'event_category': 'skills', 'event_label': 'skills_section'});">
                 <div class="flex items-center mb-6">
                     <i class="fas fa-database text-2xl text-gray-900 mr-4"></i>
                     <h3 class="text-xl font-light text-gray-900">Database Systems</h3>
@@ -357,7 +363,7 @@
             </div>
 
             <!-- Development Tools -->
-            <div class="bg-white p-8 rounded-lg shadow-sm">
+            <div class="bg-white p-8 rounded-lg shadow-sm" onclick="gtag('event', 'view_dev_tools', {'event_category': 'skills', 'event_label': 'skills_section'});">
                 <div class="flex items-center mb-6">
                     <i class="fas fa-tools text-2xl text-gray-900 mr-4"></i>
                     <h3 class="text-xl font-light text-gray-900">Development Tools</h3>
@@ -372,7 +378,7 @@
             </div>
 
             <!-- Certifications -->
-            <div class="bg-white p-8 rounded-lg shadow-sm">
+            <div class="bg-white p-8 rounded-lg shadow-sm" onclick="gtag('event', 'view_certifications', {'event_category': 'skills', 'event_label': 'skills_section'});">
                 <div class="flex items-center mb-6">
                     <i class="fas fa-certificate text-2xl text-gray-900 mr-4"></i>
                     <h3 class="text-xl font-light text-gray-900">Professional Certifications</h3>
@@ -388,16 +394,6 @@
     </div>
 </section>
 
-<style>
-.skill-tag {
-    transition: all 0.3s ease;
-}
-
-.skill-tag:hover {
-    transform: translateY(-2px);
-}
-</style>
-
 
 
 <!-- Projects Section -->
@@ -411,7 +407,7 @@
 
         <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             <!-- Fleet Tracking Project -->
-            <div class="project-card group">
+            <div class="project-card group" onclick="gtag('event', 'view_fleet_project', {'event_category': 'projects', 'event_label': 'projects_section'});">
                 <div class="bg-white/95 backdrop-blur rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
                     <div class="bg-slate-900 p-6 text-white">
                         <h3 class="text-xl font-semibold mb-2">Fleet Tracking System</h3>
@@ -443,7 +439,7 @@
                         </ul>
 
                         <div class="flex justify-end">
-                            <button class="project-btn">
+                            <button class="project-btn" onclick="gtag('event', 'click_fleet_confidential', {'event_category': 'projects', 'event_label': 'projects_section'});">
                                 <span>Confidential Project</span>
                                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
@@ -455,7 +451,7 @@
             </div>
 
             <!-- InEvents Project -->
-            <div class="project-card group">
+            <div class="project-card group" onclick="gtag('event', 'view_inevents_project', {'event_category': 'projects', 'event_label': 'projects_section'});">
                 <div class="bg-white/95 backdrop-blur rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
                     <div class="bg-slate-900 p-6 text-white">
                         <h3 class="text-xl font-semibold mb-2">InEvents</h3>
@@ -490,6 +486,7 @@
                             <a href="https://github.com/MohitGujarati/SnapEvents"
                                target="_blank"
                                rel="noopener noreferrer"
+                               onclick="gtag('event', 'click_inevents_github', {'event_category': 'projects', 'event_label': 'projects_section'});"
                                class="project-btn">
                                 <span>View Details on GitHub</span>
                                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -502,7 +499,7 @@
             </div>
 
             <!-- Face Detection Project -->
-            <div class="project-card group">
+            <div class="project-card group" onclick="gtag('event', 'view_facedetection_project', {'event_category': 'projects', 'event_label': 'projects_section'});">
                 <div class="bg-white/95 backdrop-blur rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
                     <div class="bg-slate-900 p-6 text-white">
                         <h3 class="text-xl font-semibold mb-2">Face Detection System</h3>
@@ -533,6 +530,7 @@
                             <a href="https://github.com/MohitGujarati/Face_detection_py"
                                target="_blank"
                                rel="noopener noreferrer"
+                               onclick="gtag('event', 'click_facedetection_github', {'event_category': 'projects', 'event_label': 'projects_section'});"
                                class="project-btn">
                                 <span>View Details on GitHub</span>
                                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -545,7 +543,7 @@
             </div>
 
             <!-- Travel Website Project -->
-            <div class="project-card group">
+            <div class="project-card group" onclick="gtag('event', 'view_travel_project', {'event_category': 'projects', 'event_label': 'projects_section'});">
                 <div class="bg-white/95 backdrop-blur rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
                     <div class="bg-slate-900 p-6 text-white">
                         <h3 class="text-xl font-semibold mb-2">Travel Website</h3>
@@ -572,7 +570,7 @@
                         </ul>
 
                         <div class="flex justify-end">
-                            <button class="project-btn">
+                            <button class="project-btn" onclick="gtag('event', 'click_travel_details', {'event_category': 'projects', 'event_label': 'projects_section'});">
                                 <span>View Details</span>
                                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -586,64 +584,6 @@
     </div>
 </section>
 
-<style>
-.tech-tag {
-    padding: 0.75rem 0.25rem;
-    font-size: 0.875rem;
-    background-color: #f8fafc;
-    color: #64748b;
-    border-radius: 9999px;
-    transition: all 0.3s;
-}
-
-.project-card:hover .tech-tag {
-    background-color: #f1f5f9;
-}
-
-.project-btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    color: #64748b;
-    background-color: #f8fafc;
-    border-radius: 0.5rem;
-    transition: all 0.3s;
-}
-
-.project-btn:hover {
-    background-color: #f1f5f9;
-    color: #3b82f6;
-}
-
-.project-card {
-    transform: translateY(0);
-    transition: all 0.3s;
-}
-
-.project-card:hover {
-    transform: translateY(-0.25rem);
-}
-
-.social-links a {
-    display: inline-block;
-}
-
-.social-links a:hover i {
-    color: #60a5fa;
-}
-
-.section-divider {
-    width: 6rem;
-    height: 0.25rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-</style>
-
-
-    
-    
 <!-- Contact Section -->
     <section id="contact" class="bg-gradient-to-br from-white to-blue-50 py-32">
         <div class="container mx-auto px-4">
@@ -658,12 +598,14 @@
             <div class="max-w-4xl mx-auto bg-white/95 backdrop-blur p-12 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
                 <div class="flex justify-center space-x-6 flex-col md:flex-row">
                     <a href="mailto:mohitgujarati11@gmail.com" 
+                       onclick="gtag('event', 'contact_email', {'event_category': 'engagement', 'event_label': 'contact_section', 'email': 'mohitgujarati11@gmail.com'});"
                        class="group bg-slate-900 text-white inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all hover:bg-slate-800 mb-4 md:mb-0">
                         <i class="fas fa-envelope mr-2"></i>Email Me
                     </a>
                     <a href="https://linkedin.com/in/mohitgujarati" 
                        target="_blank"
                        rel="noopener"
+                       onclick="gtag('event', 'contact_linkedin', {'event_category': 'engagement', 'event_label': 'contact_section'});"
                        class="group bg-blue-900 text-white inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all hover:bg-blue-800">
                         <i class="fab fa-linkedin mr-2"></i>LinkedIn
                     </a>
@@ -671,87 +613,68 @@
             </div>
 
             <div class="mt-16">
-                <iframe src="contacts.html" width="100%" height="800px" frameborder="0" class="rounded-lg shadow-sm"></iframe>
+                <iframe src="contacts.html" width="100%" height="800px" frameborder="0" class="rounded-lg shadow-sm" 
+                        onload="this.contentWindow.postMessage({type: 'setup_tracking', gtag: window.gtag}, '*')"></iframe>
             </div>
 
         </div>
     </section>
     </main>
     <!-- Footer -->
-    <footer class="bg-gradient-to-b from-gray-50 to-white text-gray-900 py-12 relative overflow-hidden">
+    <footer class="bg-gradient-to-b from-gray-50 to-white text-gray-900 py-12 relative overflow-hidden" itemscope itemtype="http://schema.org/WPFooter">
         <div class="container mx-auto text-center relative z-10">
             <!-- Advanced Game Section -->
-            <div class="mb-12">
+            <div class="mb-12" role="complementary" aria-label="Space Explorer Game">
                 <h3 class="text-2xl font-light mb-6">Space Explorer Challenge</h3>
-                <div id="game-container" class="w-96 h-64 mx-auto bg-gray-900 rounded-lg relative cursor-pointer border border-blue-500 overflow-hidden">
-                    <div id="star" class="absolute text-2xl transition-all duration-300 text-yellow-400 z-10">⭐</div>
-                    <div id="obstacle" class="absolute text-xl text-red-500">☄️</div>
-                    <div id="powerup" class="absolute text-xl text-green-400 hidden">🔮</div>
-                    <div class="absolute top-2 left-2 text-white space-y-1">
-                        <div class="text-sm font-light">Score: <span id="score">0</span></div>
-                        <div class="text-sm font-light">Level: <span id="level">1</span></div>
-                        <div class="text-sm font-light">Lives: <span id="lives">3</span></div>
-                        <div class="w-24 h-2 bg-gray-700 rounded">
-                            <div id="power-bar" class="h-full bg-blue-500 rounded transition-all duration-300" style="width: 100%"></div>
+                <button id="start-game-btn" class="mb-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                    Start Game
+                </button>
+                <div id="game-container" class="w-96 h-64 mx-auto bg-gray-900 rounded-lg relative cursor-pointer border border-blue-500 overflow-hidden hidden" role="application" aria-label="Space Explorer Game Interface" tabindex="0">
+                    <div id="star" class="absolute text-2xl transition-all duration-300 text-yellow-400 z-10" role="img" aria-label="Collectible Star">⭐</div>
+                    <div id="obstacle" class="absolute text-xl text-red-500" role="img" aria-label="Obstacle">☄️</div>
+                    <div id="powerup" class="absolute text-xl text-green-400 hidden" role="img" aria-label="Power Up">🔮</div>
+                    <div class="absolute top-2 left-2 text-white space-y-1" role="status" aria-live="polite">
+                        <div class="text-sm font-light">Score: <span id="score" aria-label="Current Score">0</span></div>
+                        <div class="text-sm font-light">Level: <span id="level" aria-label="Current Level">1</span></div>
+                        <div class="text-sm font-light">Lives: <span id="lives" aria-label="Remaining Lives">3</span></div>
+                        <div class="w-24 h-2 bg-gray-700 rounded" role="progressbar" aria-label="Power Level">
+                            <div id="power-bar" class="h-full bg-blue-500 rounded transition-all duration-300" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
-                    <div id="player" class="absolute bottom-3 left-3 text-2xl transition-all duration-300 text-blue-500">🚀</div>
+                    <div id="player" class="absolute bottom-3 left-3 text-2xl transition-all duration-300 text-blue-500" role="img" aria-label="Player Spaceship">🚀</div>
                 </div>
             </div>
 
-            <p class="text-sm font-light tracking-wider mb-8">&copy; 2025 Mohit Gujarati. All rights reserved.</p>
+            <p class="text-sm font-light tracking-wider mb-8" itemscope itemtype="http://schema.org/CopyrightNotice">&copy; 2025 Mohit Gujarati. All rights reserved.</p>
             
-            <div class="social-links mt-8 space-x-8">
-                <a href="https://linkedin.com/in/mohitgujarati" target="_blank" rel="noopener" aria-label="LinkedIn Profile" 
-                   class="inline-block transition-all duration-300 hover:text-gray-600">
-                    <i class="fab fa-linkedin text-2xl"></i>
+            <div class="social-links mt-8 space-x-8" role="navigation" aria-label="Social Media Links">
+                <a href="https://linkedin.com/in/mohitgujarati" target="_blank" rel="noopener" aria-label="Visit LinkedIn Profile" 
+                   class="inline-block transition-all duration-300 hover:text-gray-600" itemscope itemtype="http://schema.org/SocialMediaPosting">
+                    <i class="fab fa-linkedin text-2xl" aria-hidden="true"></i>
+                    <meta itemprop="url" content="https://linkedin.com/in/mohitgujarati">
                 </a>
-                <a href="https://github.com/MohitGujarati" target="_blank" rel="noopener" aria-label="GitHub Profile"
-                   class="inline-block transition-all duration-300 hover:text-gray-600">
-                    <i class="fab fa-github text-2xl"></i>
+                <a href="https://github.com/MohitGujarati" target="_blank" rel="noopener" aria-label="Visit GitHub Profile"
+                   class="inline-block transition-all duration-300 hover:text-gray-600" itemscope itemtype="http://schema.org/SocialMediaPosting">
+                    <i class="fab fa-github text-2xl" aria-hidden="true"></i>
+                    <meta itemprop="url" content="https://github.com/MohitGujarati">
                 </a>
                 <a href="mailto:mohitgujarati11@gmail.com" aria-label="Send Email"
-                   class="inline-block transition-all duration-300 hover:text-gray-600">
-                    <i class="fas fa-envelope text-2xl"></i>
+                   class="inline-block transition-all duration-300 hover:text-gray-600" itemscope itemtype="http://schema.org/ContactPoint">
+                    <i class="fas fa-envelope text-2xl" aria-hidden="true"></i>
+                    <meta itemprop="email" content="mohitgujarati11@gmail.com">
                 </a>
             </div>
         </div>
 
         <!-- Subtle Background Elements -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none" role="presentation" aria-hidden="true">
             <div class="absolute w-32 h-32 bg-gray-100 rounded-full -left-16 animate-subtle-float"></div>
             <div class="absolute w-32 h-32 bg-gray-100 rounded-full -right-16 animate-subtle-float animation-delay-2000"></div>
             <div class="absolute w-32 h-32 bg-gray-100 rounded-full bottom-0 left-1/2 animate-subtle-float animation-delay-4000"></div>
         </div>
 
-        <style>
-            @keyframes subtle-float {
-                0% { transform: translate(0px, 0px) scale(1); }
-                50% { transform: translate(15px, -15px) scale(1.05); }
-                100% { transform: translate(0px, 0px) scale(1); }
-            }
-            .animate-subtle-float {
-                animation: subtle-float 10s infinite ease-in-out;
-            }
-            .animation-delay-2000 {
-                animation-delay: 2s;
-            }
-            .animation-delay-4000 {
-                animation-delay: 4s;
-            }
-            #game-container {
-                background: linear-gradient(to bottom, #0f172a, #1e293b);
-            }
-            .star-trail {
-                position: absolute;
-                background: rgba(255, 255, 255, 0.5);
-                width: 2px;
-                height: 2px;
-                pointer-events: none;
-            }
-        </style>
 
-        <script>
+        <script type="application/javascript">
             const gameContainer = document.getElementById('game-container');
             const player = document.getElementById('player');
             const star = document.getElementById('star');
@@ -761,11 +684,12 @@
             const levelElement = document.getElementById('level');
             const livesElement = document.getElementById('lives');
             const powerBar = document.getElementById('power-bar');
+            const startGameBtn = document.getElementById('start-game-btn');
 
             let score = 0;
             let level = 1;
             let lives = 3;
-            let isGameActive = true;
+            let isGameActive = false;
             let isPoweredUp = false;
             let powerLevel = 100;
             let gameSpeed = 1;
@@ -784,6 +708,8 @@
             function createStarTrail(x, y) {
                 const trail = document.createElement('div');
                 trail.className = 'star-trail';
+                trail.setAttribute('role', 'presentation');
+                trail.setAttribute('aria-hidden', 'true');
                 trail.style.left = (x + 15) + 'px';
                 trail.style.top = (y + 15) + 'px';
                 gameContainer.appendChild(trail);
@@ -840,6 +766,8 @@
             }
 
             function startGame() {
+                gameContainer.classList.remove('hidden');
+                startGameBtn.classList.add('hidden');
                 isGameActive = true;
                 score = 0;
                 level = 1;
@@ -858,6 +786,7 @@
                     if (isGameActive && !isPoweredUp) {
                         powerLevel = Math.max(0, powerLevel - 1);
                         powerBar.style.width = powerLevel + '%';
+                        powerBar.setAttribute('aria-valuenow', powerLevel);
                     }
                 }, 100);
 
@@ -869,15 +798,8 @@
                 clearInterval(obstacleInterval);
                 clearTimeout(powerupTimeout);
                 alert(`Game Over!\nFinal Score: ${score}\nLevel Reached: ${level}`);
-                
-                const replayButton = document.createElement('button');
-                replayButton.className = 'mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600';
-                replayButton.textContent = 'Play Again';
-                replayButton.onclick = () => {
-                    replayButton.remove();
-                    startGame();
-                };
-                gameContainer.parentElement.appendChild(replayButton);
+                gameContainer.classList.add('hidden');
+                startGameBtn.classList.remove('hidden');
             }
 
             gameContainer.addEventListener('mousemove', (e) => {
@@ -906,6 +828,7 @@
                 isPoweredUp = true;
                 powerLevel = 100;
                 powerBar.style.width = '100%';
+                powerBar.setAttribute('aria-valuenow', '100');
                 player.style.color = '#22c55e';
                 powerup.style.display = 'none';
                 
@@ -916,8 +839,7 @@
                 }, 5000);
             });
 
-            // Start the game initially
-            startGame();
+            startGameBtn.addEventListener('click', startGame);
         </script>
     </footer>
 

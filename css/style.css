@@ -108,3 +108,100 @@ body {
     transition-duration: .3s;
 }
 
+/* General Styles */
+.skill-tag {
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    transform: translateY(-2px);
+}
+
+/* Project Styles */
+.tech-tag {
+    padding: 0.75rem 0.25rem;
+    font-size: 0.875rem;
+    background-color: #f8fafc;
+    color: #64748b;
+    border-radius: 9999px;
+    transition: all 0.3s;
+}
+
+.project-card:hover .tech-tag {
+    background-color: #f1f5f9;
+}
+
+.project-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: #64748b;
+    background-color: #f8fafc;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+}
+
+.project-btn:hover {
+    background-color: #f1f5f9;
+    color: #3b82f6;
+}
+
+.project-card {
+    transform: translateY(0);
+    transition: all 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-0.25rem);
+}
+
+/* Social Links */
+.social-links a {
+    display: inline-block;
+}
+
+.social-links a:hover i {
+    color: #60a5fa;
+}
+
+/* Section Divider */
+.section-divider {
+    width: 6rem;
+    height: 0.25rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Game Container */
+#game-container {
+    background: linear-gradient(to bottom, #0f172a, #1e293b);
+}
+
+.star-trail {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    width: 2px;
+    height: 2px;
+    pointer-events: none;
+}
+
+/* Animation */
+@keyframes subtle-float {
+    0% { transform: translate(0px, 0px) scale(1); }
+    50% { transform: translate(15px, -15px) scale(1.05); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animate-subtle-float {
+    animation: subtle-float 10s infinite ease-in-out;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
