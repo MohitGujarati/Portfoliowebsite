@@ -285,7 +285,7 @@
                             </li>
                             <li class="flex items-start">
                                 <span class="text-blue-500 mr-3">→</span>
-                                <span class="font-light">Developed cross-platform solutions for travel and productivity applications</span>
+                                <span class="font-light">Developed cross-platform solutions for AI-powered meeting assistance and productivity applications</span>
                             </li>
                         </ul>
                         <button onclick="gtag('event', 'view_tnm_details', {'event_category': 'engagement', 'event_label': 'experience_section'}); toggleExperience('tnm-experience-short', 'tnm-experience-full')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
@@ -426,6 +426,53 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+             <!-- TwinAI Project -->
+             <div class="project-card group" onclick="gtag('event', 'view_twinai_project', {'event_category': 'projects', 'event_label': 'projects_section'});">
+                <div class="bg-white/95 backdrop-blur rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                    <div class="bg-slate-900 p-6 text-white">
+                        <h3 class="text-xl font-semibold mb-2">TwinMind AI</h3>
+                        <p class="text-blue-50 text-sm font-light">AI-Powered Meeting Assistant for Android</p>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="mb-4 flex flex-wrap gap-2">
+                            <span class="tech-tag">Kotlin</span>
+                            <span class="tech-tag">Gemini AI</span>
+                            <span class="tech-tag">Room Database</span>
+                            <span class="tech-tag">MVVM</span>
+                            <span class="tech-tag">Material Design 3</span>
+                        </div>
+
+                        <ul class="space-y-3 mb-6 text-slate-600">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">→</span>
+                                <span class="font-light">Real-time audio transcription in 30-second segments</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">→</span>
+                                <span class="font-light">AI-powered summarization using Google Gemini API</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">→</span>
+                                <span class="font-light">Offline-first architecture with privacy-focused local storage</span>
+                            </li>
+                        </ul>
+
+                        <div class="flex justify-end">
+                            <a href="https://github.com/MohitGujarati/TwinAI"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               onclick="gtag('event', 'click_twinai_github', {'event_category': 'projects', 'event_label': 'projects_section'});"
+                               class="project-btn">
+                                <span>View on GitHub</span>
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Fleet Tracking Project -->
             <div class="project-card group" onclick="gtag('event', 'view_fleet_project', {'event_category': 'projects', 'event_label': 'projects_section'});">
                 <div class="bg-white/95 backdrop-blur rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
@@ -562,44 +609,7 @@
                 </div>
             </div>
 
-            <!-- Travel Website Project -->
-            <div class="project-card group" onclick="gtag('event', 'view_travel_project', {'event_category': 'projects', 'event_label': 'projects_section'});">
-                <div class="bg-white/95 backdrop-blur rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-                    <div class="bg-slate-900 p-6 text-white">
-                        <h3 class="text-xl font-semibold mb-2">Travel Website</h3>
-                        <p class="text-blue-50 text-sm font-light">Modern React Web Application</p>
-                    </div>
-                    
-                    <div class="p-6">
-                        <div class="mb-4 flex flex-wrap gap-2">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">Tailwind</span>
-                            <span class="tech-tag">SOLID</span>
-                        </div>
-
-                        <ul class="space-y-3 mb-6 text-slate-600">
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-2">→</span>
-                                <span class="font-light">50% productivity increase through reusable UI components</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-2">→</span>
-                                <span class="font-light">Reduced codebase by 800 lines with automated design process</span>
-                            </li>
-                        </ul>
-
-                        <div class="flex justify-end">
-                            <button class="project-btn" onclick="gtag('event', 'click_travel_details', {'event_category': 'projects', 'event_label': 'projects_section'});">
-                                <span>View Details</span>
-                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </div>
 </section>
