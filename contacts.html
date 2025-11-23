@@ -1,194 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Me | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563eb',
+            secondary: '#7c3aed',
+            dark: '#0f172a',
+            light: '#f8fafc',
+            muted: '#94a3b8',
+            input: '#f1f5f9',
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f7fa;
-      color: #333;
-      overflow: hidden; /* Prevent scrolling */
-
+    /* Custom scrollbar for textarea */
+    textarea::-webkit-scrollbar {
+      width: 8px;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px;
+    textarea::-webkit-scrollbar-track {
+      background: transparent;
     }
 
-    h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-    }
-
-    form {
-      background-color: #fff;
-      padding: 40px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      animation: fadeIn 1s ease-out;
-    }
-
-    .field {
-      margin-bottom: 20px;
-    }
-
-    label {
-      font-size: 1rem;
-      font-weight: 500;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      width: 100%;
-      padding: 12px;
-      font-size: 1rem;
-      border-radius: 6px;
-      border: 1px solid #ddd;
-      background-color: #f9f9f9;
-      transition: all 0.3s ease;
-    }
-
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    textarea:focus {
-      outline: none;
-      border-color: #3b8d99;
-      box-shadow: 0 0 8px rgba(59, 141, 153, 0.5);
-    }
-
-    textarea {
-      resize: vertical;
-      height: 120px;
-    }
-
-    input[type="submit"] {
-      background-color: #3b8d99;
-      color: white;
-      border: none;
-      padding: 15px 25px;
-      font-size: 1.2rem;
-      border-radius: 8px;
-      cursor: pointer;
-      width: 100%;
-      transition: all 0.3s ease;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #33878a;
-      transform: translateY(-2px);
-    }
-
-    input[type="submit"]:active {
-      transform: translateY(0);
-    }
-
-    .feedback {
-      margin-top: 20px;
-      font-size: 1rem;
-      text-align: center;
-    }
-
-    .success {
-      color: #28a745;
-    }
-
-    .error {
-      color: #dc3545;
-    }
-
-    /* Animation for fading in */
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    /* Mobile optimization */
-    @media (max-width: 600px) {
-      .container {
-        padding: 20px;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      input[type="submit"] {
-        font-size: 1rem;
-        padding: 12px 20px;
-      }
+    textarea::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      border-radius: 20px;
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <h1>Contact Me</h1>
-    <form id="form">
-      <div class="field">
-        <label for="from_name">Your Name</label>
-        <input type="text" name="from_name" id="from_name" required aria-required="true" placeholder="Enter your name">
+
+<body class="bg-transparent text-slate-600 antialiased overflow-hidden">
+  <div class="w-full h-full flex flex-col justify-center p-6">
+
+    <form id="form" class="space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="space-y-2">
+          <label for="from_name" class="text-sm font-semibold text-slate-700 block">Your Name</label>
+          <input type="text" name="from_name" id="from_name" required placeholder="John Doe"
+            class="w-full px-4 py-3 rounded-lg bg-input border-2 border-transparent focus:border-primary focus:bg-white focus:outline-none transition-all duration-200 text-slate-800 placeholder-slate-400">
+        </div>
+
+        <div class="space-y-2">
+          <label for="to_name" class="text-sm font-semibold text-slate-700 block">Company Name</label>
+          <input type="text" name="to_name" id="to_name" required placeholder="Tech Corp"
+            class="w-full px-4 py-3 rounded-lg bg-input border-2 border-transparent focus:border-primary focus:bg-white focus:outline-none transition-all duration-200 text-slate-800 placeholder-slate-400">
+        </div>
       </div>
-      <div class="field">
-        <label for="to_name">Company Name</label>
-        <input type="text" name="to_name" id="to_name" required aria-required="true" placeholder="Enter company name">
+
+      <div class="space-y-2">
+        <label for="reply_to" class="text-sm font-semibold text-slate-700 block">Email Address</label>
+        <input type="email" name="reply_to" id="reply_to" required placeholder="john@example.com"
+          class="w-full px-4 py-3 rounded-lg bg-input border-2 border-transparent focus:border-primary focus:bg-white focus:outline-none transition-all duration-200 text-slate-800 placeholder-slate-400">
       </div>
-      <div class="field">
-        <label for="message">Your Message</label>
-        <textarea name="message" id="message" required aria-required="true" placeholder="Write your message"></textarea>
+
+      <div class="space-y-2">
+        <label for="message" class="text-sm font-semibold text-slate-700 block">Message</label>
+        <textarea name="message" id="message" required placeholder="Tell me about your project..."
+          class="w-full px-4 py-3 rounded-lg bg-input border-2 border-transparent focus:border-primary focus:bg-white focus:outline-none transition-all duration-200 text-slate-800 placeholder-slate-400 h-32 resize-none"></textarea>
       </div>
-      <div class="field">
-        <label for="reply_to">Your Email</label>
-        <input type="email" name="reply_to" id="reply_to" required aria-required="true" placeholder="Enter your email">
-      </div>
-      <input type="submit" id="button" value="Send Email">
+
+      <button type="submit" id="button"
+        class="w-full py-3.5 px-6 rounded-lg bg-slate-900 text-white font-semibold hover:bg-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 group">
+        <span>Send Message</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform group-hover:translate-x-1 transition-transform"
+          fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </button>
     </form>
-    <div class="feedback" id="feedback"></div>
+
+    <div id="feedback" class="mt-4 text-center text-sm font-medium hidden opacity-0 transition-opacity duration-300">
+    </div>
   </div>
 
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script type="text/javascript">
-    emailjs.init('ceeQHDDpWY--9AeBU');
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // Correct v4 initialization
+    emailjs.init({
+      publicKey: "suKd98SQdQg7inpdw"
+    });
 
     const form = document.getElementById('form');
     const btn = document.getElementById('button');
+    const btnText = btn.querySelector('span');
     const feedback = document.getElementById('feedback');
 
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', function (event) {
       event.preventDefault();
 
-      btn.value = 'Sending...';
+      const originalBtnContent = btn.innerHTML;
+      btn.innerHTML = '<span>Sending...</span>';
       btn.disabled = true;
-      feedback.textContent = ''; // Clear previous feedback
+      btn.classList.add('opacity-75', 'cursor-not-allowed');
 
-      const serviceID = 'default_service';
+      feedback.classList.add('hidden');
+      feedback.classList.remove('opacity-100');
+
+      const serviceID = 'service_fxae31a';
       const templateID = 'template_zjes0k9';
 
       emailjs.sendForm(serviceID, templateID, form)
         .then(() => {
-          btn.value = 'Send Email';
-          btn.disabled = false;
+          btn.innerHTML = '<span>Message Sent!</span><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>';
+          btn.classList.replace('bg-slate-900', 'bg-green-600');
+          btn.classList.replace('hover:bg-primary', 'hover:bg-green-700');
+
           form.reset();
-          feedback.textContent = 'Message sent successfully!';
-          feedback.className = 'feedback success';
+
+          setTimeout(() => {
+            btn.innerHTML = originalBtnContent;
+            btn.disabled = false;
+            btn.classList.remove('opacity-75', 'cursor-not-allowed', 'bg-green-600', 'hover:bg-green-700');
+            btn.classList.add('bg-slate-900', 'hover:bg-primary');
+          }, 3000);
         })
         .catch((err) => {
-          btn.value = 'Send Email';
+          console.error("EmailJS Error:", err);
+          btn.innerHTML = originalBtnContent;
           btn.disabled = false;
-          feedback.textContent = 'Failed to send message. Please try again later.';
-          feedback.className = 'feedback error';
-          console.error('EmailJS error:', err);
+          btn.classList.remove('opacity-75', 'cursor-not-allowed');
+
+          feedback.textContent = 'Failed to send message. Please try again.';
+          feedback.className = 'mt-4 text-center text-sm font-medium text-red-500 opacity-100 block';
         });
     });
   </script>
 </body>
+
 </html>

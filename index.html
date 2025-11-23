@@ -1,988 +1,535 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
     <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-N8WDSH5P');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-N8WDSH5P');</script>
     <!-- End Google Tag Manager -->
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Mohit Gujarati - Android Developer and Computer Engineering Master's Student">
-    <title>Mohit Gujarati | Software Engineer | Android Developer</title>
-    
+    <title>Mohit Gujarati | Software Engineer</title>
+
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- Custom CSS for mouse and scroll effects-->
-    <style>
-        /* Canvas for mouse and scroll effects */
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 9999; /* Ensure it's above everything */
-        }
-
-        /* Multi-color particle effect */
-        .particle-colors {
-            --color1: #FF6B6B;  /* Red */
-            --color2: #4ECDC4;  /* Teal */
-            --color3: #45B7D1;  /* Blue */
-            --color4: #96CEB4;  /* Green */
-            --color5: #FFEEAD;  /* Yellow */
-        }
-
-        /* Smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
-
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const canvas = document.createElement('canvas');
-            canvas.id = 'mouseEffectCanvas';
-            document.body.appendChild(canvas);
-            const ctx = canvas.getContext('2d');
-
-            let particles = [];
-            let mouse = { x: 0, y: 0 };
-            let lastScrollY = window.scrollY;
-            
-            const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEEAD'];
-
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            class Particle {
-                constructor(x, y, size, color) {
-                    this.x = x;
-                    this.y = y;
-                    this.size = size;
-                    this.color = color;
-                    this.life = 1;
-                    this.speedX = (Math.random() - 0.5) * 2;
-                    this.speedY = (Math.random() - 0.5) * 2;
-                }
-
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-                    this.size *= 0.97;
-                    this.life -= 0.02;
-                }
-
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = `${this.color}${Math.floor(this.life * 255).toString(16).padStart(2, '0')}`;
-                    ctx.fill();
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Mapping Tailwind colors to CSS variables
+                        primary: 'var(--accent-primary)',
+                        secondary: 'var(--accent-secondary)',
+                        dark: 'var(--text-primary)',
+                        light: 'var(--bg-secondary)',
+                        muted: 'var(--text-secondary)',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    }
                 }
             }
-
-            function createParticle(x, y) {
-                const size = Math.random() * 5 + 2;
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                particles.push(new Particle(x, y, size, color));
-            }
-
-            function createScrollParticles() {
-                const currentScroll = window.scrollY;
-                const scrollDiff = currentScroll - lastScrollY;
-                const particleCount = Math.abs(Math.floor(scrollDiff / 2));
-                
-                for (let i = 0; i < particleCount; i++) {
-                    const x = Math.random() * window.innerWidth;
-                    const y = scrollDiff > 0 ? window.innerHeight : 0;
-                    createParticle(x, y);
-                }
-                
-                lastScrollY = currentScroll;
-            }
-
-            function animateParticles() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach((particle, index) => {
-                    particle.update();
-                    particle.draw();
-                    if (particle.life <= 0.1) particles.splice(index, 1);
-                });
-                requestAnimationFrame(animateParticles);
-            }
-
-            window.addEventListener('mousemove', (event) => {
-                mouse.x = event.x;
-                mouse.y = event.y;
-                for (let i = 0; i < 3; i++) createParticle(mouse.x, mouse.y);
-            });
-
-            window.addEventListener('scroll', () => {
-                createScrollParticles();
-            });
-
-            window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
-
-            animateParticles();
-        });
+        }
     </script>
-
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="font-['Inter'] text-gray-800 bg-gray-50">
-    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="mohitgujarati" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/mohitgujarati?trk=profile-badge">Mohit Gujarati</a></div>
 
+<body class="antialiased text-[var(--text-secondary)] bg-[var(--bg-main)]">
     <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8WDSH5P"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8WDSH5P" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <!-- Accessibility: Skip to main content link -->
-    <a href="#main-content" class="sr-only focus:not-sr-only">
-        Skip to main content
-    </a>
 
     <!-- Navigation -->
-    <header class="fixed top-0 w-full bg-white/90 backdrop-blur-sm border-b border-gray-100 z-50">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="#home" class="text-xl font-['Playfair_Display'] text-gray-900">
-                    Mohit Gujarati
-                </a>
-                
-                <!-- Hamburger Menu -->
-                <button id="mobile-menu-toggle" class="md:hidden" aria-label="Toggle mobile menu">
-                    <i class="fas fa-bars text-gray-600"></i>
-                </button>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Home</a>
-                    <a href="#about" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">About</a>
-                    <a href="#skills" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Skills</a>
-                    <a href="#projects" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Projects</a>
-                    <a href="#contact" class="text-sm px-6 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors">Contact</a>
-                </div>
+    <nav id="navbar" class="nav-fixed py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#home" class="text-xl font-heading font-bold text-[var(--text-primary)] tracking-tight">Mohit
+                Gujarati</a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="btn-primary text-sm py-2 px-5">Contact</a>
             </div>
 
-            <!-- Mobile Menu -->
-            <div id="mobile-menu-content" class="hidden md:hidden mt-4 pb-4">
-                <div class="flex flex-col space-y-4">
-                    <a href="#home" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Home</a>
-                    <a href="#about" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">About</a>
-                    <a href="#skills" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Skills</a>
-                    <a href="#projects" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Projects</a>
-                    <a href="#contact" class="text-sm px-6 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors inline-block text-center">Contact</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-[var(--text-primary)] focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
 
-    <!-- Main Content Container -->
-    <main id="main-content" class="pt-20">
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-[var(--bg-main)] z-40 transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center space-y-8 md:hidden">
+            <a href="#home" class="text-2xl font-heading font-bold text-[var(--text-primary)] mobile-link">Home</a>
+            <a href="#experience"
+                class="text-2xl font-heading font-bold text-[var(--text-primary)] mobile-link">Experience</a>
+            <a href="#projects"
+                class="text-2xl font-heading font-bold text-[var(--text-primary)] mobile-link">Projects</a>
+            <a href="#skills" class="text-2xl font-heading font-bold text-[var(--text-primary)] mobile-link">Skills</a>
+            <a href="#contact" class="text-2xl font-heading font-bold text-primary mobile-link">Contact</a>
+        </div>
+    </nav>
+
+    <main>
         <!-- Hero Section -->
-        <section id="home" class="bg-gradient-to-b from-gray-50 to-white py-32">
+        <section id="home" class="min-h-screen flex items-center justify-center pt-20">
             <div class="container mx-auto px-6">
-                <div class="max-w-3xl mx-auto text-center">
-                    <h1 class="font-['Playfair_Display'] text-5xl text-gray-900 mb-6" onclick="gtag('event', 'view_hero_section', {'event_category': 'engagement'});">
-                        <span class="block text-sm text-gray-500 mb-2">Welcome, I'm</span>
-                        Mohit Gujarati
-                    </h1>
-                    <p class="text-xl text-gray-600 font-light mb-12">Software Engineer | Android Developer | Masters Student</p>
-                    
-                    <div class="flex justify-center space-x-6">
-                        <a href="#contact" 
-                           class="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
-                           onclick="gtag('event', 'click_connect', {'event_category': 'engagement', 'event_label': 'hero_section'});">
-                            <i class="fas fa-envelope mr-2"></i>Connect
-                        </a>
-                        <a href="#projects" 
-                           class="px-8 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-                           onclick="gtag('event', 'click_projects', {'event_category': 'engagement', 'event_label': 'hero_section'});">
-                            <i class="fas fa-code mr-2"></i>Projects
-                        </a>
+                <div class="flex flex-col-reverse md:flex-row items-center justify-center gap-12">
+                    <!-- Text Content -->
+                    <div class="text-center md:text-left md:w-1/2 reveal">
+                        <div
+                            class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-primary text-sm font-semibold mb-6 border border-blue-100">
+                            Available for New Opportunities
+                        </div>
+                        <h1
+                            class="text-5xl md:text-7xl font-heading font-bold mb-6 text-[var(--text-primary)] leading-tight">
+                            Building <span class="gradient-text">Intelligent</span> <br>
+                            Mobile and Web Experiences
+                        </h1>
+                        <p
+                            class="text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto md:mx-0 mb-10 leading-relaxed">
+                            I'm <strong>Mohit Gujarati</strong>, an Android Developer and Master's Student specializing
+                            in Kotlin, Jetpack Compose, and AI-driven applications.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+                            <a href="#projects" class="btn-primary">View Projects <i
+                                    class="fas fa-arrow-right text-xs"></i></a>
+                            <a href="#contact" class="btn-outline">Contact Me</a>
+                            <a href="utldoc/MohitResume.pdf" download
+                                onclick="gtag('event', 'download_resume', {'event_category': 'engagement', 'event_label': 'about_section'});"
+                                class="group bg-blue-900 text-white inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all hover:bg-blue-800">
+                                <i class="fas fa-file-download mr-2"></i>Resume
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- Avatar -->
+                    <div class="md:w-1/2 flex justify-center reveal delay-100">
+                        <div class="relative w-64 h-64 md:w-80 md:h-80">
+                            <div class="absolute inset-0 bg-blue-100 rounded-full blur-3xl opacity-30 animate-pulse">
+                            </div>
+                            <img src="images/avatar_mohit.png" alt="Mohit Gujarati"
+                                class="hero-avatar relative z-10 w-full h-full object-cover bg-white">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="bg-gradient-to-br from-white to-blue-50 py-32">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl font-light mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900">Professional Overview</h2>
-                    <div class="section-divider bg-gradient-to-r from-slate-800 to-blue-900 mb-8"></div>
-                    <p class="text-slate-600 max-w-2xl mx-auto font-light">
-                        Crafting innovative mobile solutions with technical excellence
-                    </p>
+        <!-- Experience Section -->
+        <section id="experience" class="bg-[var(--bg-secondary)]">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4 text-[var(--text-primary)]">Experience
+                    </h2>
+                    <p class="text-[var(--text-secondary)]">My professional journey and education</p>
                 </div>
 
-                <div class="max-w-4xl mx-auto bg-white/95 backdrop-blur p-12 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
-                    <p class="text-slate-600 text-lg text-center mb-12 leading-relaxed font-light">
-                        With expertise in <span class="font-medium text-slate-900">Android development</span> and advanced computer science research, I craft sophisticated mobile solutions that harmonize technical excellence with refined user experiences. My commitment lies in developing meaningful applications that elevate digital interactions and drive technological advancement.
-                    </p>
+                <div class="relative max-w-4xl mx-auto">
+                    <!-- Timeline Line -->
+                    <div class="timeline-line"></div>
 
-                    <div class="flex justify-center space-x-6 flex-col md:flex-row">
-                        <a href="https://linkedin.com/in/mohitgujarati" 
-                           target="_blank"
-                           rel="noopener"
-                           onclick="gtag('event', 'click_linkedin', {'event_category': 'engagement', 'event_label': 'about_section'});"
-                           class="group bg-slate-900 text-white inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all hover:bg-slate-800 mb-4 md:mb-0">
-                            <i class="fab fa-linkedin mr-2"></i>LinkedIn Profile
-                        </a>
-                        <a href="utldoc/MohitResume_2025.docx" 
-                           download
-                           onclick="gtag('event', 'download_resume', {'event_category': 'engagement', 'event_label': 'about_section'});"
-                           class="group bg-blue-900 text-white inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all hover:bg-blue-800">
-                            <i class="fas fa-file-download mr-2"></i>Resume
-                        </a>
+                    <!-- Item 1: M.S. -->
+                    <div class="relative pl-12 md:pl-0 mb-16 group reveal">
+                        <div class="md:w-1/2 md:pr-12 md:text-right md:ml-0">
+                            <span class="text-primary font-bold text-sm mb-1 block">2024 – 2026 (Expected)</span>
+                            <h3 class="text-xl font-heading font-bold text-[var(--text-primary)]">M.S. Computer
+                                Engineering</h3>
+                            <p class="text-[var(--text-muted)] mb-4 text-sm">Long Island University, Brooklyn</p>
+                            <div class="spotlight-card p-6 text-left md:text-right">
+                                <div class="card-content">
+                                    <p class="text-[var(--text-secondary)] text-sm leading-relaxed">
+                                        Specializing in <strong>Artificial Intelligence</strong>, Pattern Recognition,
+                                        and System Design.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute left-[19px] top-1.5 w-3 h-3 rounded-full bg-primary border-4 border-white shadow-md md:left-1/2 md:-ml-1.5 z-10">
+                        </div>
+                    </div>
+
+                    <!-- Item 2: TNM -->
+                    <div class="relative pl-12 md:pl-0 mb-16 group reveal delay-100">
+                        <div class="md:w-1/2 md:ml-auto md:pl-12">
+                            <span class="text-primary font-bold text-sm mb-1 block">May 2023 – June 2024</span>
+                            <h3 class="text-xl font-heading font-bold text-[var(--text-primary)]">Software Developer
+                            </h3>
+                            <p class="text-[var(--text-muted)] mb-4 text-sm">TNM Software Solutions Pvt Ltd.</p>
+                            <div class="spotlight-card p-6">
+                                <div class="card-content">
+                                    <ul
+                                        class="space-y-2 text-[var(--text-secondary)] text-sm leading-relaxed list-disc list-inside marker:text-primary">
+                                        <li>Engineered Android apps with <strong>Kotlin</strong> & Motion Sensors.</li>
+                                        <li>Boosted performance by <strong>50%</strong> via modern architecture.</li>
+                                        <li>Delivered <strong>4 production apps</strong> in 8 months.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute left-[19px] top-1.5 w-3 h-3 rounded-full bg-white border-2 border-[var(--border-color)] shadow-sm md:left-1/2 md:-ml-1.5 z-10">
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Tops -->
+                    <div class="relative pl-12 md:pl-0 mb-16 group reveal">
+                        <div class="md:w-1/2 md:pr-12 md:text-right md:ml-0">
+                            <span class="text-primary font-bold text-sm mb-1 block">May 2022 – May 2023</span>
+                            <h3 class="text-xl font-heading font-bold text-[var(--text-primary)]">Android Developer
+                                Trainee</h3>
+                            <p class="text-[var(--text-muted)] mb-4 text-sm">Tops Technology Inc.</p>
+                            <div class="spotlight-card p-6 text-left md:text-right">
+                                <div class="card-content">
+                                    <p class="text-[var(--text-secondary)] text-sm leading-relaxed">
+                                        Developed full-stack native mobile applications. Optimized API integrations &
+                                        database solutions.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute left-[19px] top-1.5 w-3 h-3 rounded-full bg-white border-2 border-[var(--border-color)] shadow-sm md:left-1/2 md:-ml-1.5 z-10">
+                        </div>
+                    </div>
+
+                    <!-- Item 4: B.E. -->
+                    <div class="relative pl-12 md:pl-0 group reveal delay-100">
+                        <div class="md:w-1/2 md:ml-auto md:pl-12">
+                            <span class="text-primary font-bold text-sm mb-1 block">2016 – 2020</span>
+                            <h3 class="text-xl font-heading font-bold text-[var(--text-primary)]">B.E. Computer
+                                Engineering</h3>
+                            <p class="text-[var(--text-muted)] mb-4 text-sm">Shankersinh Vaghela Institute of Technology
+                            </p>
+                            <div class="spotlight-card p-6">
+                                <div class="card-content">
+                                    <p class="text-[var(--text-secondary)] text-sm leading-relaxed">
+                                        Core coursework in <strong>Java</strong>, Object-Oriented Programming, and Data
+                                        Structures & Algorithms.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute left-[19px] top-1.5 w-3 h-3 rounded-full bg-white border-2 border-[var(--border-color)] shadow-sm md:left-1/2 md:-ml-1.5 z-10">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-    
-    <!-- Experience Section -->
-    <section id="experience" class="py-32">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-light mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900">Professional Journey</h2>
-                <div class="section-divider bg-gradient-to-r from-slate-800 to-blue-900 mb-8"></div>
-                <p class="text-slate-600 max-w-2xl mx-auto font-light">A timeline of impactful contributions and growth</p>
-            </div>
-    
-            <div class="max-w-4xl mx-auto space-y-12">
-                <!-- TNM Software Solutions Experience -->
-                <div class="bg-white/95 backdrop-blur p-12 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
-                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-8">
-                        <div>
-                            <h3 class="text-2xl font-light text-slate-900 mb-2">Software Developer</h3>
-                            <p class="text-slate-500 font-light">TNM Software Solutions Pvt Ltd</p>
-                        </div>
-                        <span class="text-slate-400 font-light mt-2 md:mt-0">May 2023 - June 2024</span>
-                    </div>
-                    
-                    <div id="tnm-experience-short">
-                        <ul class="space-y-4 text-slate-600">
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-3">→</span>
-                                <span class="font-light">Led Android development initiatives using Kotlin, implementing sophisticated motion sensing and location-based features</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-3">→</span>
-                                <span class="font-light">Achieved 50% performance optimization through strategic code refactoring and coroutines implementation</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-3">→</span>
-                                <span class="font-light">Developed cross-platform solutions for AI-powered meeting assistance and productivity applications</span>
-                            </li>
-                        </ul>
-                        <button onclick="gtag('event', 'view_tnm_details', {'event_category': 'engagement', 'event_label': 'experience_section'}); toggleExperience('tnm-experience-short', 'tnm-experience-full')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
-                            View Details
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                            </svg>
-                        </button>
-                    </div>
-    
-                    <div id="tnm-experience-full" class="hidden">
-                        <ul class="space-y-4 text-slate-600">
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-3">→</span>
-                                <span class="font-light">Engineered sophisticated Android applications leveraging Kotlin and Android SDK, integrating motion sensors and geofencing capabilities</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-3">→</span>
-                                <span class="font-light">
-                                    Implemented advanced features including:
-                                    <ul class="mt-3 ml-6 space-y-2">
-                                        <li class="flex items-center">
-                                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></span>
-                                            <span>Location-aware notification system</span>
-                                        </li>
-                                        <li class="flex items-center">
-                                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></span>
-                                            <span>Distance-optimized updates</span>
-                                        </li>
-                                        <li class="flex items-center">
-                                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></span>
-                                            <span>Real-time fleet tracking</span>
-                                        </li>
-                                    </ul>
-                                </span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-3">→</span>
-                                <span class="font-light">Achieved 50% performance enhancement through coroutines implementation</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-3">→</span>
-                                <span class="font-light">Collaborated with cross-functional teams to deliver production-ready applications</span>
-                            </li>
-                        </ul>
-                        <button onclick="gtag('event', 'hide_tnm_details', {'event_category': 'engagement', 'event_label': 'experience_section'}); toggleExperience('tnm-experience-full', 'tnm-experience-short')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
-                            Show Less
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
-                            </svg>
-                        </button>
-                    </div>
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4 text-[var(--text-primary)]">Featured
+                        Projects</h2>
+                    <p class="text-[var(--text-secondary)]">A selection of my recent work</p>
                 </div>
-    
-                <!-- Tops Technology Experience -->
-                <div class="bg-white/95 backdrop-blur p-12 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
-                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-8">
-                        <div>
-                            <h3 class="text-2xl font-light text-slate-900 mb-2">Android Developer Trainee</h3>
-                            <p class="text-slate-500 font-light">Tops Technology Inc.</p>
+
+                <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    <!-- Project 1 -->
+                    <div class="spotlight-card group reveal">
+                        <div class="p-8 h-full flex flex-col card-content">
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <h3 class="text-2xl font-heading font-bold text-[var(--text-primary)] mb-1">TwinAI
+                                    </h3>
+                                    <p class="text-xs font-bold text-primary uppercase tracking-wider">AI Meeting
+                                        Assistant</p>
+                                </div>
+                                <a href="https://github.com/MohitGujarati/TwinAI" target="_blank"
+                                    class="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"><i
+                                        class="fab fa-github text-xl"></i></a>
+                            </div>
+                            <p class="text-[var(--text-secondary)] mb-6 text-sm leading-relaxed flex-grow">
+                                An intelligent assistant that transcribes meetings in real-time and generates summaries
+                                using <strong>Gemini AI</strong>. Increased user efficiency by <strong>70%</strong>.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span class="tech-pill">Kotlin</span>
+                                <span class="tech-pill">Gemini AI</span>
+                                <span class="tech-pill">Room DB</span>
+                            </div>
                         </div>
-                        <span class="text-slate-400 font-light mt-2 md:mt-0">May 2022 - May 2023</span>
                     </div>
-                    
-                    <div id="tops-experience-short">
-                        <ul class="space-y-4 text-slate-600">
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-3">→</span>
-                                <span class="font-light">Developed expertise in full-stack mobile development with Kotlin</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-3">→</span>
-                                <span class="font-light">Mastered multiple database technologies and integration patterns</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-3">→</span>
-                                <span class="font-light">Applied modern UI/UX design principles in mobile applications</span>
-                            </li>
-                        </ul>
-                        <button onclick="gtag('event', 'view_tops_details', {'event_category': 'engagement', 'event_label': 'experience_section'}); toggleExperience('tops-experience-short', 'tops-experience-full')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
-                            View Details
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                            </svg>
-                        </button>
-                    </div>
-    
-                    <div id="tops-experience-full" class="hidden">
-                        <ul class="space-y-4 text-slate-600">
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-3">→</span>
-                                <span class="font-light">Built comprehensive expertise in native mobile application development using Kotlin</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-3">→</span>
-                                <span class="font-light">
-                                    Advanced database implementation:
-                                    <ul class="mt-3 ml-6 space-y-2">
-                                        <li class="flex items-center">
-                                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></span>
-                                            <span>Robust API architectures</span>
-                                        </li>
-                                        <li class="flex items-center">
-                                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></span>
-                                            <span>Optimized database solutions</span>
-                                        </li>
-                                    </ul>
-                                </span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-3">→</span>
-                                <span class="font-light">Enhanced user experiences through modern interface design patterns</span>
-                            </li>
-                        </ul>
-                        <button onclick="gtag('event', 'hide_tops_details', {'event_category': 'engagement', 'event_label': 'experience_section'}); toggleExperience('tops-experience-full', 'tops-experience-short')" class="mt-6 text-blue-600 hover:text-blue-800 font-light transition-colors flex items-center">
-                            Show Less
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-
-
-
-
-<!-- Projects Section -->
-<section id="projects" class="py-32">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-light mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900">Featured Projects</h2>
-            <div class="section-divider bg-gradient-to-r from-slate-800 to-blue-900 mb-8"></div>
-            <p class="text-slate-600 max-w-2xl mx-auto font-light">Selected works showcasing my development journey</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-             <!-- TwinAI Project -->
-             <div class="project-card group" onclick="gtag('event', 'view_twinai_project', {'event_category': 'projects', 'event_label': 'projects_section'});">
-                <div class="bg-white/95 backdrop-blur rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-                    <div class="bg-slate-900 p-6 text-white">
-                        <h3 class="text-xl font-semibold mb-2">TwinMind AI</h3>
-                        <p class="text-blue-50 text-sm font-light">AI-Powered Meeting Assistant for Android</p>
-                    </div>
-                    
-                    <div class="p-6">
-                        <div class="mb-4 flex flex-wrap gap-2">
-                            <span class="tech-tag">Kotlin</span>
-                            <span class="tech-tag">Gemini AI</span>
-                            <span class="tech-tag">Room Database</span>
-                            <span class="tech-tag">MVVM</span>
-                            <span class="tech-tag">Material Design 3</span>
+                    <!-- Project 2 -->
+                    <div class="spotlight-card group reveal delay-100">
+                        <div class="p-8 h-full flex flex-col card-content">
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <h3 class="text-2xl font-heading font-bold text-[var(--text-primary)] mb-1">Fleet
+                                        Tracker</h3>
+                                    <p class="text-xs font-bold text-primary uppercase tracking-wider">Enterprise</p>
+                                </div>
+                                <span
+                                    class="text-[10px] font-bold bg-slate-100 text-[var(--text-muted)] px-2 py-1 rounded">CONFIDENTIAL</span>
+                            </div>
+                            <p class="text-[var(--text-secondary)] mb-6 text-sm leading-relaxed flex-grow">
+                                Real-time location tracking with <strong>Geofencing</strong> and incident detection via
+                                motion sensors. Optimized performance by <strong>40%</strong> using Coroutines.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span class="tech-pill">Kotlin</span>
+                                <span class="tech-pill">Google Maps</span>
+                                <span class="tech-pill">Realm</span>
+                            </div>
                         </div>
+                    </div>
 
-                        <ul class="space-y-3 mb-6 text-slate-600">
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-2">→</span>
-                                <span class="font-light">Real-time audio transcription in 30-second segments</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-2">→</span>
-                                <span class="font-light">AI-powered summarization using Google Gemini API</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-2">→</span>
-                                <span class="font-light">Offline-first architecture with privacy-focused local storage</span>
-                            </li>
-                        </ul>
+                    <!-- Project 3 -->
+                    <div class="spotlight-card group reveal">
+                        <div class="p-8 h-full flex flex-col card-content">
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <h3 class="text-2xl font-heading font-bold text-[var(--text-primary)] mb-1">InEvents
+                                    </h3>
+                                    <p class="text-xs font-bold text-primary uppercase tracking-wider">Event Management
+                                    </p>
+                                </div>
+                                <a href="https://github.com/MohitGujarati/SnapEvents" target="_blank"
+                                    class="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"><i
+                                        class="fab fa-github text-xl"></i></a>
+                            </div>
+                            <p class="text-[var(--text-secondary)] mb-6 text-sm leading-relaxed flex-grow">
+                                A <strong>100% paperless</strong> registration system for student events. Scaled to
+                                <strong>200+ daily active users</strong> with real-time Firebase notifications.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span class="tech-pill">Kotlin</span>
+                                <span class="tech-pill">Firebase</span>
+                                <span class="tech-pill">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
 
-                        <div class="flex justify-end">
-                            <a href="https://github.com/MohitGujarati/TwinAI"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               onclick="gtag('event', 'click_twinai_github', {'event_category': 'projects', 'event_label': 'projects_section'});"
-                               class="project-btn">
-                                <span>View on GitHub</span>
-                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                </svg>
-                            </a>
+                    <!-- Project 4 -->
+                    <div class="spotlight-card group reveal delay-100">
+                        <div class="p-8 h-full flex flex-col card-content">
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <h3 class="text-2xl font-heading font-bold text-[var(--text-primary)] mb-1">Face
+                                        Detection</h3>
+                                    <p class="text-xs font-bold text-primary uppercase tracking-wider">Computer Vision
+                                    </p>
+                                </div>
+                                <a href="https://github.com/MohitGujarati/Face_detection_py" target="_blank"
+                                    class="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"><i
+                                        class="fab fa-github text-xl"></i></a>
+                            </div>
+                            <p class="text-[var(--text-secondary)] mb-6 text-sm leading-relaxed flex-grow">
+                                High-accuracy detection system achieving <strong>95% precision</strong> using OpenCV's
+                                Haar Cascade. Automated dataset processing and annotation.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">OpenCV</span>
+                                <span class="tech-pill">Flask</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Fleet Tracking Project -->
-            <div class="project-card group" onclick="gtag('event', 'view_fleet_project', {'event_category': 'projects', 'event_label': 'projects_section'});">
-                <div class="bg-white/95 backdrop-blur rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-                    <div class="bg-slate-900 p-6 text-white">
-                        <h3 class="text-xl font-semibold mb-2">Fleet Tracking System</h3>
-                        <p class="text-blue-50 text-sm font-light">Location-based Android Application</p>
-                    </div>
-                    
-                    <div class="p-8">
-                        <div class="mb-6 flex flex-wrap gap-3">
-                            <span class="tech-tag px-4">Kotlin</span>
-                            <span class="tech-tag px-4">Google Maps</span>
-                            <span class="tech-tag px-4">Realm</span>
-                            <span class="tech-tag px-4">Geofencing</span>
-                            <span class="tech-tag px-4">SOLID</span>
-                        </div>
+        </section>
 
-                        <ul class="space-y-3 mb-6 text-slate-600">
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-2">→</span>
-                                <span class="font-light">Real-time fleet tracking with Google Maps & geofencing</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-2">→</span>
-                                <span class="font-light">40% performance optimization using Kotlin Coroutines & SOLID</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-2">→</span>
-                                <span class="font-light">Motion sensor integration for incident detection</span>
-                            </li>
-                        </ul>
-
-                        <div class="flex justify-end">
-                            <button class="project-btn" onclick="gtag('event', 'click_fleet_confidential', {'event_category': 'projects', 'event_label': 'projects_section'});">
-                                <span>Confidential Project</span>
-                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
+        <!-- Skills Section -->
+        <section id="skills" class="bg-[var(--bg-secondary)] py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4 text-[var(--text-primary)]">Technical
+                        Skills</h2>
+                    <p class="text-[var(--text-secondary)]">Technologies I work with</p>
                 </div>
-            </div>
 
-            <!-- InEvents Project -->
-            <div class="project-card group" onclick="gtag('event', 'view_inevents_project', {'event_category': 'projects', 'event_label': 'projects_section'});">
-                <div class="bg-white/95 backdrop-blur rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-                    <div class="bg-slate-900 p-6 text-white">
-                        <h3 class="text-xl font-semibold mb-2">InEvents</h3>
-                        <p class="text-blue-50 text-sm font-light">Student Event Management Platform</p>
-                    </div>
-                    
-                    <div class="p-8">
-                        <div class="mb-6 flex flex-wrap gap-3">
-                            <span class="tech-tag px-4">Kotlin</span>
-                            <span class="tech-tag px-4">Firebase</span>
-                            <span class="tech-tag px-4">MySQL</span>
-                            <span class="tech-tag px-4">MVVM</span>
-                            <span class="tech-tag px-4">Material Design</span>
-                        </div>
-
-                        <ul class="space-y-3 mb-6 text-slate-600">
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-2">→</span>
-                                <span class="font-light">200+ daily active users, 500+ total downloads</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-2">→</span>
-                                <span class="font-light">100% paperless event registration system</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-2">→</span>
-                                <span class="font-light">Real-time updates with Firebase Notifications</span>
-                            </li>
-                        </ul>
-
-                        <div class="flex justify-end">
-                            <a href="https://github.com/MohitGujarati/SnapEvents"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               onclick="gtag('event', 'click_inevents_github', {'event_category': 'projects', 'event_label': 'projects_section'});"
-                               class="project-btn">
-                                <span>View Details on GitHub</span>
-                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                </svg>
-                            </a>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    <!-- Languages -->
+                    <div class="spotlight-card p-6 group reveal">
+                        <div class="card-content">
+                            <div class="flex items-center mb-4">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-primary mr-4">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <h3 class="text-xl font-heading font-bold text-[var(--text-primary)]">Languages</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-pill">Kotlin</span>
+                                <span class="tech-pill">Java</span>
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">TypeScript</span>
+                                <span class="tech-pill">C++</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Face Detection Project -->
-            <div class="project-card group" onclick="gtag('event', 'view_facedetection_project', {'event_category': 'projects', 'event_label': 'projects_section'});">
-                <div class="bg-white/95 backdrop-blur rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-                    <div class="bg-slate-900 p-6 text-white">
-                        <h3 class="text-xl font-semibold mb-2">Face Detection System</h3>
-                        <p class="text-blue-50 text-sm font-light">OpenCV-based Web Application</p>
-                    </div>
-                    
-                    <div class="p-6">
-                        <div class="mb-4 flex flex-wrap gap-2">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">Flask</span>
-                            <span class="tech-tag">NumPy</span>
-                            <span class="tech-tag">SOLID</span>
+                    <!-- Android -->
+                    <div class="spotlight-card p-6 group reveal delay-100">
+                        <div class="card-content">
+                            <div class="flex items-center mb-4">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-4">
+                                    <i class="fab fa-android"></i>
+                                </div>
+                                <h3 class="text-xl font-heading font-bold text-[var(--text-primary)]">Android</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-pill">Jetpack Compose</span>
+                                <span class="tech-pill">Coroutines</span>
+                                <span class="tech-pill">Retrofit</span>
+                                <span class="tech-pill">Room DB</span>
+
+                            </div>
                         </div>
+                    </div>
 
-                        <ul class="space-y-3 mb-6 text-slate-600">
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-2">→</span>
-                                <span class="font-light">95% accuracy in face detection using Haar Cascade</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-2">→</span>
-                                <span class="font-light">Automated dataset processing & annotation management</span>
-                            </li>
-                        </ul>
+                    <!-- Web Development -->
+                    <div class="spotlight-card p-6 group reveal delay-200">
+                        <div class="card-content">
+                            <div class="flex items-center mb-4">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mr-4">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <h3 class="text-xl font-heading font-bold text-[var(--text-primary)]">Web Development
+                                </h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-pill">HTML5</span>
+                                <span class="tech-pill">CSS3</span>
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">React</span>
 
-                        <div class="flex justify-end">
-                            <a href="https://github.com/MohitGujarati/Face_detection_py"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               onclick="gtag('event', 'click_facedetection_github', {'event_category': 'projects', 'event_label': 'projects_section'});"
-                               class="project-btn">
-                                <span>View Details on GitHub</span>
-                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                </svg>
-                            </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Databases -->
+                    <div class="spotlight-card p-6 group reveal">
+                        <div class="card-content">
+                            <div class="flex items-center mb-4">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 mr-4">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <h3 class="text-xl font-heading font-bold text-[var(--text-primary)]">Databases</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-pill">Firebase</span>
+                                <span class="tech-pill">MySQL</span>
+                                <span class="tech-pill">SQLite</span>
+                                <span class="tech-pill">MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools -->
+                    <div class="spotlight-card p-6 group reveal delay-100">
+                        <div class="card-content">
+                            <div class="flex items-center mb-4">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 mr-4">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <h3 class="text-xl font-heading font-bold text-[var(--text-primary)]">Tools</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-pill">Git/GitHub</span>
+                                <span class="tech-pill">Android Studio</span>
+                                <span class="tech-pill">Rest APIs</span>
+                                <span class="tech-pill">Jetpack Compose</span>
+                                <span class="tech-pill">MVVM, MVP</span>
+                                <span class="tech-pill">SOLID Principles</span>
+                                <span class="tech-pill">Material Design</span>
+                                <span class="tech-pill">Coroutines,Thread</span>
+                                <span class="tech-pill">Postman</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-           
-        </div>
-    </div>
-</section>
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <div class="spotlight-card rounded-2xl p-10 md:p-16 text-center reveal bg-[var(--card-bg)]">
+                        <div class="card-content">
+                            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6 text-[var(--text-primary)]">
+                                Let's Work Together</h2>
+                            <p class="text-lg text-[var(--text-secondary)] mb-10 max-w-xl mx-auto">Open to projects and
+                                opportunities. Feel free to reach out if you have a question or just want to say hi.</p>
 
-<!-- Skills Section -->
-<section id="skills" class="py-32">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-light mb-4">Technical Skills</h2>
-            <p class="text-gray-600 font-light">
-                Core technologies and tools I worked with
-            </p>
-        </div>
+                            <div class="flex flex-col sm:flex-row justify-center gap-6 mb-12">
+                                <a href="mailto:mohit.gujarati@my.liu.edu" class="btn-primary justify-center">
+                                    <i class="fas fa-envelope"></i>
+                                    Email Me
+                                </a>
+                                <a href="https://linkedin.com/in/mohitgujarati" target="_blank"
+                                    class="btn-outline justify-center">
+                                    <i class="fab fa-linkedin"></i>
+                                    LinkedIn
+                                </a>
+                            </div>
 
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Languages -->
-            <div class="bg-white p-8 rounded-lg shadow-sm" onclick="gtag('event', 'view_languages', {'event_category': 'skills', 'event_label': 'skills_section'});">
-                <div class="flex items-center mb-6">
-                    <i class="fas fa-code text-2xl text-gray-900 mr-4"></i>
-                    <h3 class="text-xl font-light text-gray-900">Programming Languages</h3>
-                </div>
-                <div class="flex flex-wrap gap-3">
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Kotlin</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Java</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Python</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">JavaScript</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">TypeScript</span>
+                            <!-- Embedded Contact Form -->
+                            <div
+                                class="rounded-xl overflow-hidden bg-[var(--bg-secondary)] border border-[var(--border-color)] h-[600px]">
+                                <iframe src="contacts.html" width="100%" height="100%" frameborder="0"></iframe>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <!-- Mobile Development -->
-            <div class="bg-white p-8 rounded-lg shadow-sm" onclick="gtag('event', 'view_mobile_dev', {'event_category': 'skills', 'event_label': 'skills_section'});">
-                <div class="flex items-center mb-6">
-                    <i class="fas fa-mobile-alt text-2xl text-gray-900 mr-4"></i>
-                    <h3 class="text-xl font-light text-gray-900">Mobile Development</h3>
-                </div>
-                <div class="flex flex-wrap gap-3">
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Android SDK</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Jetpack Compose</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Coroutines</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Material Design</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">MVVM Architecture</span>
-                </div>
-            </div>
-
-            <!-- Web Technologies -->
-            <div class="bg-white p-8 rounded-lg shadow-sm" onclick="gtag('event', 'view_web_tech', {'event_category': 'skills', 'event_label': 'skills_section'});">
-                <div class="flex items-center mb-6">
-                    <i class="fas fa-globe text-2xl text-gray-900 mr-4"></i>
-                    <h3 class="text-xl font-light text-gray-900">Basic knowledge of 
-                        Web Development</h3>
-                </div>
-                <div class="flex flex-wrap gap-3">
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">basic-React</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">HTML/CSS</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Bootstrap</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Flask</span>
-                </div>
-            </div>
-
-            <!-- Databases -->
-            <div class="bg-white p-8 rounded-lg shadow-sm" onclick="gtag('event', 'view_databases', {'event_category': 'skills', 'event_label': 'skills_section'});">
-                <div class="flex items-center mb-6">
-                    <i class="fas fa-database text-2xl text-gray-900 mr-4"></i>
-                    <h3 class="text-xl font-light text-gray-900">Database Systems</h3>
-                </div>
-                <div class="flex flex-wrap gap-3">
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Firebase</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Room</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">SQLite</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">MySQL</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Realm</span>
-                </div>
-            </div>
-
-            <!-- Development Tools -->
-            <div class="bg-white p-8 rounded-lg shadow-sm" onclick="gtag('event', 'view_dev_tools', {'event_category': 'skills', 'event_label': 'skills_section'});">
-                <div class="flex items-center mb-6">
-                    <i class="fas fa-tools text-2xl text-gray-900 mr-4"></i>
-                    <h3 class="text-xl font-light text-gray-900">Development Tools</h3>
-                </div>
-                <div class="flex flex-wrap gap-3">
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Retrofit</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">OpenCV</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Git</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">SOLID Principles</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Design Patterns</span>
-                </div>
-            </div>
-
-            <!-- Certifications -->
-            <div class="bg-white p-8 rounded-lg shadow-sm" onclick="gtag('event', 'view_certifications', {'event_category': 'skills', 'event_label': 'skills_section'});">
-                <div class="flex items-center mb-6">
-                    <i class="fas fa-certificate text-2xl text-gray-900 mr-4"></i>
-                    <h3 class="text-xl font-light text-gray-900">Professional Certifications</h3>
-                </div>
-                <div class="flex flex-wrap gap-3">
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">IBM Data Science</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">LinkedIn Java</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Udemy Kotlin</span>
-                    <span class="px-4 py-2 text-sm text-gray-700 bg-gray-50 rounded-full">Google Developer Groups</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-    <section id="contact" class="bg-gradient-to-br from-white to-blue-50 py-32">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-light mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900">Let's Connect</h2>
-                <div class="section-divider bg-gradient-to-r from-slate-800 to-blue-900 mb-8"></div>
-                <p class="text-slate-600 max-w-2xl mx-auto font-light">
-                    I'm always open to discussing new projects, opportunities, or collaborations. Feel free to reach out, and I'll get back to you as soon as possible.
-                </p>
-            </div>
-
-            <div class="max-w-4xl mx-auto bg-white/95 backdrop-blur p-12 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
-                <div class="flex justify-center space-x-6 flex-col md:flex-row">
-                    <a href="mailto:mohitgujarati11@gmail.com" 
-                       onclick="gtag('event', 'contact_email', {'event_category': 'engagement', 'event_label': 'contact_section', 'email': 'mohitgujarati11@gmail.com'});"
-                       class="group bg-slate-900 text-white inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all hover:bg-slate-800 mb-4 md:mb-0">
-                        <i class="fas fa-envelope mr-2"></i>Email Me
-                    </a>
-                    <a href="https://linkedin.com/in/mohitgujarati" 
-                       target="_blank"
-                       rel="noopener"
-                       onclick="gtag('event', 'contact_linkedin', {'event_category': 'engagement', 'event_label': 'contact_section'});"
-                       class="group bg-blue-900 text-white inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium transition-all hover:bg-blue-800">
-                        <i class="fab fa-linkedin mr-2"></i>LinkedIn
-                    </a>
-                </div>
-            </div>
-
-            <div class="mt-16">
-                <iframe src="contacts.html" width="100%" height="800px" frameborder="0" class="rounded-lg shadow-sm" 
-                        onload="this.contentWindow.postMessage({type: 'setup_tracking', gtag: window.gtag}, '*')"></iframe>
-            </div>
-
-        </div>
-    </section>
+        </section>
     </main>
-    
+
     <!-- Footer -->
-    <footer class="bg-gradient-to-b from-gray-50 to-white text-gray-900 py-12 relative overflow-hidden" itemscope itemtype="http://schema.org/WPFooter">
-        <div class="container mx-auto text-center relative z-10">
-            <!-- Advanced Game Section -->
-            <div class="mb-12" role="complementary" aria-label="Space Explorer Game">
-                <h3 class="text-2xl font-light mb-6">Space Explorer Challenge</h3>
-                <button id="start-game-btn" class="mb-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
-                    Start Game
-                </button>
-                <div id="game-container" class="w-96 h-64 mx-auto bg-gray-900 rounded-lg relative cursor-pointer border border-blue-500 overflow-hidden hidden" role="application" aria-label="Space Explorer Game Interface" tabindex="0">
-                    <div id="star" class="absolute text-2xl transition-all duration-300 text-yellow-400 z-10" role="img" aria-label="Collectible Star">⭐</div>
-                    <div id="obstacle" class="absolute text-xl text-red-500" role="img" aria-label="Obstacle">☄️</div>
-                    <div id="powerup" class="absolute text-xl text-green-400 hidden" role="img" aria-label="Power Up">🔮</div>
-                    <div class="absolute top-2 left-2 text-white space-y-1" role="status" aria-live="polite">
-                        <div class="text-sm font-light">Score: <span id="score" aria-label="Current Score">0</span></div>
-                        <div class="text-sm font-light">Level: <span id="level" aria-label="Current Level">1</span></div>
-                        <div class="text-sm font-light">Lives: <span id="lives" aria-label="Remaining Lives">3</span></div>
-                        <div class="w-24 h-2 bg-gray-700 rounded" role="progressbar" aria-label="Power Level">
-                            <div id="power-bar" class="h-full bg-blue-500 rounded transition-all duration-300" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div id="player" class="absolute bottom-3 left-3 text-2xl transition-all duration-300 text-blue-500" role="img" aria-label="Player Spaceship">🚀</div>
-                </div>
+    <footer class="py-10 border-t border-[var(--border-color)] bg-[var(--bg-main)]">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center gap-8 mb-8">
+                <a href="https://linkedin.com/in/mohitgujarati"
+                    class="text-[var(--text-muted)] hover:text-primary transition-colors"><i
+                        class="fab fa-linkedin text-2xl"></i></a>
+                <a href="https://github.com/MohitGujarati"
+                    class="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"><i
+                        class="fab fa-github text-2xl"></i></a>
+                <a href="mailto:mohit.gujarati@my.liu.edu"
+                    class="text-[var(--text-muted)] hover:text-red-500 transition-colors"><i
+                        class="fas fa-envelope text-2xl"></i></a>
             </div>
-
-            <p class="text-sm font-light tracking-wider mb-8" itemscope itemtype="http://schema.org/CopyrightNotice">&copy; 2025 Mohit Gujarati. All rights reserved.</p>
-            
-            <div class="social-links mt-8 space-x-8" role="navigation" aria-label="Social Media Links">
-                <a href="https://linkedin.com/in/mohitgujarati" target="_blank" rel="noopener" aria-label="Visit LinkedIn Profile" 
-                   class="inline-block transition-all duration-300 hover:text-gray-600" itemscope itemtype="http://schema.org/SocialMediaPosting">
-                    <i class="fab fa-linkedin text-2xl" aria-hidden="true"></i>
-                    <meta itemprop="url" content="https://linkedin.com/in/mohitgujarati">
-                </a>
-                <a href="https://github.com/MohitGujarati" target="_blank" rel="noopener" aria-label="Visit GitHub Profile"
-                   class="inline-block transition-all duration-300 hover:text-gray-600" itemscope itemtype="http://schema.org/SocialMediaPosting">
-                    <i class="fab fa-github text-2xl" aria-hidden="true"></i>
-                    <meta itemprop="url" content="https://github.com/MohitGujarati">
-                </a>
-                <a href="mailto:mohitgujarati11@gmail.com" aria-label="Send Email"
-                   class="inline-block transition-all duration-300 hover:text-gray-600" itemscope itemtype="http://schema.org/ContactPoint">
-                    <i class="fas fa-envelope text-2xl" aria-hidden="true"></i>
-                    <meta itemprop="email" content="mohitgujarati11@gmail.com">
-                </a>
-            </div>
+            <p class="text-[var(--text-muted)] text-sm">&copy; 2025 Mohit Gujarati. Built with precision.</p>
         </div>
-
-        <!-- Subtle Background Elements -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none" role="presentation" aria-hidden="true">
-            <div class="absolute w-32 h-32 bg-gray-100 rounded-full -left-16 animate-subtle-float"></div>
-            <div class="absolute w-32 h-32 bg-gray-100 rounded-full -right-16 animate-subtle-float animation-delay-2000"></div>
-            <div class="absolute w-32 h-32 bg-gray-100 rounded-full bottom-0 left-1/2 animate-subtle-float animation-delay-4000"></div>
-        </div>
-
-              
-
-
-        <script type="application/javascript">
-            const gameContainer = document.getElementById('game-container');
-            const player = document.getElementById('player');
-            const star = document.getElementById('star');
-            const obstacle = document.getElementById('obstacle');
-            const powerup = document.getElementById('powerup');
-            const scoreElement = document.getElementById('score');
-            const levelElement = document.getElementById('level');
-            const livesElement = document.getElementById('lives');
-            const powerBar = document.getElementById('power-bar');
-            const startGameBtn = document.getElementById('start-game-btn');
-
-            let score = 0;
-            let level = 1;
-            let lives = 3;
-            let isGameActive = false;
-            let isPoweredUp = false;
-            let powerLevel = 100;
-            let gameSpeed = 1;
-            let obstacleInterval;
-            let powerupTimeout;
-
-            function updateStarPosition() {
-                if (!isGameActive) return;
-                const x = Math.random() * (gameContainer.offsetWidth - 40);
-                const y = Math.random() * (gameContainer.offsetHeight - 40);
-                star.style.left = x + 'px';
-                star.style.top = y + 'px';
-                createStarTrail(x, y);
-            }
-
-            function createStarTrail(x, y) {
-                const trail = document.createElement('div');
-                trail.className = 'star-trail';
-                trail.setAttribute('role', 'presentation');
-                trail.setAttribute('aria-hidden', 'true');
-                trail.style.left = (x + 15) + 'px';
-                trail.style.top = (y + 15) + 'px';
-                gameContainer.appendChild(trail);
-                setTimeout(() => trail.remove(), 1000);
-            }
-
-            function moveObstacle() {
-                const x = Math.random() * (gameContainer.offsetWidth - 40);
-                const y = -30;
-                obstacle.style.left = x + 'px';
-                obstacle.style.top = y + 'px';
-                
-                let pos = y;
-                const moveDown = setInterval(() => {
-                    if (!isGameActive) {
-                        clearInterval(moveDown);
-                        return;
-                    }
-                    pos += 2 * gameSpeed;
-                    obstacle.style.top = pos + 'px';
-                    
-                    checkCollision();
-                    
-                    if (pos > gameContainer.offsetHeight) {
-                        clearInterval(moveDown);
-                        moveObstacle();
-                    }
-                }, 20);
-            }
-
-            function spawnPowerup() {
-                if (!isGameActive) return;
-                powerup.style.display = 'block';
-                const x = Math.random() * (gameContainer.offsetWidth - 40);
-                const y = Math.random() * (gameContainer.offsetHeight - 40);
-                powerup.style.left = x + 'px';
-                powerup.style.top = y + 'px';
-            }
-
-            function checkCollision() {
-                const playerRect = player.getBoundingClientRect();
-                const obstacleRect = obstacle.getBoundingClientRect();
-                
-                if (playerRect.right > obstacleRect.left && 
-                    playerRect.left < obstacleRect.right &&
-                    playerRect.bottom > obstacleRect.top && 
-                    playerRect.top < obstacleRect.bottom) {
-                    if (!isPoweredUp) {
-                        lives--;
-                        livesElement.textContent = lives;
-                        if (lives <= 0) endGame();
-                    }
-                }
-            }
-
-            function startGame() {
-                gameContainer.classList.remove('hidden');
-                startGameBtn.classList.add('hidden');
-                isGameActive = true;
-                score = 0;
-                level = 1;
-                lives = 3;
-                gameSpeed = 1;
-                powerLevel = 100;
-                scoreElement.textContent = score;
-                levelElement.textContent = level;
-                livesElement.textContent = lives;
-                powerBar.style.width = '100%';
-                
-                updateStarPosition();
-                moveObstacle();
-                
-                obstacleInterval = setInterval(() => {
-                    if (isGameActive && !isPoweredUp) {
-                        powerLevel = Math.max(0, powerLevel - 1);
-                        powerBar.style.width = powerLevel + '%';
-                        powerBar.setAttribute('aria-valuenow', powerLevel);
-                    }
-                }, 100);
-
-                powerupTimeout = setTimeout(spawnPowerup, 10000);
-            }
-
-            function endGame() {
-                isGameActive = false;
-                clearInterval(obstacleInterval);
-                clearTimeout(powerupTimeout);
-                alert(`Game Over!\nFinal Score: ${score}\nLevel Reached: ${level}`);
-                gameContainer.classList.add('hidden');
-                startGameBtn.classList.remove('hidden');
-            }
-
-            gameContainer.addEventListener('mousemove', (e) => {
-                if (!isGameActive) return;
-                const rect = gameContainer.getBoundingClientRect();
-                const x = Math.min(Math.max(e.clientX - rect.left - 15, 0), rect.width - 30);
-                const y = Math.min(Math.max(e.clientY - rect.top - 15, 0), rect.height - 30);
-                player.style.left = x + 'px';
-                player.style.top = y + 'px';
-            });
-
-            star.addEventListener('click', () => {
-                if (!isGameActive) return;
-                score += level;
-                scoreElement.textContent = score;
-                if (score >= level * 10) {
-                    level++;
-                    levelElement.textContent = level;
-                    gameSpeed += 0.2;
-                }
-                updateStarPosition();
-            });
-
-            powerup.addEventListener('click', () => {
-                if (!isGameActive) return;
-                isPoweredUp = true;
-                powerLevel = 100;
-                powerBar.style.width = '100%';
-                powerBar.setAttribute('aria-valuenow', '100');
-                player.style.color = '#22c55e';
-                powerup.style.display = 'none';
-                
-                setTimeout(() => {
-                    isPoweredUp = false;
-                    player.style.color = '#3b82f6';
-                    setTimeout(spawnPowerup, 10000);
-                }, 5000);
-            });
-
-            startGameBtn.addEventListener('click', startGame);
-        </script>
-
     </footer>
 
-    <!-- JavaScript -->
     <script src="js/main.js"></script>
 </body>
+
 </html>
-
-
