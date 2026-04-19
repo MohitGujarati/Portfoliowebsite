@@ -275,3 +275,130 @@ section {
         transform: translateY(0px);
     }
 }
+
+/* ==============================================
+   SEMANTIC CLASSES
+   Shared styles used by render.js templates.
+   Change once here — updates everywhere.
+   ============================================== */
+
+/* Section headings (h2) */
+.section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.875rem, 4vw, 2.25rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+/* Centered section header block */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+/* Card headings (h3) */
+.card-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Project/experience category label */
+.card-category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Timeline date span */
+.timeline-date {
+    display: block;
+    color: var(--accent-primary);
+    font-weight: 700;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+/* GitHub / demo icon links in project cards */
+.icon-link {
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+}
+
+.icon-link:hover {
+    color: var(--text-primary);
+}
+
+/* Certifications horizontal scroll */
+.cert-scroll-track {
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    /* hide scrollbar on modern browsers but keep functionality */
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+}
+
+.cert-scroll-track:active {
+    cursor: grabbing;
+}
+
+.cert-scroll-track::-webkit-scrollbar {
+    display: none;
+}
+
+.cert-scroll-inner {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.5rem 0.25rem 0.5rem;
+    width: max-content;
+}
+
+.cert-card {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+/* Certification card logo */
+.cert-logo {
+    height: 2.5rem;
+    width: auto;
+    max-width: 8rem;
+    object-fit: contain;
+}
+
+.cert-logo-fallback {
+    align-items: center;
+}
+
+/* "Verify" link badge on cert cards */
+.cert-verify-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    border: 1px solid var(--accent-primary);
+    border-radius: 4px;
+    padding: 2px 8px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.spotlight-card:hover .cert-verify-badge {
+    opacity: 1;
+}
+
+/* Skill category icon circle */
+.skill-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}

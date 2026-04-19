@@ -93,4 +93,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Drag-to-scroll for certifications row
+    const certTrack = document.querySelector('.cert-scroll-track');
+    if (certTrack) {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        certTrack.addEventListener('mousedown', e => {
+            isDown = true;
+            startX = e.pageX - certTrack.offsetLeft;
+            scrollLeft = certTrack.scrollLeft;
+        });
+        certTrack.addEventListener('mouseleave', () => { isDown = false; });
+        certTrack.addEventListener('mouseup',    () => { isDown = false; });
+        certTrack.addEventListener('mousemove',  e => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - certTrack.offsetLeft;
+            certTrack.scrollLeft = scrollLeft - (x - startX) * 1.2;
+        });
+    }
 });
