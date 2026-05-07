@@ -6,6 +6,7 @@ function renderAll() {
   renderProjects();
   renderSkills();
   renderCertifications();
+  renderResearchPapers();
 }
 
 // ---- Hero ----
@@ -43,7 +44,7 @@ function renderExperience() {
     const cardAlignClass = isLeft ? 'text-left md:text-right' : '';
 
     const dotClass = item.isCurrent
-      ? 'bg-primary border-4 border-white shadow-md'
+      ? 'bg-primary border-4 border-white shadow-md dot-current'
       : 'bg-white border-2 border-[var(--border-color)] shadow-sm';
 
     const delayClass = i % 2 !== 0 ? 'delay-100' : '';
@@ -87,7 +88,7 @@ function renderProjects() {
          </div>`;
 
     const bulletsHTML = `
-      <ul class="space-y-2 text-[var(--text-secondary)] mb-6 text-sm leading-relaxed flex-grow list-disc list-inside marker:text-primary">
+      <ul class="proj-bullets space-y-2 text-[var(--text-secondary)] text-sm leading-relaxed list-disc list-inside marker:text-primary">
         ${proj.bullets.map(b => `<li>${b}</li>`).join('\n        ')}
       </ul>`;
 
@@ -100,11 +101,19 @@ function renderProjects() {
           <div>
             <h3 class="card-title mb-1">${proj.name}</h3>
             <p class="card-category">${proj.category}</p>
+            ${proj.period ? `<p class="text-xs text-[var(--text-muted)] mt-0.5">${proj.period}</p>` : ''}
           </div>
           ${linksHTML}
         </div>
-        ${bulletsHTML}
-        <div class="flex flex-wrap gap-2 mt-auto">
+        <div class="proj-expand-wrap mb-6">
+          ${bulletsHTML}
+          <div class="proj-fade"></div>
+        </div>
+        <button class="proj-toggle" onclick="toggleProjExpand(this)" aria-expanded="false">
+          <span class="proj-toggle-label">Show more</span>
+          <i class="fas fa-chevron-down proj-toggle-icon text-xs"></i>
+        </button>
+        <div class="flex flex-wrap gap-2 mt-auto pt-4">
           ${tagsHTML}
         </div>
       </div>
@@ -154,7 +163,7 @@ function renderCertifications() {
     const tagsHTML = cert.skills.map(s => `<span class="tech-pill text-xs">${s}</span>`).join('\n          ');
 
     const verifyBadge = cert.url
-      ? `<span class="cert-verify-badge"><i class="fas fa-external-link-alt text-[10px] mr-1"></i>Verify</span>`
+      ? `<a href="${cert.url}" target="_blank" rel="noopener noreferrer" class="cert-verify-badge"><i class="fas fa-external-link-alt text-[10px] mr-1"></i>Verify</a>`
       : '';
 
     return `
@@ -187,6 +196,51 @@ function renderCertifications() {
       </div>
     </div>`;
   }).join('\n');
+}
+
+// ---- Research Papers ----
+
+function renderResearchPapers() {
+  const container = document.getElementById('papers-grid');
+  if (!container) return;
+
+  container.innerHTML = RESEARCH_PAPERS.map((paper, i) => {
+    const isIEEE = paper.category === 'ieee';
+    const badgeLabel = isIEEE ? 'IEEE' : 'Informal';
+    const tagsHTML = paper.tags.slice(0, 3).map(t => `<span class="tech-pill text-xs">${t}</span>`).join('');
+
+    return `
+    <div class="spotlight-card cert-card group reveal" style="transition-delay:${i * 60}ms">
+      <div class="card-content p-6 flex flex-col h-full">
+
+        <div class="flex items-center justify-between mb-5">
+          <span class="font-heading font-bold text-lg ${isIEEE ? 'text-primary' : 'text-[var(--accent-secondary)]'}">${badgeLabel} Format</span>
+          <a href="${paper.file}" download
+             class="cert-verify-badge"
+             onclick="gtag && gtag('event','download_paper',{'event_label':'${paper.title}'});">
+            <i class="fas fa-download text-[10px] mr-1"></i>PDF
+          </a>
+        </div>
+
+        <h3 class="card-title mb-1">${paper.title}</h3>
+        <p class="text-sm text-[var(--text-muted)] mb-4">LIU &middot; ${paper.year}</p>
+
+        <div class="flex flex-wrap gap-2 mt-auto">
+          ${tagsHTML}
+        </div>
+
+      </div>
+    </div>`;
+  }).join('\n');
+}
+
+function toggleProjExpand(btn) {
+  const wrap = btn.previousElementSibling;
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  wrap.classList.toggle('proj-expand-wrap--open', !expanded);
+  btn.setAttribute('aria-expanded', String(!expanded));
+  btn.querySelector('.proj-toggle-label').textContent = expanded ? 'Show more' : 'Show less';
+  btn.querySelector('.proj-toggle-icon').style.transform = expanded ? '' : 'rotate(180deg)';
 }
 
 renderAll();

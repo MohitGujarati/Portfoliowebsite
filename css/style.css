@@ -27,7 +27,7 @@
     /* Bright Blue */
 
     /* Used for: Gradient ends, secondary highlights */
-    --accent-secondary: #7c3aed;
+    --accent-secondary: #3a8eed;
     /* Violet */
 
     /* --- Card & UI Colors --- */
@@ -149,6 +149,23 @@ h6 {
     font-size: 0.95rem;
 }
 
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-primary);
+    border-radius: 2px;
+    transition: width 0.25s var(--easing);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
 .nav-link:hover,
 .nav-link.active {
     color: var(--accent-primary);
@@ -190,6 +207,11 @@ h6 {
     box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
 }
 
+.btn-primary:active {
+    transform: translateY(0px) scale(0.98);
+    box-shadow: none;
+}
+
 .btn-outline {
     background: transparent;
     border: 1px solid var(--border-color);
@@ -206,6 +228,13 @@ h6 {
 .btn-outline:hover {
     border-color: var(--text-primary);
     background: var(--bg-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline:active {
+    transform: translateY(0px) scale(0.98);
+    box-shadow: none;
 }
 
 /* Animations */
@@ -323,6 +352,57 @@ section {
     margin-bottom: 0.25rem;
 }
 
+/* Project expand/collapse */
+.proj-expand-wrap {
+    position: relative;
+    max-height: 4.8em;
+    /* ~3 lines at 1.6 line-height */
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.proj-expand-wrap--open {
+    max-height: 600px;
+}
+
+.proj-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2.5em;
+    background: linear-gradient(to bottom, transparent, var(--card-bg));
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.proj-expand-wrap--open .proj-fade {
+    opacity: 0;
+}
+
+.proj-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-top: -8px;
+    transition: opacity 0.2s ease;
+}
+
+.proj-toggle:hover {
+    opacity: 0.75;
+}
+
+.proj-toggle-icon {
+    transition: transform 0.3s var(--easing);
+}
+
 /* GitHub / demo icon links in project cards */
 .icon-link {
     color: var(--text-muted);
@@ -391,6 +471,11 @@ section {
     opacity: 1;
 }
 
+/* Research Papers — reuses cert-card; only override needed is the download badge text-decoration */
+.cert-verify-badge {
+    text-decoration: none;
+}
+
 /* Skill category icon circle */
 .skill-icon {
     width: 2.5rem;
@@ -401,4 +486,146 @@ section {
     justify-content: center;
     margin-right: 1rem;
     flex-shrink: 0;
+}
+
+/* Footer social icon hover */
+.footer-icon {
+    display: inline-flex;
+    transition: color 0.2s ease, transform 0.2s var(--easing);
+}
+
+.footer-icon:hover {
+    transform: scale(1.2) translateY(-2px);
+}
+
+/* Back-to-top button */
+#back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background: var(--text-primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s var(--easing), background 0.2s ease;
+    z-index: 40;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+#back-to-top:hover {
+    background: var(--accent-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.35);
+}
+
+#back-to-top:active {
+    transform: scale(0.95);
+}
+
+/* Scroll progress bar */
+#scroll-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+    transition: width 0.08s linear;
+    pointer-events: none;
+}
+
+/* Hero scroll-down hint */
+.scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    opacity: 1;
+    transition: opacity 0.4s ease, color 0.2s ease;
+    animation: bounce-hint 2.2s ease-in-out infinite;
+    z-index: 10;
+}
+
+.scroll-hint:hover {
+    color: var(--accent-primary);
+}
+
+.scroll-hint.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes bounce-hint {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(7px);
+    }
+}
+
+/* Staggered list-item reveal inside cards */
+.li-stagger {
+    opacity: 0;
+    transform: translateX(-6px);
+    animation: li-slide-in 0.4s var(--easing) both;
+}
+
+@keyframes li-slide-in {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Timeline current dot pulse ring */
+.dot-current {
+    position: relative;
+}
+
+.dot-current::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-primary);
+    animation: dot-ping 2.4s ease-out infinite;
+    opacity: 0;
+}
+
+@keyframes dot-ping {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(2.4);
+        opacity: 0;
+    }
 }

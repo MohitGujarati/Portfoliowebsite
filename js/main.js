@@ -54,6 +54,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Scroll progress bar
+    const scrollProgress = document.getElementById('scroll-progress');
+    if (scrollProgress) {
+        window.addEventListener('scroll', () => {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            scrollProgress.style.width = (window.scrollY / docHeight * 100) + '%';
+        }, { passive: true });
+    }
+
+    // Hero scroll-down hint
+    const scrollHint = document.getElementById('scroll-hint');
+    if (scrollHint) {
+        window.addEventListener('scroll', () => {
+            scrollHint.classList.toggle('hidden', window.scrollY > 80);
+        }, { passive: true });
+        scrollHint.addEventListener('click', () => {
+            document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+
+    // Magnetic CTA buttons in hero
+    document.querySelectorAll('#home .btn-primary, #home .btn-outline, #home a[id="resume-btn"]').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+            const rect = btn.getBoundingClientRect();
+            const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.22;
+            const dy = (e.clientY - (rect.top + rect.height / 2)) * 0.22;
+            btn.style.transform = `translate(${dx}px, ${dy}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
+    });
+
     // Scroll Reveal Animation
     const observerOptions = {
         threshold: 0.1,
@@ -64,6 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                // stagger bullet points inside this card
+                entry.target.querySelectorAll('li').forEach((li, i) => {
+                    li.style.animationDelay = `${0.15 + i * 0.08}s`;
+                    li.classList.add('li-stagger');
+                });
                 observer.unobserve(entry.target);
             }
         });
@@ -93,6 +131,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Back to top button
+    const backToTop = document.getElementById('back-to-top');
+    if (backToTop) {
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 400);
+        }, { passive: true });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     // Drag-to-scroll for certifications row
     const certTrack = document.querySelector('.cert-scroll-track');
