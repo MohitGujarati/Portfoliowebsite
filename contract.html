@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit an Offer | MG26</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&family=Rajdhani:wght@600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --panel2: #16203f;
+      --ink: #eef2ff;
+      --muted: #93a0c4;
+      --line: rgba(147, 160, 196, .2);
+      --lime: #c8f31d;
+      --lime-dark: #10130a;
+      --red: #ff5470;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: transparent;
+      font-family: 'Kanit', system-ui, sans-serif;
+      color: var(--ink);
+      overflow: hidden;
+    }
+    form { display: flex; flex-direction: column; gap: 16px; padding: 6px 4px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    label {
+      display: block;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 12px; letter-spacing: .18em;
+      color: var(--muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    input, textarea {
+      width: 100%;
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 13px 15px;
+      color: var(--ink);
+      font-family: 'Kanit', sans-serif;
+      font-size: 14.5px;
+      transition: border-color .18s ease, box-shadow .18s ease;
+    }
+    input::placeholder, textarea::placeholder { color: rgba(147, 160, 196, .55); }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--lime);
+      box-shadow: 0 0 0 3px rgba(200, 243, 29, .12);
+    }
+    textarea { height: 120px; resize: none; }
+    textarea::-webkit-scrollbar { width: 8px; }
+    textarea::-webkit-scrollbar-thumb { background: #2e3c6b; border-radius: 8px; }
+    button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 16px; letter-spacing: .12em;
+      padding: 15px 26px;
+      border: 0; cursor: pointer;
+      background: linear-gradient(120deg, var(--lime), #a6d80e);
+      color: var(--lime-dark);
+      clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+      transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+    }
+    button:hover { transform: translateY(-2px); box-shadow: 0 6px 26px rgba(200, 243, 29, .3); }
+    button:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+    button.sent { background: linear-gradient(120deg, #38e07d, #1fae5c); color: #06130b; }
+    #feedback {
+      text-align: center;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 13.5px; letter-spacing: .08em;
+      color: var(--red);
+      min-height: 18px;
+      margin-top: 4px;
+    }
+    @media (max-width: 620px) { .row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+
+<body>
+  <form id="form">
+    <div class="row">
+      <div>
+        <label for="from_name">Scout / Recruiter name</label>
+        <input type="text" name="from_name" id="from_name" required placeholder="Alex Ferguson">
+      </div>
+      <div>
+        <label for="to_name">Club / Company</label>
+        <input type="text" name="to_name" id="to_name" required placeholder="Tech FC">
+      </div>
+    </div>
+    <div>
+      <label for="reply_to">Email address</label>
+      <input type="email" name="reply_to" id="reply_to" required placeholder="scout@techfc.com">
+    </div>
+    <div>
+      <label for="message">Your offer</label>
+      <textarea name="message" id="message" required
+        placeholder="We'd like to sign you for the 2026/27 season…"></textarea>
+    </div>
+    <button type="submit" id="button"><span>SUBMIT OFFICIAL OFFER</span> ⚽</button>
+    <div id="feedback"></div>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init({ publicKey: "suKd98SQdQg7inpdw" });
+
+    const form = document.getElementById('form');
+    const btn = document.getElementById('button');
+    const feedback = document.getElementById('feedback');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const original = btn.innerHTML;
+      btn.innerHTML = '<span>SENDING TO THE BOARD…</span>';
+      btn.disabled = true;
+      feedback.textContent = '';
+
+      emailjs.sendForm('service_fxae31a', 'template_zjes0k9', form)
+        .then(() => {
+          btn.innerHTML = '<span>OFFER SUBMITTED ✔</span>';
+          btn.classList.add('sent');
+          form.reset();
+          setTimeout(() => {
+            btn.innerHTML = original;
+            btn.disabled = false;
+            btn.classList.remove('sent');
+          }, 3500);
+        })
+        .catch((err) => {
+          console.error('EmailJS Error:', err);
+          btn.innerHTML = original;
+          btn.disabled = false;
+          feedback.textContent = 'TRANSFER FAX MACHINE JAMMED — PLEASE TRY AGAIN.';
+        });
+    });
+  </script>
+</body>
+
+</html>
