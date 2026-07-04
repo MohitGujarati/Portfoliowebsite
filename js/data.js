@@ -16,7 +16,7 @@ const SITE = {
 // =============================================
 
 const HERO = {
-  statusBadge: "Open to roles starting Mid-June 2026",
+  statusBadge: "Open For Full-time Roles ",
 
   // The highlighted word gets the gradient color
   headlinePlain: "Engineering",
