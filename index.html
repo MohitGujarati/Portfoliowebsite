@@ -318,8 +318,10 @@
     <script src="js/main.js"></script>
     <script>
         // Hero bot: the source video sits on a black background, so it is
-        // chroma-keyed onto a canvas (near-black pixels made transparent)
-        // to let the bot float freely on the light page.
+        // chroma-keyed onto a canvas to let the bot float freely on the
+        // light page. Only dark pixels connected to the frame edges are
+        // removed (flood fill), so enclosed dark areas — the bot's eyes —
+        // stay black instead of becoming see-through holes.
         (function () {
             var video = document.getElementById('bot-video');
             var canvas = document.getElementById('bot-canvas');
@@ -329,6 +331,12 @@
             canvas.width = SIZE;
             canvas.height = SIZE;
             var ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+            var N = SIZE * SIZE;
+            var lum = new Uint8Array(N);
+            var isBg = new Uint8Array(N);
+            var queue = new Int32Array(N);
+            var DARK = 36; // below this a pixel can count as background
 
             function render() {
                 if (video.readyState >= 2 && video.videoWidth) {
@@ -341,13 +349,38 @@
 
                     var frame = ctx.getImageData(0, 0, SIZE, SIZE);
                     var d = frame.data;
-                    for (var i = 0; i < d.length; i += 4) {
-                        var lum = Math.max(d[i], d[i + 1], d[i + 2]);
-                        if (lum < 12) {
-                            d[i + 3] = 0;
-                        } else if (lum < 36) {
-                            // soft ramp so edges don't look cut out
-                            d[i + 3] = Math.round(((lum - 12) / 24) * 255);
+                    var i, p;
+                    for (i = 0, p = 0; p < N; i += 4, p++) {
+                        lum[p] = Math.max(d[i], d[i + 1], d[i + 2]);
+                        isBg[p] = 0;
+                    }
+
+                    // flood fill dark pixels reachable from the canvas border
+                    var head = 0, tail = 0, x, y;
+                    for (x = 0; x < SIZE; x++) {
+                        if (lum[x] < DARK && !isBg[x]) { isBg[x] = 1; queue[tail++] = x; }
+                        p = N - SIZE + x;
+                        if (lum[p] < DARK && !isBg[p]) { isBg[p] = 1; queue[tail++] = p; }
+                    }
+                    for (y = 1; y < SIZE - 1; y++) {
+                        p = y * SIZE;
+                        if (lum[p] < DARK && !isBg[p]) { isBg[p] = 1; queue[tail++] = p; }
+                        p += SIZE - 1;
+                        if (lum[p] < DARK && !isBg[p]) { isBg[p] = 1; queue[tail++] = p; }
+                    }
+                    while (head < tail) {
+                        p = queue[head++];
+                        x = p % SIZE;
+                        if (x > 0 && lum[p - 1] < DARK && !isBg[p - 1]) { isBg[p - 1] = 1; queue[tail++] = p - 1; }
+                        if (x < SIZE - 1 && lum[p + 1] < DARK && !isBg[p + 1]) { isBg[p + 1] = 1; queue[tail++] = p + 1; }
+                        if (p >= SIZE && lum[p - SIZE] < DARK && !isBg[p - SIZE]) { isBg[p - SIZE] = 1; queue[tail++] = p - SIZE; }
+                        if (p < N - SIZE && lum[p + SIZE] < DARK && !isBg[p + SIZE]) { isBg[p + SIZE] = 1; queue[tail++] = p + SIZE; }
+                    }
+
+                    // background pixels fade out; soft ramp keeps edges clean
+                    for (i = 0, p = 0; p < N; i += 4, p++) {
+                        if (isBg[p]) {
+                            d[i + 3] = lum[p] < 12 ? 0 : Math.round(((lum[p] - 12) / 24) * 255);
                         }
                     }
                     ctx.putImageData(frame, 0, 0);
