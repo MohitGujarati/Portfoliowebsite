@@ -141,9 +141,10 @@
                         <div class="relative w-64 h-64 md:w-80 md:h-80">
                             <div class="absolute inset-0 bg-blue-100 rounded-full blur-3xl opacity-30 animate-pulse">
                             </div>
-                            <video src="images/neural-bot.mp4" autoplay loop muted playsinline
-                                aria-label="Animated Android bot avatar"
-                                class="hero-avatar relative z-10 w-full h-full object-cover bg-black"></video>
+                            <video id="bot-video" src="images/neural-bot.mp4" autoplay loop muted playsinline
+                                class="hidden"></video>
+                            <canvas id="bot-canvas" aria-label="Animated Android bot avatar" role="img"
+                                class="hero-bot relative z-10 w-full h-full"></canvas>
                         </div>
                     </div>
 
@@ -315,6 +316,57 @@
     <script src="js/data.js"></script>
     <script src="js/render.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // Hero bot: the source video sits on a black background, so it is
+        // chroma-keyed onto a canvas (near-black pixels made transparent)
+        // to let the bot float freely on the light page.
+        (function () {
+            var video = document.getElementById('bot-video');
+            var canvas = document.getElementById('bot-canvas');
+            if (!video || !canvas) return;
+
+            var SIZE = 512;
+            canvas.width = SIZE;
+            canvas.height = SIZE;
+            var ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+            function render() {
+                if (video.readyState >= 2 && video.videoWidth) {
+                    // letterbox the video into the square canvas, centered
+                    var scale = Math.min(SIZE / video.videoWidth, SIZE / video.videoHeight);
+                    var w = video.videoWidth * scale;
+                    var h = video.videoHeight * scale;
+                    ctx.clearRect(0, 0, SIZE, SIZE);
+                    ctx.drawImage(video, (SIZE - w) / 2, (SIZE - h) / 2, w, h);
+
+                    var frame = ctx.getImageData(0, 0, SIZE, SIZE);
+                    var d = frame.data;
+                    for (var i = 0; i < d.length; i += 4) {
+                        var lum = Math.max(d[i], d[i + 1], d[i + 2]);
+                        if (lum < 12) {
+                            d[i + 3] = 0;
+                        } else if (lum < 36) {
+                            // soft ramp so edges don't look cut out
+                            d[i + 3] = Math.round(((lum - 12) / 24) * 255);
+                        }
+                    }
+                    ctx.putImageData(frame, 0, 0);
+                }
+                requestAnimationFrame(render);
+            }
+            requestAnimationFrame(render);
+            video.play().catch(function () { /* autoplay blocked; canvas stays empty until play */ });
+
+            // if the video can't load/decode (e.g. codec unsupported), fall back to the photo avatar
+            video.addEventListener('error', function () {
+                var img = document.createElement('img');
+                img.src = 'images/avatar_mohit.png';
+                img.alt = 'Mohit Gujarati';
+                img.className = 'hero-avatar relative z-10 w-full h-full object-cover bg-white';
+                canvas.replaceWith(img);
+            });
+        })();
+    </script>
 </body>
 
 </html>

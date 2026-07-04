@@ -284,6 +284,11 @@ section {
 }
 
 /* Avatar Animation */
+.hero-bot {
+    animation: float 6s ease-in-out infinite;
+    filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.12));
+}
+
 .hero-avatar {
     animation: float 6s ease-in-out infinite;
     border-radius: 50%;
