@@ -1,0 +1,10 @@
+node_modules/
+.env.local
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+
+# local backup of the pre-Next.js static site
+.static-backup/
