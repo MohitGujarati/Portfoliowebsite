@@ -1,11 +1,11 @@
 # System Architecture and Deployment Guidelines
 
-## 🤖 Purpose
+## Purpose
 This document provides deep architectural context to Large Language Models (LLMs) and AI agents interacting with this repository. It covers the data flow, component breakdown, SEO strategies, rendering patterns, and the dual-deployment CI/CD pipeline of this Next.js application.
 
 ---
 
-## 🏗️ Core Architecture & Rendering Pattern
+## Core Architecture & Rendering Pattern
 
 - **Framework:** Next.js 15+ (App Router paradigm)
 - **Rendering Strategy:** Static Site Generation (SSG). The `next.config.ts` explicitly sets `output: 'export'`.
@@ -14,7 +14,7 @@ This document provides deep architectural context to Large Language Models (LLMs
 
 ---
 
-## 💾 Data Flow & State
+## Data Flow & State
 
 The portfolio strictly adheres to a "Single Source of Truth" data model to prevent desynchronization between visual content and SEO metadata.
 
@@ -28,7 +28,7 @@ The portfolio strictly adheres to a "Single Source of Truth" data model to preve
 
 ---
 
-## 🧩 Component Topology
+## Component Topology
 
 The application relies on highly compartmentalized React components found in `/components`:
 
@@ -49,7 +49,7 @@ The application relies on highly compartmentalized React components found in `/c
 
 ---
 
-## 🚀 Dual Deployment Strategy (CI/CD)
+## Dual Deployment Strategy (CI/CD)
 
 This repository is engineered to be simultaneously hosted on two entirely different platforms, requiring strict pathing discipline.
 
@@ -66,14 +66,14 @@ This repository is engineered to be simultaneously hosted on two entirely differ
   - The GitHub Action explicitly injects `PAGES_BASE_PATH` as an environment variable during the build step. 
   - This ensures Next.js prefixes all internal `<Link href="/...">` and `<Image src="/...">` calls with `/Portfoliowebsite` when compiling the export.
 
-### ⚠️ Asset Resolution Rule
+### Asset Resolution Rule
 Because the app shifts between root (`/`) and subdirectory (`/Portfoliowebsite`) hosting environments, **never use hardcoded absolute paths** in meta tags or standard HTML tags.
 - Use `absolute(path)` for SEO Canonical URLs, Sitemaps, and OpenGraph images.
 - Use `asset(path)` for standard `<img src>` tags or `<a href>` downloads (like the resume PDF).
 
 ---
 
-## 📝 Advanced SEO & AI Discoverability
+## Advanced SEO & AI Discoverability
 
 This portfolio is heavily optimized for both traditional search engines (Google) and AI crawlers (GPTBot, ClaudeBot).
 
@@ -89,6 +89,6 @@ This portfolio is heavily optimized for both traditional search engines (Google)
 
 ---
 
-## 🛡️ Code Quality Checks
+## Code Quality Checks
 
 - **`.github/workflows/ci.yml`**: Before any pull request or push is accepted, this workflow runs `npm run build` strictly to ensure TypeScript compilation (`tsc`) and Next.js linting (`next lint`) pass perfectly. No broken types or unresolved modules are permitted in `main`.

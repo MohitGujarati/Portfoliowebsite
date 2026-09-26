@@ -2,7 +2,7 @@
 
 This document outlines the design language, color palettes, typography, and layout rules for the portfolio website.
 
-## 🎨 Color Palette
+## Color Palette
 
 The site features a dual-theme system (Dark Mode by default, with Light Mode support). 
 
@@ -25,7 +25,7 @@ The site features a dual-theme system (Dark Mode by default, with Light Mode sup
 - **Muted Text:** `#5b616d` - Medium gray.
 - **Accent Color:** `#4a7a0c` - A deep, readable forest green.
 
-## ✍️ Typography
+## Typography
 
 The project uses three highly specific, modern fonts loaded via `next/font/google`:
 
@@ -40,7 +40,7 @@ The project uses three highly specific, modern fonts loaded via `next/font/googl
 3. **Serif (Accents & Quotes):** `Instrument Serif`
    - Used for `<em>` tags, blockquotes, and sophisticated visual flair.
 
-## 📏 Layout & Spacing
+## Layout & Spacing
 
 - **Container Max-Width:** `1120px` - Keeps the content readable on ultra-wide screens without stretching too far.
 - **Side Padding:** `24px` on the left and right of the main container.
@@ -48,7 +48,7 @@ The project uses three highly specific, modern fonts loaded via `next/font/googl
 - **Line Height:** `1.6` for body text.
 - **Border Radius:** `18px` for primary cards and large elements. `6px` for small interactive elements like `<kbd>`.
 
-## ✨ UI/UX Details & Micro-animations
+## UI/UX Details & Micro-animations
 
 - **Background Ambient Glow:** The dark mode features a subtle, fixed radial gradient using the accent color that follows the top of the viewport to give a "glowing" effect behind the content.
 - **Grid Pattern:** A very faint dotted grid pattern sits behind the content, creating a subtle technical/engineering aesthetic.
