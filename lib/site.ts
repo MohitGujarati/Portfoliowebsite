@@ -1,7 +1,12 @@
 // Single source of truth for the portfolio's content. The page, the JSON-LD,
 // llms.txt / llms-full.txt, the sitemap and the terminal all read from here.
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://mohitgujarati.github.io').replace(/\/$/, '');
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}` : null) ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
+  'https://mohitgujarati.github.io'
+).replace(/\/$/, '');
 export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 /** Prefix a path in /public with the deploy base path (for plain <a>/<img> tags). */
