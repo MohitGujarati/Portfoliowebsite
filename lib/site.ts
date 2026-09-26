@@ -76,11 +76,11 @@ export const experience: Job[] = [
   {
     hash: 'e91c5a7',
     ref: 'tag: v1.0-first-job',
-    role: 'Software Engineer Trainee',
+    role: 'Android Developer Trainee',
     company: 'Tops Technology Inc.',
-    start: '2023-05',
-    end: '2024-06',
-    dates: 'May 2023 – Jun 2024',
+    start: '2022-05',
+    end: '2023-05',
+    dates: 'May 2022 – May 2023',
     points: [
       'Built and released user-facing features with Android UI components and Material Design in Kotlin, and published them to the Google Play Store.',
       'Designed normalized Room/SQLite schemas that sped up queries and made offline-first data sync reliable.',
