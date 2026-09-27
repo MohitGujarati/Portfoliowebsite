@@ -94,9 +94,51 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ============ EDUCATION ============ */}
+        <section className="section container" id="education" aria-labelledby="education-title">
+          <SectionHead id="education" num="02" cmd="cat /etc/education" title="Education & awards" />
+          <div className="edu-bento">
+            {education.map((e) => (
+              <article className="edu__item reveal" key={e.degree}>
+                <p className="edu__date">{e.dates}</p>
+                <h3>{e.degree}</h3>
+                <p className="edu__school">{e.school}, {e.place}</p>
+                {e.subjects && <p className="edu__school" style={{ marginTop: '0.5rem' }}>Coursework: {e.subjects.join(', ')}</p>}
+                {e.note && <p className="edu__badge">{e.note}</p>}
+                {e.description && (
+                  <ul className="awards" style={{ marginTop: '1.25rem' }}>
+                    <li><span className="award__icon" aria-hidden="true">★</span> {e.description}</li>
+                  </ul>
+                )}
+              </article>
+            ))}
+            <article className="edu__item edu__item--awards reveal">
+              <p className="edu__date">Recognition</p>
+              <ul className="awards">
+                {awards.map((a) => (
+                  <li key={a}><span className="award__icon" aria-hidden="true">★</span> {a}</li>
+                ))}
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        {/* ============ SKILLS ============ */}
+        <section className="section container" id="skills" aria-labelledby="skills-title">
+          <SectionHead id="skills" num="03" cmd="cat package.json | jq .skills" title="My toolbox" />
+          <div className="skills">
+            {skills.map((s) => (
+              <div className="skill-group reveal" key={s.group}>
+                <h3>./{s.group}</h3>
+                <ul className="chips">{s.items.map((item) => <li key={item}>{item}</li>)}</ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* ============ PROJECTS ============ */}
         <section className="section container" id="projects" aria-labelledby="projects-title">
-          <SectionHead id="projects" num="02" cmd="ls ~/projects" title="Things I've built" />
+          <SectionHead id="projects" num="04" cmd="ls ~/projects" title="Things I've built" />
           <div className="projects">
             {projects.map((p, i) => (
               <article className="project reveal" id={`project-${p.slug}`} key={p.slug}>
@@ -122,46 +164,10 @@ export default function Home() {
 
         {/* ============ RESEARCH ============ */}
         <section className="section container" id="research" aria-labelledby="research-title">
-          <SectionHead id="research" num="03" cmd={'grep -rl "abstract" ~/research'} title="Research & writing">
+          <SectionHead id="research" num="05" cmd={'grep -rl "abstract" ~/research'} title="Research & writing">
             <p className="section__lede">Papers from my M.S. at LIU Brooklyn: two IEEE-format research papers and three technical reviews.</p>
           </SectionHead>
           <Research papers={papers} />
-        </section>
-
-        {/* ============ SKILLS ============ */}
-        <section className="section container" id="skills" aria-labelledby="skills-title">
-          <SectionHead id="skills" num="04" cmd="cat package.json | jq .skills" title="My toolbox" />
-          <div className="skills">
-            {skills.map((s) => (
-              <div className="skill-group reveal" key={s.group}>
-                <h3>./{s.group}</h3>
-                <ul className="chips">{s.items.map((item) => <li key={item}>{item}</li>)}</ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ============ EDUCATION ============ */}
-        <section className="section container" id="education" aria-labelledby="education-title">
-          <SectionHead id="education" num="05" cmd="cat /etc/education" title="Education & awards" />
-          <div className="edu">
-            {education.map((e) => (
-              <article className="edu__item reveal" key={e.degree}>
-                <p className="edu__date">{e.dates}</p>
-                <h3>{e.degree}</h3>
-                <p className="edu__school">{e.school}, {e.place}</p>
-                {e.note && <p className="edu__badge">{e.note}</p>}
-              </article>
-            ))}
-            <article className="edu__item edu__item--awards reveal">
-              <p className="edu__date">Recognition</p>
-              <ul className="awards">
-                {awards.map((a) => (
-                  <li key={a}><span className="award__icon" aria-hidden="true">★</span> {a}</li>
-                ))}
-              </ul>
-            </article>
-          </div>
         </section>
 
         {/* ============ TERMINAL ============ */}

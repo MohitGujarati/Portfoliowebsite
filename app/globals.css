@@ -721,6 +721,19 @@ kbd {
 
 /* ---------- Education ---------- */
 .edu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.edu-bento { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.edu-bento .edu__item:first-child { grid-column: span 2; }
+.edu-stack { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; }
+.edu-stack__right { display: flex; flex-direction: column; gap: 20px; }
+.edu-stack__right .edu__item { flex: 1; }
+
+@media (max-width: 900px) {
+  .edu { grid-template-columns: 1fr; }
+  .edu-bento { grid-template-columns: 1fr; }
+  .edu-bento .edu__item:first-child { grid-column: 1; }
+  .edu-stack { grid-template-columns: 1fr; }
+}
+
 .edu__item {
   padding: 28px;
   border-radius: var(--radius);

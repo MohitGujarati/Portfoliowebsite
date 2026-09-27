@@ -3,6 +3,7 @@ import { Inter_Tight, Instrument_Serif, JetBrains_Mono } from 'next/font/google'
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { absolute, profile, SITE_URL } from '@/lib/site';
 import './globals.css';
+import PostHogProvider from '@/components/PostHogProvider';
 
 const sans = Inter_Tight({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-inter-tight', display: 'swap' });
 const mono = JetBrains_Mono({ subsets: ['latin'], weight: ['400', '500', '700'], variable: '--font-jetbrains-mono', display: 'swap' });
@@ -83,8 +84,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
       </head>
       <body>
-        {children}
-        <GoogleAnalytics />
+        <PostHogProvider>
+          {children}
+          <GoogleAnalytics />
+        </PostHogProvider>
       </body>
     </html>
   );

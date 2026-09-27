@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { initTerminal } from '@/lib/terminal';
 import { getTheme, setTheme } from '@/lib/theme';
 
-const SUGGESTIONS = ['help', 'whoami', 'projects', 'papers', 'cat recall-ai.md', 'ping mohit', 'sudo hire mohit', 'matrix'];
+const SUGGESTIONS = ['contact', 'hire', 'projects', 'experience', 'whoami', 'coffee', 'ping mohit', 'help'];
 
 export default function Terminal() {
   const body = useRef<HTMLDivElement>(null);

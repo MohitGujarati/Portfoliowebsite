@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-export const SECTION_IDS = ['experience', 'projects', 'research', 'skills', 'education', 'shell', 'contact'];
+export const SECTION_IDS = ['experience', 'education', 'skills', 'projects', 'research', 'shell', 'contact'];
 
 /** The section whose top has passed 45% of the viewport, or null at the top of the page. */
 export function useActiveSection() {

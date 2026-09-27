@@ -7,10 +7,10 @@ import { useActiveSection } from '@/lib/use-active-section';
 
 const LINKS = [
   ['experience', 'Experience'],
+  ['education', 'Education'],
+  ['skills', 'Skills'],
   ['projects', 'Projects'],
   ['research', 'Research'],
-  ['skills', 'Skills'],
-  ['education', 'Education'],
   ['shell', 'Terminal'],
   ['contact', 'Contact'],
 ];

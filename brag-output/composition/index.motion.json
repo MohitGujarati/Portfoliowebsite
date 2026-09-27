@@ -1,0 +1,24 @@
+{
+  "duration": 22,
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#answer-name",
+      "bySec": 1.5
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#project-2",
+      "bySec": 12.1
+    },
+    {
+      "kind": "appearsBy",
+      "selector": ".cta",
+      "bySec": 18.6
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": ".cta"
+    }
+  ]
+}

@@ -55,7 +55,13 @@ export default function AboutPage() {
               <p className="edu__date">{item.dates}</p>
               <h3>{item.degree}</h3>
               <p className="edu__school">{item.school}, {item.place}</p>
+              {item.subjects && <p className="edu__school" style={{ marginTop: '0.5rem' }}>Coursework: {item.subjects.join(', ')}</p>}
               {item.note && <p className="edu__badge">{item.note}</p>}
+              {item.description && (
+                <ul className="awards" style={{ marginTop: '1.25rem' }}>
+                  <li><span className="award__icon" aria-hidden="true">★</span> {item.description}</li>
+                </ul>
+              )}
             </article>
           ))}
           <article className="edu__item">

@@ -238,18 +238,22 @@ export const education = [
     place: 'Brooklyn, NY',
     dates: 'Sep 2024 – May 2026',
     note: 'GPA 3.9 / 4.0',
+    description: 'Conducted extensive literature review on AI, ML, DL, and software development research papers, applying findings to a comprehensive project. Presented the project for professorial review and synthesized the outcomes into a detailed IEEE-formatted research report.',
+    subjects: ['System Design', 'DSA', 'Full Stack Web Development'],
   },
   {
     degree: 'B.Tech in Computer Engineering',
     school: 'Shankersinh Vaghela Institute of Technology',
     place: 'Gujarat, India',
     dates: 'Aug 2016 – Sep 2020',
+    subjects: ['Engineering Maths', 'OS', 'Java', 'DSA', 'Computer Networks'],
   },
 ];
 
 export const awards = [
   'Excellence Award in Graduate Computer Science, LIU Brooklyn',
   'Kotlin Professional Certificate, JetBrains',
+  'Member of Google Developer Group @ Long Island University',
 ];
 
 /** Strip the **bold** markers used in content strings. */

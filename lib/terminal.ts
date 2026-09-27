@@ -2,7 +2,7 @@
 import { replayIntro } from './intro-state';
 import { asset, awards, education, experience, papers, plain, profile, projects, skills } from './site';
 
-const SECTIONS = ['experience', 'projects', 'research', 'skills', 'education', 'shell', 'contact'];
+const SECTIONS = ['experience', 'education', 'skills', 'projects', 'research', 'shell', 'contact'];
 
 const PROJECT_FILES = Object.fromEntries(projects.map((p) => [`${p.slug}.md`, p]));
 const PAPER_FILES = Object.fromEntries(papers.map((p) => [`${p.slug}.pdf`, p]));
@@ -83,8 +83,14 @@ export function initTerminal(o: Options) {
   }
 
   const later = (ms: number, fn: () => void) => { timers.push(window.setTimeout(fn, reduce ? 0 : ms)); };
+  let interactCb: ((val: string) => void) | null = null;
+  function ask(question: string, cb: (val: string) => void) {
+    interactCb = cb;
+    prompt.textContent = question;
+  }
+
   const setPrompt = () => { prompt.textContent = `visitor@mohit:${cwd}$`; };
-  const promptSpan = () => span(`visitor@mohit:${cwd}$ `, 't-prompt');
+  const promptSpan = () => span(interactCb ? (prompt.textContent || '') : `visitor@mohit:${cwd}$ `, 't-prompt');
 
   function openLink(href: string) {
     row(['opening ', span(href.replace('mailto:', ''), 't-accent'), ' …'], 't-muted');
@@ -140,7 +146,22 @@ export function initTerminal(o: Options) {
 
   const ABOUT = profile.summary;
 
-  // ---------- commands ----------
+  // Send a webhook notification if configured
+  function notifyVisitor(cmdName: string, customText?: string) {
+    const url = process.env.NEXT_PUBLIC_WEBHOOK_URL;
+    if (!url) return;
+    try {
+      fetch(url, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `payload=${encodeURIComponent(JSON.stringify({
+          text: customText || `👀 *Visitor Alert!* Someone just ran the \`${cmdName}\` command on your portfolio terminal.`
+        }))}`,
+      }).catch(() => {});
+    } catch (e) {}
+  }
+
   const commands: Record<string, Command> = {
     help: {
       desc: 'list available commands',
@@ -236,19 +257,38 @@ export function initTerminal(o: Options) {
     education: {
       desc: 'degrees and awards',
       run() {
-        education.forEach((e) => row([span(e.degree, 't-accent'), ` · ${e.school} · ${e.dates}${e.note ? ' · ' + e.note : ''}`]));
+        education.forEach((e) => {
+          row([span(e.degree, 't-accent'), ` · ${e.school} · ${e.dates}${e.note ? ' · ' + e.note : ''}`]);
+          if (e.subjects) row(`  Coursework: ${e.subjects.join(', ')}`, 't-muted');
+          if (e.description) row(`  ${e.description}`);
+        });
         awards.forEach((a) => row(`★ ${a}`, 't-warn'));
       },
     },
     contact: {
       desc: 'ways to reach me',
       run() {
-        grid([
-          ['email', link(profile.email, `mailto:${profile.email}`)],
-          ['linkedin', link('linkedin.com/in/mohitgujarati', profile.linkedin)],
-          ['github', link('github.com/MohitGujarati', profile.github)],
-          ['resume', link('Mohit_Gujarati_Resume.pdf', asset(profile.resume))],
-        ]);
+        row('Let\'s get in touch! Please provide your details:', 't-accent');
+        ask('Enter your email: ', (email) => {
+          if (!email) { row('Cancelled.', 't-muted'); return; }
+          ask('Purpose of contacting: ', (purpose) => {
+            if (!purpose) { row('Cancelled.', 't-muted'); return; }
+            row('Sending message to Mohit...', 't-muted');
+            const payload = `📧 *New Contact Request!*\n*Email:* ${email}\n*Purpose:* ${purpose}`;
+            notifyVisitor('contact', payload);
+            later(1000, () => {
+              row('Sent! I will get back to you soon.', 't-accent');
+              gap();
+              row('You can also reach me here:', 't-muted');
+              grid([
+                ['email', link(profile.email, `mailto:${profile.email}`)],
+                ['linkedin', link('linkedin.com/in/mohitgujarati', profile.linkedin)],
+                ['github', link('github.com/MohitGujarati', profile.github)],
+                ['resume', link('Mohit_Gujarati_Resume.pdf', asset(profile.resume))],
+              ]);
+            });
+          });
+        });
       },
     },
     resume: { desc: 'open my resume (PDF)', run() { openLink(asset(profile.resume)); } },
@@ -268,6 +308,7 @@ export function initTerminal(o: Options) {
       desc: 'is mohit online?',
       usage: '[host]',
       run([host = 'mohit']) {
+        notifyVisitor('ping');
         row(`PING ${host} (127.0.0.1): 56 data bytes`);
         [0, 1, 2].forEach((seq) => later(380 * (seq + 1), () => {
           row(`64 bytes from ${host}: icmp_seq=${seq} ttl=64 time=${(0.2 + Math.random() * 0.6).toFixed(2)} ms`);
@@ -275,6 +316,7 @@ export function initTerminal(o: Options) {
         later(380 * 4, () => {
           row(`--- ${host} ping statistics ---`, 't-muted');
           row('3 packets transmitted, 3 received, 0% packet loss. Online and open to opportunities.', 't-accent');
+          row('(And Mohit was just notified of your ping!)', 't-muted');
         });
       },
     },
@@ -294,6 +336,7 @@ export function initTerminal(o: Options) {
       hidden: true,
       run(args) {
         if (args.join(' ').toLowerCase() === 'hire mohit') {
+          notifyVisitor('sudo hire mohit');
           row('[sudo] password for visitor: ********', 't-muted');
           later(450, () => row('access granted ✓', 't-accent'));
           later(900, () => row('starting hiring pipeline… [##########] 100%'));
@@ -319,16 +362,73 @@ export function initTerminal(o: Options) {
     emacs: { hidden: true, run() { row('this is a vim household.', 't-muted'); } },
     ':q': { hidden: true, run() { row('E37: No write since last change (add ! to override)', 't-err'); } },
     ':q!': { hidden: true, run() { row([span('nice. but you can’t leave yet. try '), span('contact', 't-accent')], 't-muted'); } },
-    hello: { hidden: true, run() { row([span('hey there 👋 type '), span('help', 't-accent'), span(' to look around.')]); } },
-    coffee: { hidden: true, run() { row('☕ brewing… error 418: I’m a teapot.', 't-warn'); } },
+    hello: { hidden: true, run() { notifyVisitor('hello'); row([span('hey there 👋 type '), span('help', 't-accent'), span(' to look around.')]); } },
+    coffee: {
+      hidden: true,
+      run() {
+        notifyVisitor('coffee');
+        const container = document.createElement('div');
+        container.style.whiteSpace = 'pre';
+        container.style.fontFamily = 'monospace';
+        container.style.color = 'var(--accent)';
+        container.style.lineHeight = '1.2';
+        container.style.margin = '1rem 0';
+        out.append(container);
+        scrollDown();
+
+        const cup = String.raw`        _____________
+       <_____________> ___
+       |             |/ _ \
+       |     <b>MG</b>      | | |
+       |             |_| |
+    ___|             |\___/
+   /    \___________/    \
+   \_____________________/`;
+
+        const s1 = String.raw`       (  )   (   )  )
+        ) (   )  (  (
+        ( )  (    ) )`;
+        const s2 = String.raw`        ) (   )  (  (
+        ( )  (    ) )
+       (  )   (   )  )`;
+        const s3 = String.raw`        ( )  (    ) )
+       (  )   (   )  )
+        ) (   )  (  (`;
+
+        const frames = [s1, s2, s3];
+        let i = 0;
+        const interval = window.setInterval(() => {
+          container.innerHTML = frames[i % 3] + '\n' + cup;
+          i++;
+        }, 400);
+
+        setTimeout(() => window.clearInterval(interval), 6000);
+
+        later(6000, () => {
+          row('Thanks for the coffee! ☕', 't-accent');
+          row('(I just got a silent notification about this!)', 't-muted');
+        });
+      }
+    },
   };
   commands.hi = commands.hello;
   commands.vi = commands.vim;
   commands.nano = commands.vim;
+  commands.hire = { hidden: true, run() { commands.sudo.run(['hire', 'mohit']); } };
 
   // ---------- execution ----------
   function exec(raw: string) {
     const line = raw.trim();
+    if (interactCb) {
+      row([span(prompt.textContent || '', 't-prompt'), span(line)]);
+      const cb = interactCb;
+      interactCb = null;
+      setPrompt();
+      cb(line);
+      scrollDown();
+      return;
+    }
+
     row([promptSpan(), span(line)]);
     if (line) history.push(line);
     hIndex = history.length;
@@ -336,8 +436,12 @@ export function initTerminal(o: Options) {
 
     const [name, ...args] = line.split(/\s+/);
     const cmd = commands[name.toLowerCase()];
-    if (cmd) cmd.run(args);
-    else {
+    if (cmd) {
+      if (!['hello', 'coffee', 'ping', 'sudo', 'contact'].includes(name.toLowerCase())) {
+        notifyVisitor(name.toLowerCase());
+      }
+      cmd.run(args);
+    } else {
       row(`mohit-sh: command not found: ${name}`, 't-err');
       row([span('type '), span('help', 't-accent'), span(' for a list of commands')], 't-muted');
     }

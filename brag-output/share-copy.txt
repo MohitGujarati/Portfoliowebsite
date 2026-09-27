@@ -1,0 +1,2 @@
+I built a portfolio with its own command line. Explore my mobile, web and AI projects—and try the terminal.
+https://mohit-portfolio.vercel.app
