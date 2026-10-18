@@ -1,0 +1,16 @@
+node_modules/
+.env.local
+.env
+.env.*
+!.env.example
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+
+# local backup of the pre-Next.js static site
+.static-backup/
+.design-backup/
+brag-output/
+*.log

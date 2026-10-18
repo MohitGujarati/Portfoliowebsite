@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "Mohit / Portfolio",
+    "slug": "mohit-portfolio",
+    "version": "1.0.0",
+    "orientation": "default",
+    "userInterfaceStyle": "automatic",
+    "scheme": "mohitportfolio",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mohitgujarati.portfolio"
+    },
+    "android": {
+      "package": "com.mohitgujarati.portfolio"
+    },
+    "web": {
+      "bundler": "metro",
+      "name": "Mohit Gujarati | Portfolio"
+    },
+    "plugins": ["expo-asset", "expo-sharing", "expo-font"]
+  }
+}

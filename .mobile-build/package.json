@@ -1,0 +1,42 @@
+{
+  "name": "mohit-portfolio-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "^22.13.0 || >=24.3.0"
+  },
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "check:data": "tsx scripts/check-live-data.ts",
+    "export": "expo export --platform all"
+  },
+  "dependencies": {
+    "@expo-google-fonts/inter-tight": "^0.4.2",
+    "@expo-google-fonts/jetbrains-mono": "^0.4.1",
+    "@expo/vector-icons": "^15.0.2",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "expo": "~57.0.26",
+    "expo-asset": "~57.0.18",
+    "expo-clipboard": "~57.0.2",
+    "expo-font": "~57.0.4",
+    "expo-sharing": "~57.0.22",
+    "expo-status-bar": "~57.0.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-web": "^0.21.2"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.3",
+    "@types/react": "~19.2.2",
+    "tsx": "^4.20.0",
+    "typescript": "~6.0.3"
+  }
+}

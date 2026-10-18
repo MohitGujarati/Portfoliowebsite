@@ -14,6 +14,10 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+defaults:
+  run:
+    working-directory: frontend
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,18 +27,23 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: frontend/package-lock.json
       - id: pages
         uses: actions/configure-pages@v5
       - run: npm ci
+      # API routes need a server; Vercel runs them, a static export cannot.
+      - run: rm -rf app/api
       - run: npm run build
         env:
+          GITHUB_PAGES: 'true'
           # "" for a MohitGujarati.github.io repo, "/<repo>" for a project repo
           PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
-          NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.base_url }}
+          # Canonical URLs point at the Vercel site, so search engines treat it as the one official copy.
+          NEXT_PUBLIC_SITE_URL: https://mohitgujarati.vercel.app
           NEXT_PUBLIC_GA_ID: G-ZEZ78GD0WE
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./frontend/out
 
   deploy:
     needs: build

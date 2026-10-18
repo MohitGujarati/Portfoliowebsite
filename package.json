@@ -1,27 +1,21 @@
 {
-  "name": "mohit-gujarati-portfolio",
-  "version": "2.0.0",
+  "name": "mohit-gujarati-portfolio-workspace",
   "private": true,
+  "description": "Scripts that run across the website (frontend), API (server) and mobile app (.mobile-build).",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "npx serve@latest out",
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@react-three/drei": "^10.7.9",
-    "@react-three/fiber": "^9.8.1",
-    "next": "16.3.6",
-    "posthog-js": "^1.434.15",
-    "react": "19.3.0",
-    "react-dom": "19.3.0",
-    "three": "^0.186.1"
+    "setup": "npm ci && npm ci --prefix frontend && npm ci --prefix server && npm ci --prefix .mobile-build",
+    "dev": "npm run dev --prefix frontend",
+    "api": "npm start --prefix server",
+    "mobile": "npm start --prefix .mobile-build",
+    "typecheck": "npm run typecheck --prefix frontend && npm run typecheck --prefix .mobile-build && node --check server/index.js",
+    "test": "npm test --prefix .mobile-build",
+    "build": "npm run build --prefix frontend",
+    "docs:sync": "node scripts/sync-docs.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run format:check && npm run typecheck && npm test && npm run build"
   },
   "devDependencies": {
-    "@types/node": "^22.20.4",
-    "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0",
-    "@types/three": "^0.186.0",
-    "typescript": "^5.9.3"
+    "prettier": "3.6.2"
   }
 }

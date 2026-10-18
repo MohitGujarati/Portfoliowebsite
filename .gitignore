@@ -1,10 +1,25 @@
+# Dependencies and build output across the web, API, and mobile projects.
 node_modules/
-.env.local
 .next/
 out/
-next-env.d.ts
+dist/
+.expo/
 *.tsbuildinfo
-.DS_Store
 
-# local backup of the pre-Next.js static site
+# Local configuration and tooling; never commit credentials.
+.env
+.env.*
+!.env.example
+!.env.*.example
+.local-run/
+.tools/
+.claude/settings.local.json
+
+# Recoverable design snapshots and generated working files.
+.design-backup/
 .static-backup/
+brag-output/
+tmp/
+*.log
+.DS_Store
+Thumbs.db

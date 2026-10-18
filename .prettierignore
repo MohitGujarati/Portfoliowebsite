@@ -1,0 +1,17 @@
+# Generated output, dependencies and local archives
+node_modules/
+.next/
+out/
+dist/
+.expo/
+.design-backup/
+package-lock.json
+next-env.d.ts
+
+# Kept compact on purpose: one rule per line is easier to scan and edit
+*.css
+
+# Prose and data are formatted by hand
+*.md
+*.sql
+.claude/
