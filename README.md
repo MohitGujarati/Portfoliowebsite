@@ -1,4 +1,6 @@
 ## 📸 Previews
+2026- Halloween
+<img width="1454" height="313" alt="image" src="https://github.com/user-attachments/assets/166fb6f1-1ad5-4acd-9ad4-d83c6dbf2dce" />
 
 5. 
 <img width="1416" height="610" alt="Portfolio Preview 5" src="https://github.com/user-attachments/assets/ecc9c3ef-e48e-4b78-90e5-6c3c56319f43" />
