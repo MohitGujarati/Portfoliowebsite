@@ -1,5 +1,7 @@
 ## 📸 Previews
+
 2026- Halloween
+
 <img width="1454" height="313" alt="image" src="https://github.com/user-attachments/assets/166fb6f1-1ad5-4acd-9ad4-d83c6dbf2dce" />
 
 5. 
